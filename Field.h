@@ -1,0 +1,40 @@
+//
+// Created by Chau Ying on 05.05.2020.
+//
+
+#ifndef POO2_LABO4_BUFFY_FIELD_H
+#define POO2_LABO4_BUFFY_FIELD_H
+
+
+#include "Humanoid.h"
+
+class Field {
+
+private:
+    unsigned _width;
+    unsigned _height;
+
+    unsigned turn;
+
+    std::list<Humanoid*> humanoids;
+
+public:
+    Field(unsigned int _width, unsigned int _height);
+
+    /**
+     * Apply a single turn
+     * @return retunn next turn count
+     */
+    int nexTurn();
+
+    /**
+     * Find the closest Humanoid from h
+     * @param h
+     * @return return the closest humainoid from h
+     */
+    Humanoid getCloset(const Humanoid& h);
+
+};
+
+
+#endif //POO2_LABO4_BUFFY_FIELD_H

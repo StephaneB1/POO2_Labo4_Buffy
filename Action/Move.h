@@ -29,7 +29,8 @@ private:
 
 
 public:
-    Move(unsigned int _stepRange);
+    Move(Humanoid* humanoid, unsigned int _stepRange);
+
 
     void setDirection(Direction direction);
 

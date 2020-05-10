@@ -5,11 +5,16 @@
 #ifndef POO2_LABO4_BUFFY_ACTION_H
 #define POO2_LABO4_BUFFY_ACTION_H
 
+#include <Humanoid/Humanoid.h>
+
 class Field;
 
 class Action {
-
+private:
+    Humanoid* _humanoid;
 public:
+
+    Action(Humanoid* humanoid);
 
     virtual void execute(const Field& field) = 0;
 };

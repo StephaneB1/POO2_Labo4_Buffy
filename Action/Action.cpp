@@ -6,3 +6,6 @@
 
 #include "../Field.h"
 
+Action::Action(Humanoid* humanoid) : _humanoid(humanoid){
+
+}

@@ -5,8 +5,10 @@
 #ifndef POO2_LABO4_BUFFY_HUMANOID_H
 #define POO2_LABO4_BUFFY_HUMANOID_H
 
+#include <list>
 
-#include "Action.h"
+class Action;
+class Field;
 
 class Humanoid {
 
@@ -14,18 +16,22 @@ private:
     bool _isAlive;
     unsigned _x;
     unsigned _y;
+    unsigned _stepRange;
 
-    Action _action;
+    std::list<Action*> _actionList;
+
+    Action* _nextAction;
 
 public:
 
-    Humanoid(unsigned int _x, unsigned int _y, const Action& action);
+    Humanoid(unsigned int _x, unsigned int _y, std::list<Action*> action);
 
-    void setAction(const Field& field) const;
+    virtual void setAction(const Field& field) const = 0;
 
     void executeAction(const Field& field);
 
     bool isAlive() const;
+
 
 };
 

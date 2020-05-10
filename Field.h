@@ -6,7 +6,10 @@
 #define POO2_LABO4_BUFFY_FIELD_H
 
 
-#include "Humanoid.h"
+
+#include <list>
+
+#include "Humanoid/Humanoid.h"
 
 class Field {
 
@@ -32,7 +35,7 @@ public:
      * @param h
      * @return return the closest humainoid from h
      */
-    Humanoid getCloset(const Humanoid& h);
+    Humanoid* getCloset(const Humanoid& h);
 
 };
 

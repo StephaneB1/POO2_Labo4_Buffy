@@ -4,9 +4,6 @@
 
 #include "Field.h"
 
-#include <list>
-
-
 Field::Field(unsigned int _width, unsigned int _height) : _width(_width),
                                                           _height(_height),
                                                           turn(0) {}

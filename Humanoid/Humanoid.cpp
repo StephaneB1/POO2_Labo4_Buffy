@@ -20,3 +20,19 @@ void Humanoid::executeAction(const Field& field) {
     _nextAction->execute(field);
 }
 
+unsigned int Humanoid::getX() const {
+    return _x;
+}
+
+unsigned int Humanoid::getY() const {
+    return _y;
+}
+
+void Humanoid::setX(unsigned int _x) {
+    Humanoid::_x = _x;
+}
+
+void Humanoid::setY(unsigned int _y) {
+    Humanoid::_y = _y;
+}
+

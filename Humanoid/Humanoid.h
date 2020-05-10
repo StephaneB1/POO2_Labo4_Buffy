@@ -32,6 +32,14 @@ public:
 
     bool isAlive() const;
 
+    unsigned int getX() const;
+
+    unsigned int getY() const;
+
+    void setX(unsigned int _x);
+
+    void setY(unsigned int _y);
+
 
 };
 

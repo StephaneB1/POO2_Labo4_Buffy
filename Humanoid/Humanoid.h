@@ -25,6 +25,8 @@ public:
 
     Humanoid(Move* _move, unsigned int _x, unsigned int _y);
 
+    virtual ~Humanoid();
+
     virtual void setAction(const Field& field) = 0;
 
     void setNextAction(Action* nextAction);

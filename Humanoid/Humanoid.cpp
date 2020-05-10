@@ -47,3 +47,7 @@ Move* Humanoid::getMove() const {
     return _move;
 }
 
+Humanoid::~Humanoid() {
+
+}
+

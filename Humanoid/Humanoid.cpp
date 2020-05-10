@@ -32,7 +32,7 @@ unsigned int Humanoid::getX() const {
 }
 
 void Humanoid::setX(unsigned int x) {
-    Humanoid::_x = x;
+    _x = x;
 }
 
 unsigned int Humanoid::getY() const {
@@ -40,7 +40,7 @@ unsigned int Humanoid::getY() const {
 }
 
 void Humanoid::setY(unsigned int y) {
-    Humanoid::_y = y;
+    _y = y;
 }
 
 Move* Humanoid::getMove() const {
@@ -49,5 +49,9 @@ Move* Humanoid::getMove() const {
 
 Humanoid::~Humanoid() {
 
+}
+
+void Humanoid::set_isAlive(bool isAlive) {
+    _isAlive = isAlive;
 }
 

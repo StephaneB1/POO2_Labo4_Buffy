@@ -46,6 +46,8 @@ public:
     void setY(unsigned int y);
 
     Move* getMove() const;
+
+    void set_isAlive(bool _isAlive);
 };
 
 

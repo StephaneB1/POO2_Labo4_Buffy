@@ -8,9 +8,15 @@
 
 #include "Humanoid.h"
 
+class Field;
+
 class Humain: public Humanoid {
 
+public:
 
+    Humain(unsigned int _x, unsigned int _y, const Move& move);
+
+    virtual void setAction(const Field& field);
 
 };
 

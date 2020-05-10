@@ -10,7 +10,7 @@ Utils::Utils() {
 }
 
 unsigned Utils::generateRandom(unsigned min, unsigned max) {
-    return (generator() * max) + min;
+    return (generator() % max) + min;
 }
 
 std::minstd_rand0 Utils::generator(

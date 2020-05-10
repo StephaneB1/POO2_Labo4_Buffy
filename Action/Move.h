@@ -23,7 +23,11 @@ private:
         UP_RIGHT
     };
 
+    Direction getRandomDirection() const;
+
     Direction _direction;
+
+
 public:
     Move(unsigned int _stepRange);
 

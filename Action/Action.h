@@ -10,13 +10,14 @@
 class Field;
 
 class Action {
-private:
+
     Humanoid* _humanoid;
+
 public:
 
-    Action(Humanoid* humanoid);
-
     virtual void execute(const Field& field) = 0;
+
+    void setHumanoid(Humanoid* _humanoid);
 
     Humanoid* getHumanoid() const;
 };

@@ -8,39 +8,42 @@
 #include <list>
 
 class Action;
+class Move;
 class Field;
 
 class Humanoid {
 
 private:
     bool _isAlive;
+    Move* _move;
     unsigned _x;
     unsigned _y;
-    unsigned _stepRange;
-
-    std::list<Action*> _actionList;
 
     Action* _nextAction;
 
 public:
 
-    Humanoid(unsigned int _x, unsigned int _y, std::list<Action*> action);
+    Humanoid(Move* _move, unsigned int _x, unsigned int _y);
 
-    virtual void setAction(const Field& field) const = 0;
+    virtual void setAction(const Field& field) = 0;
+
+    void setNextAction(Action* nextAction);
 
     void executeAction(const Field& field);
 
     bool isAlive() const;
 
+    Action* getNextAction() const;
+
     unsigned int getX() const;
+
+    void setX(unsigned int x);
 
     unsigned int getY() const;
 
-    void setX(unsigned int _x);
+    void setY(unsigned int y);
 
-    void setY(unsigned int _y);
-
-
+    Move* getMove() const;
 };
 
 

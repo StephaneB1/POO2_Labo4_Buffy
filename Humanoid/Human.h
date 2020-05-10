@@ -10,11 +10,12 @@
 
 class Field;
 
-class Humain: public Humanoid {
+class Human: public Humanoid {
 
 public:
 
-    Humain(unsigned int _x, unsigned int _y, const Move& move);
+    Human(Move* _move, unsigned int _x, unsigned int _y);
+
 
     virtual void setAction(const Field& field);
 

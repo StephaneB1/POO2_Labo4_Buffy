@@ -35,7 +35,11 @@ public:
      * @param h
      * @return return the closest humainoid from h
      */
-    Humanoid* getCloset(const Humanoid& h);
+    Humanoid* getCloset(const Humanoid& h) const;
+
+    unsigned int getWidth() const;
+
+    unsigned int getHeight() const;
 
 };
 

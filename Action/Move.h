@@ -2,37 +2,28 @@
 // Created by Chau Ying on 09.05.2020.
 //
 
-#include "Action.h"
-
 #ifndef POO2_LABO4_BUFFY_MOVE_H
 #define POO2_LABO4_BUFFY_MOVE_H
 
+#include "Action.h"
+#include "Direction.h"
+
 
 class Move : public Action {
+
 private:
     unsigned _stepRange;
 
-    enum class Direction{
-        UP,
-        UP_LEFT,
-        LEFT,
-        DOWN_LEFT,
-        DOWN,
-        DOWN_RIGHT,
-        RIGHT,
-        UP_RIGHT
-    };
-
-    Direction getRandomDirection() const;
-
-    Direction _direction;
-
+    unsigned _toX;
+    unsigned _toY;
 
 public:
-    Move(Humanoid* humanoid, unsigned int _stepRange);
 
 
-    void setDirection(Direction direction);
+    Move(unsigned int _stepRange);
+
+    void setMove(const Field& field);
+
 
     virtual void execute(const Field& field);
 

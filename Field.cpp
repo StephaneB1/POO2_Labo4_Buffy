@@ -28,3 +28,15 @@ int Field::nexTurn() {
             ++it;
     return turn++;
 }
+
+unsigned int Field::getWidth() const {
+    return _width;
+}
+
+unsigned int Field::getHeight() const {
+    return _height;
+}
+
+Humanoid* Field::getCloset(const Humanoid& h) const {
+    return nullptr;
+}

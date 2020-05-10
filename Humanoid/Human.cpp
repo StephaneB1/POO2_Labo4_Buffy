@@ -3,14 +3,20 @@
 //
 
 #include <Utils.h>
-#include "Humain.h"
+#include "Human.h"
 #include "../Action/Move.h"
 
 #include "../Field.h"
 
-Humain::Humain(unsigned int _x, unsigned int _y, const Move& move)
-        : Humanoid(_x, _y, move) {
+
+
+
+Human::Human(Move* _move, unsigned int _x, unsigned int _y) : Humanoid(_move,
+                                                                             _x,
+                                                                             _y) {
+    setNextAction(_move);
 }
 
-void Humain::setAction(const Field& field) {
+void Human::setAction(const Field& field) {
+    getMove()->setMove(field);
 }

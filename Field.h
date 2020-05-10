@@ -8,6 +8,8 @@
 
 
 #include <list>
+#include <Humanoid/Vampire.h>
+#include <Humanoid/Human.h>
 
 #include "Humanoid/Humanoid.h"
 
@@ -40,6 +42,9 @@ public:
     unsigned int getWidth() const;
 
     unsigned int getHeight() const;
+
+    void replace(Human oldPerson, Vampire newPerson);
+
 
 };
 

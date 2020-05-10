@@ -12,7 +12,7 @@ int main() {
 
     Field f(10,10);
     Move* move = new Move(2);
-    Human h(move,0,0);
+    Human h(move,9,9);
     move->setHumanoid(&h);
     cout << h.getX() << " " << h.getY() << endl;
     h.setAction(f);

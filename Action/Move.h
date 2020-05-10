@@ -7,6 +7,7 @@
 
 #include "Action.h"
 #include "Direction.h"
+#include <vector>
 
 
 class Move : public Action {
@@ -27,6 +28,9 @@ public:
 
     virtual void execute(const Field& field);
 
+    std::vector<Direction> getListDirection(const Field& field) const;
+
+    void setNextPosition(const Direction& nextDirection);
 };
 
 

@@ -16,33 +16,16 @@ void Move::execute(const Field& field) {
 
 void Move::setMove(const Field& field) {
 
-    std::vector<Direction> possibleDirection;
-
-    if (getHumanoid()->getX() != 0) {
-        possibleDirection.push_back(Direction::LEFT);
-        if (getHumanoid()->getY() != 0) {
-            possibleDirection.push_back(Direction::UP);
-            possibleDirection.push_back(Direction::UP_LEFT);
-        }
-        if (getHumanoid()->getY() != field.getHeight()) {
-            possibleDirection.push_back(Direction::DOWN);
-            possibleDirection.push_back(Direction::DOWN_LEFT);
-        }
-    } else {
-        possibleDirection.push_back(Direction::LEFT);
-        if (getHumanoid()->getY() != 0) {
-            possibleDirection.push_back(Direction::UP);
-            possibleDirection.push_back(Direction::UP_LEFT);
-        }
-        if (getHumanoid()->getY() != field.getHeight()) {
-            possibleDirection.push_back(Direction::DOWN);
-            possibleDirection.push_back(Direction::DOWN_LEFT);
-        }
-    }
+    std::vector<Direction> possibleDirection = getListDirection(field);
 
     Direction nextDirection = possibleDirection.at(Utils::generateRandom(0,
                                                                          possibleDirection.size()));
 
+    setNextPosition(nextDirection);
+
+}
+
+void Move::setNextPosition(const Direction& nextDirection) {
     switch (nextDirection) {
         case Direction::UP :
             _toX = getHumanoid()->getX() - _stepRange;
@@ -84,5 +67,31 @@ void Move::setMove(const Field& field) {
             _toY = getHumanoid()->getY() - _stepRange;
             break;
     }
+}
 
+std::vector<Direction> Move::getListDirection(const Field& field) const {
+    std::vector<Direction> possibleDirection;
+
+    if (getHumanoid()->getX() != 0) {
+        possibleDirection.push_back(Direction::LEFT);
+        if (getHumanoid()->getY() != 0) {
+            possibleDirection.push_back(Direction::UP);
+            possibleDirection.push_back(Direction::UP_LEFT);
+        }
+        if (getHumanoid()->getY() != field.getHeight()) {
+            possibleDirection.push_back(Direction::DOWN);
+            possibleDirection.push_back(Direction::DOWN_LEFT);
+        }
+    } else {
+        possibleDirection.push_back(Direction::LEFT);
+        if (getHumanoid()->getY() != 0) {
+            possibleDirection.push_back(Direction::UP);
+            possibleDirection.push_back(Direction::UP_LEFT);
+        }
+        if (getHumanoid()->getY() != field.getHeight()) {
+            possibleDirection.push_back(Direction::DOWN);
+            possibleDirection.push_back(Direction::DOWN_LEFT);
+        }
+    }
+    return possibleDirection;
 }

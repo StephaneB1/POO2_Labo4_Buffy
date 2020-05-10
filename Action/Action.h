@@ -11,8 +11,6 @@ class Action {
 
 public:
 
-    Action();
-
     virtual void execute(const Field& field) = 0;
 };
 

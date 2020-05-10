@@ -9,12 +9,9 @@
 #include "../Field.h"
 
 
-
-
-Human::Human(Move* _move, unsigned int _x, unsigned int _y) : Humanoid(_move,
-                                                                             _x,
-                                                                             _y) {
-    setNextAction(_move);
+Human::Human(unsigned int _x, unsigned int _y) : Humanoid(new Move(1), _x, _y) {
+    setNextAction(getMove());
+    getMove()->setHumanoid(this);
 }
 
 void Human::setAction(const Field& field) {

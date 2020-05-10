@@ -14,7 +14,7 @@ class Human: public Humanoid {
 
 public:
 
-    Human(Move* _move, unsigned int _x, unsigned int _y);
+    Human(unsigned int _x, unsigned int _y);
 
 
     virtual void setAction(const Field& field);

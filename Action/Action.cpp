@@ -9,3 +9,7 @@
 Action::Action(Humanoid* humanoid) : _humanoid(humanoid){
 
 }
+
+Humanoid* Action::getHumanoid() const {
+    return _humanoid;
+}

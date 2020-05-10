@@ -17,6 +17,8 @@ public:
     Action(Humanoid* humanoid);
 
     virtual void execute(const Field& field) = 0;
+
+    Humanoid* getHumanoid() const;
 };
 
 

@@ -9,7 +9,7 @@
 
 Move::Move(unsigned int _stepRange) : _stepRange(_stepRange), _toY(0), _toX(0) {}
 
-void Move::execute(const Field& field) {
+void Move::execute(Field field) {
     getHumanoid()->setY(_toY);
     getHumanoid()->setX(_toX);
 }

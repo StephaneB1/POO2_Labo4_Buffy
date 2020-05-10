@@ -16,3 +16,7 @@ void Action::setHumanoid(Humanoid* _humanoid) {
 Humanoid* Action::getHumanoid() const {
     return _humanoid;
 }
+
+Action::~Action() {
+
+}

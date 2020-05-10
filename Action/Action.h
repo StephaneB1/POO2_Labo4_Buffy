@@ -14,8 +14,9 @@ class Action {
     Humanoid* _humanoid;
 
 public:
+    virtual ~Action();
 
-    virtual void execute(const Field& field) = 0;
+    virtual void execute(Field field) = 0;
 
     void setHumanoid(Humanoid* _humanoid);
 

@@ -9,6 +9,15 @@
 
 class Kill : public Action{
 
+private:
+    Humanoid* _target;
+
+public:
+
+    void setTarget(Humanoid* target);
+
+    void execute(Field field);
+
 };
 
 

@@ -26,7 +26,7 @@ public:
     void setRandomMove(const Field& field);
 
 
-    virtual void execute(const Field& field);
+    virtual void execute(Field field);
 
     std::vector<Direction> getListDirection(const Field& field) const;
 

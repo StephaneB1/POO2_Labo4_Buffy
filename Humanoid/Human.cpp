@@ -18,5 +18,5 @@ Human::Human(Move* _move, unsigned int _x, unsigned int _y) : Humanoid(_move,
 }
 
 void Human::setAction(const Field& field) {
-    getMove()->setMove(field);
+    getMove()->setRandomMove(field);
 }

@@ -23,7 +23,7 @@ public:
 
     Move(unsigned int _stepRange);
 
-    void setMove(const Field& field);
+    void setRandomMove(const Field& field);
 
 
     virtual void execute(const Field& field);

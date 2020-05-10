@@ -14,7 +14,7 @@ void Move::execute(const Field& field) {
     getHumanoid()->setX(_toX);
 }
 
-void Move::setMove(const Field& field) {
+void Move::setRandomMove(const Field& field) {
 
     std::vector<Direction> possibleDirection = getListDirection(field);
 
@@ -78,17 +78,17 @@ std::vector<Direction> Move::getListDirection(const Field& field) const {
             possibleDirection.push_back(Direction::UP);
             possibleDirection.push_back(Direction::UP_LEFT);
         }
-        if (getHumanoid()->getY() != field.getHeight()) {
+        if (getHumanoid()->getY() != field.getHeight() - 1) {
             possibleDirection.push_back(Direction::DOWN);
             possibleDirection.push_back(Direction::DOWN_LEFT);
         }
-    } else {
+    } else if (getHumanoid()->getX() != field.getWidth() - 1) {
         possibleDirection.push_back(Direction::LEFT);
         if (getHumanoid()->getY() != 0) {
             possibleDirection.push_back(Direction::UP);
             possibleDirection.push_back(Direction::UP_LEFT);
         }
-        if (getHumanoid()->getY() != field.getHeight()) {
+        if (getHumanoid()->getY() != field.getHeight() - 1) {
             possibleDirection.push_back(Direction::DOWN);
             possibleDirection.push_back(Direction::DOWN_LEFT);
         }

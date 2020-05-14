@@ -2,7 +2,7 @@
 // Created by Chau Ying on 10.05.2020.
 //
 
-#include <Utils.h>
+#include "../Utils.h"
 #include "Vampire.h"
 
 #include "../Action/Move.h"

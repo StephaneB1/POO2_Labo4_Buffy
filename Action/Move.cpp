@@ -2,7 +2,7 @@
 // Created by Chau Ying on 09.05.2020.
 //
 
-#include <Utils.h>
+#include "../Utils.h"
 #include "Move.h"
 
 #include "../Field.h"

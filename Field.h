@@ -8,8 +8,8 @@
 
 
 #include <list>
-#include <Humanoid/Vampire.h>
-#include <Humanoid/Human.h>
+#include "Humanoid/Vampire.h"
+#include "Humanoid/Human.h"
 
 #include "Humanoid/Humanoid.h"
 

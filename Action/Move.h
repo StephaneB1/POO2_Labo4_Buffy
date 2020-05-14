@@ -6,9 +6,8 @@
 #define POO2_LABO4_BUFFY_MOVE_H
 
 #include "Action.h"
-#include "Direction.h"
+#include "../Direction.h"
 #include <vector>
-
 
 class Move : public Action {
 

@@ -4,7 +4,7 @@
 
 #include "Humanoid.h"
 
-#include "Action/Action.h"
+#include "../Action/Action.h"
 #include "../Field.h"
 
 Humanoid::Humanoid(Move* _move, unsigned int _x, unsigned int _y) : _move(_move),

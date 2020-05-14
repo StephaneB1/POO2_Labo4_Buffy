@@ -5,11 +5,10 @@
 #ifndef POO2_LABO4_BUFFY_VAMPIRE_H
 #define POO2_LABO4_BUFFY_VAMPIRE_H
 
-
-#include <Action/Kill.h>
-#include <Action/Bite.h>
 #include "Humanoid.h"
 #include "Human.h"
+#include "../Action/Bite.h"
+#include "../Action/Kill.h"
 
 class Vampire : public Humanoid{
 

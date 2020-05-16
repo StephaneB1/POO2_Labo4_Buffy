@@ -25,6 +25,7 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans, u
 
     std::string input;
 
+    bool quitting = false;
 
     do {
         _displayer.display(field);
@@ -32,7 +33,7 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans, u
         std::getline(std::cin, input);
         std::cout << "\b";
         if(input.length() != 1) {
-
+            displayErrorMsg("Input too long. \n    -> Must be one character only.");
         } else {
             switch (input[0]) {
                 case 'n':
@@ -41,15 +42,18 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans, u
                 case 's':
 
                     break;
+                case 'q':
+                    quitting = true;
+                    break;
                 default:
-
+                    displayErrorMsg("Unknown command. Please try again.");
                     break;
             }
         }
-    } while(input[0] != 'q');
-
-
-
+    } while(!quitting);
 }
 
+void BuffyController::displayErrorMsg(const std::string &msg) {
+    std::cout << "/!\\ Error : " << msg << std::endl;
+}
 

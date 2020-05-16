@@ -19,6 +19,9 @@ class FieldDisplayer;
 
 class BuffyController {
 
+private:
+    void displayErrorMsg(const std::string& msg);
+
 public:
     BuffyController();
 

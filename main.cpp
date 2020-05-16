@@ -13,7 +13,7 @@ Date        : 14.05.2020
 int main() {
 
     BuffyController controller;
-    controller.start(50, 50, 20, 10);
+    controller.start(50, 30, 20, 10);
 
     return EXIT_SUCCESS;
 }

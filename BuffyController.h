@@ -20,14 +20,13 @@ class FieldDisplayer;
 class BuffyController {
 
 public:
-    BuffyController(size_t width, size_t height);
+    BuffyController();
 
-    void start(unsigned totalHumans, unsigned totalVampire);
+    void start(size_t width, size_t height, unsigned totalHumans, unsigned totalVampire);
     void getStats();
     void quit();
 
 private:
-    Field _field;
     FieldDisplayer _displayer;
     bool _simulating;
 

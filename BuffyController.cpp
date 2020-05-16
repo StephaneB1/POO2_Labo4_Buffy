@@ -11,54 +11,43 @@ Date        : 14.05.2020
 #include <iterator>
 #include "BuffyController.h"
 
-BuffyController::BuffyController(size_t width, size_t height)
-: _field(Field(width, height)), _simulating(false) {
+BuffyController::BuffyController()
+: _simulating(false) {
 
 }
 
-void BuffyController::start(unsigned totalHumans, unsigned totalVampire) {
+void BuffyController::start(size_t width, size_t height, unsigned totalHumans, unsigned totalVampire) {
+
+    // Create new field for the current simulation
+    Field field(width, height);
 
     _simulating = true;
 
     std::string input;
-    std::vector<std::string> cmd;
 
-    std::istringstream iss;
+
     do {
+        _displayer.display(field);
+        std::cout << "[4] " << "q>uit s>tatistics n>ext: ";
+        std::getline(std::cin, input);
+        std::cout << "\b";
+        if(input.length() != 1) {
 
-        // User input
-        do {
-            // TODO : Add real turn value
-            std::cout << "[0"  << "]";
-            std::getline(std::cin, input);
-            iss = std::istringstream(input);
-            cmd = std::vector<std::string>(
-                    (std::istream_iterator<std::string>(iss)),
-                    std::istream_iterator<std::string>());
-        } while ((cmd.size() > 2 || cmd.empty() || cmd.front().size() != 1) &&
-                 /*displayErrorMsg("Commande non valide")*/);
+        } else {
+            switch (input[0]) {
+                case 'n':
 
-        // Commands operations
-        switch (cmd.at(0).at(0)) {
-            case 'n':
+                    break;
+                case 's':
 
-                break;
-            case 's':
+                    break;
+                default:
 
-                break;
-            default:
-                //displayErrorMsg("Commande inconnue");
-                break;
+                    break;
+            }
         }
+    } while(input[0] != 'q');
 
-        /*if (hasWon()) {
-            std::cout << "Bravo! Vous avez gagne en "
-                      << turn << " tour!" << std::endl;
-            break;
-        }*/
-
-        fflush(stdin);
-    } while (cmd.at(0).at(0) != 'q');
 
 
 }

@@ -22,7 +22,7 @@ public:
      * Apply a single turn
      * @return retunn next turn count
      */
-    int nexTurn();
+    int nextTurn();
     /**
      * Find the closest Humanoid from h
      * @param h

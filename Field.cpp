@@ -20,3 +20,7 @@ unsigned int Field::getWidth() const {
 unsigned int Field::getHeight() const {
     return _height;
 }
+
+int Field::nextTurn() {
+    return 0;
+}

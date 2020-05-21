@@ -27,9 +27,11 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans, u
 
     bool quitting = false;
 
+    std::cout << "\nWelcome to the Buffy simulator !\n"
+              << "   >> PRESS \'n\' TO START <<   \n\n";
+
     do {
-        _displayer.display(field);
-        std::cout << "[4] " << "q>uit s>tatistics n>ext: ";
+        std::cout << "[" << field.nextTurn() << "] " << "q>uit s>tatistics n>ext: ";
         std::getline(std::cin, input);
         std::cout << "\b";
         if(input.length() != 1) {
@@ -37,11 +39,12 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans, u
         } else {
             switch (input[0]) {
                 case 'n':
+                    _displayer.display(field);
 
                     break;
                 case 's':
-                    for(int i = 0; i < TOTAL_SIMULATION; ++i) {
-                        /* PSEUDO CODE
+                    /*for(int i = 0; i < TOTAL_SIMULATION; ++i) {
+                        PSEUDO CODE
                         (1) Resetting the positions of the humanoids randomly on the field
                         field.resetPositions()
 
@@ -54,17 +57,9 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans, u
                         buffyAttempts++;
                         if(!field.isFreeOfHumans()) buffySuccess++;
 
-                        std::cout << "Buffy success rate : "
-                                  << buffyAttempts / buffySucess * 100 << std::endl
-
-                         */
-                        std::cout << "i = " << i << "\r";
-
-                        char chars[] = {'-', '\\', '|', '/'};
-                        unsigned int i;
-
-
                     }
+                    std::cout << "Buffy success rate : "
+                              << buffyAttempts / buffySucess * 100 << std::endl*/
                     break;
                 case 'q':
                     quitting = true;

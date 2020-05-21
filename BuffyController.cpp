@@ -40,7 +40,31 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans, u
 
                     break;
                 case 's':
+                    for(int i = 0; i < TOTAL_SIMULATION; ++i) {
+                        /* PSEUDO CODE
+                        (1) Resetting the positions of the humanoids randomly on the field
+                        field.resetPositions()
 
+                        (2) Simulate the field actions until there's no vampires left
+                        do {
+
+                        } while (field.isFreeOfVampires())
+
+                        (3) update information on display (buffy success)
+                        buffyAttempts++;
+                        if(!field.isFreeOfHumans()) buffySuccess++;
+
+                        std::cout << "Buffy success rate : "
+                                  << buffyAttempts / buffySucess * 100 << std::endl
+
+                         */
+                        std::cout << "i = " << i << "\r";
+
+                        char chars[] = {'-', '\\', '|', '/'};
+                        unsigned int i;
+
+
+                    }
                     break;
                 case 'q':
                     quitting = true;

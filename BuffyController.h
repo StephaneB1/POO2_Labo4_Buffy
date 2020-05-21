@@ -30,6 +30,8 @@ public:
     void quit();
 
 private:
+    const unsigned TOTAL_SIMULATION = 10000;
+
     FieldDisplayer _displayer;
     bool _simulating;
 

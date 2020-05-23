@@ -19,7 +19,7 @@ BuffyController::BuffyController()
 void BuffyController::start(size_t width, size_t height, unsigned totalHumans, unsigned totalVampire) {
 
     // Create new field for the current simulation
-    Field field(width, height);
+    Field field(width, height, totalHumans, totalVampire);
 
     _simulating = true;
 

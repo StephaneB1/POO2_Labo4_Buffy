@@ -17,3 +17,7 @@ Human::Human(unsigned int _x, unsigned int _y) : Humanoid(new Move(1), _x, _y) {
 void Human::setAction(const Field& field) {
     getMove()->setRandomMove(field);
 }
+
+char Human::getSymbole() const {
+    return 'h';
+}

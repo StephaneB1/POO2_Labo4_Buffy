@@ -8,7 +8,9 @@
 #include <list>
 
 class Action;
+
 class Move;
+
 class Field;
 
 class Humanoid {
@@ -48,6 +50,8 @@ public:
     Move* getMove() const;
 
     void set_isAlive(bool _isAlive);
+
+    virtual char getSymbole() const = 0;
 };
 
 

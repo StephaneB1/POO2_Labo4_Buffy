@@ -8,7 +8,8 @@
 #include "../Field.h"
 
 Humanoid::Humanoid(Move* _move, unsigned int _x, unsigned int _y) : _move(_move),
-                                                                    _x(_x), _y(_y) {}
+                                                                    _x(_x), _y(_y)
+                                                                    , _isAlive(true) {}
 
 bool Humanoid::isAlive() const {
     return _isAlive;

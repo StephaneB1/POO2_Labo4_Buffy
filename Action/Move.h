@@ -31,6 +31,9 @@ public:
     std::vector<Direction> getListDirection(const Field& field) const;
 
     void setNextPosition(const Direction& nextDirection);
+
+    Direction getDirection(unsigned fromX, unsigned fromY, unsigned toX, unsigned
+    toY);
 };
 
 

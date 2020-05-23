@@ -30,7 +30,8 @@ private:
     std::list<Humanoid*> humanoids;
 
 public:
-    Field(unsigned int _width, unsigned int _height);
+    Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
+            unsigned totalVampire);
 
     /**
      * Apply a single turn
@@ -43,13 +44,19 @@ public:
      * @param h
      * @return return the closest humainoid from h
      */
-    Humanoid* getCloset(const Humanoid& h) const;
+    //Humanoid* getCloset(const Humanoid& h) const;
 
     unsigned int getWidth() const;
 
     unsigned int getHeight() const;
 
     void replace(Human* oldPerson, Vampire* newPerson);
+
+    Humanoid* getCloset(const Vampire* v) const;
+
+    const std::list<Humanoid*>& getHumanoids() const;
+
+private:
 
 
 };

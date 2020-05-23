@@ -23,7 +23,7 @@ int main() {
     controller.start(50, 30, 20, 10);
 
 
-
+/*
     Field f(10, 10);
     Human h(5, 5);
     cout << h.getX() << " " << h.getY() << endl;
@@ -33,7 +33,7 @@ int main() {
 
     Vampire v(6,6);
     v.setAction(f);
-    v.executeAction(f);
+    v.executeAction(f);*/
 
     return EXIT_SUCCESS;
 }

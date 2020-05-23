@@ -19,6 +19,8 @@ public:
 
     virtual void setAction(const Field& field);
 
+    virtual char getSymbole()const;
+
 };
 
 

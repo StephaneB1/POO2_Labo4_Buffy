@@ -23,6 +23,8 @@ public:
 
     void setAction(const Field& field) ;
 
+    virtual char getSymbole()const;
+
 };
 
 

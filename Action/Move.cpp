@@ -26,47 +26,8 @@ void Move::setRandomMove(const Field& field) {
 }
 
 void Move::setNextPosition(const Direction& nextDirection) {
-    switch (nextDirection) {
-        case Direction::UP :
-            _toX = getHumanoid()->getX() - _stepRange;
-            _toY = getHumanoid()->getY();
-            break;
-
-        case Direction::LEFT :
-            _toX = getHumanoid()->getX();
-            _toY = getHumanoid()->getY() + _stepRange;
-            break;
-
-        case Direction::DOWN :
-            _toX = getHumanoid()->getX() + _stepRange;
-            _toY = getHumanoid()->getY();
-            break;
-
-        case Direction::RIGHT :
-            _toX = getHumanoid()->getX();
-            _toY = getHumanoid()->getY() - _stepRange;
-            break;
-
-        case Direction::UP_LEFT:
-            _toX = getHumanoid()->getX() - _stepRange;
-            _toY = getHumanoid()->getY() + _stepRange;
-            break;
-
-        case Direction::DOWN_LEFT:
-            _toX = getHumanoid()->getX() + _stepRange;
-            _toY = getHumanoid()->getY() + _stepRange;
-            break;
-
-        case Direction::DOWN_RIGHT:
-            _toX = getHumanoid()->getX() + _stepRange;
-            _toY = getHumanoid()->getY() - _stepRange;
-            break;
-
-        case Direction::UP_RIGHT:
-            _toX = getHumanoid()->getX() - _stepRange;
-            _toY = getHumanoid()->getY() - _stepRange;
-            break;
-    }
+    _toX = getHumanoid()->getX() + nextDirection.getX() * _stepRange;
+    _toY = getHumanoid()->getY() + nextDirection.getY() * _stepRange;
 }
 
 std::vector<Direction> Move::getListDirection(const Field& field) const {
@@ -95,3 +56,5 @@ std::vector<Direction> Move::getListDirection(const Field& field) const {
     }
     return possibleDirection;
 }
+
+

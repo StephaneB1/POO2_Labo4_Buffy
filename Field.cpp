@@ -1,14 +1,18 @@
-//
-// Created by Chau Ying on 05.05.2020.
-//
-
+/*
+-----------------------------------------------------------------------------------
+Laboratoire : 04
+Fichier     : Field.h
+Auteur(s)   : St�phane Bottin & Chau Ying Kot
+Date        : 14.05.2020
+-----------------------------------------------------------------------------------
+ */
+ 
 #include "Field.h"
-
 Field::Field(unsigned int _width, unsigned int _height) : _width(_width),
                                                           _height(_height),
                                                           turn(0) {}
 
-int Field::nexTurn() {
+int Field::nextTurn() {
 
     // Déterminer les prochaines actions
     for (std::list<Humanoid*>::iterator it = humanoids.begin();
@@ -39,4 +43,8 @@ unsigned int Field::getHeight() const {
 
 Humanoid* Field::getCloset(const Humanoid& h) const {
     return nullptr;
+}
+
+void Field::replace(Human* oldPerson, Vampire* newPerson) {
+
 }

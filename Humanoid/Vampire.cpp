@@ -14,6 +14,7 @@ Vampire::Vampire(unsigned int _x, unsigned int _y) : Humanoid(new Move(1), _x, _
 void Vampire::setAction(const Field& field) {
 
     if (true) {// if humain next to vampire
+        // Set target
         if (Utils::generateRandom(0, 2)) {
             setNextAction(_bite);
         } else {

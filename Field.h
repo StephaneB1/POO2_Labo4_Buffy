@@ -1,6 +1,12 @@
-//
-// Created by Chau Ying on 05.05.2020.
-//
+/*
+-----------------------------------------------------------------------------------
+Laboratoire : 04
+Fichier     : Field.h
+Auteur(s)   : Stéphane Bottin & Chau Ying Kot
+Date        : 14.05.2020
+-----------------------------------------------------------------------------------
+ */
+ 
 
 #ifndef POO2_LABO4_BUFFY_FIELD_H
 #define POO2_LABO4_BUFFY_FIELD_H
@@ -30,7 +36,7 @@ public:
      * Apply a single turn
      * @return retunn next turn count
      */
-    int nexTurn();
+    int nextTurn();
 
     /**
      * Find the closest Humanoid from h
@@ -43,7 +49,7 @@ public:
 
     unsigned int getHeight() const;
 
-    void replace(Human oldPerson, Vampire newPerson);
+    void replace(Human* oldPerson, Vampire* newPerson);
 
 
 };

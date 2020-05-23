@@ -18,28 +18,28 @@ const Direction Direction::RIGHT = Direction(1, 0);
 
 Direction Direction::getDirection(unsigned fromX, unsigned fromY, unsigned toX,
                                   unsigned toY) {
-    int tempX = toX - fromX;
-    int tempY = toY - fromY;
+    int tempX = fromX - toX;
+    int tempY = fromY - toY;
 
     if (tempX < 0) {
         if (tempY < 0) {
             return Direction::UP_LEFT;
         } else if (tempY == 0) {
-            return Direction::UP;
-        } else {
-            return Direction::UP_RIGHT;
-        }
-    } else if (tempX == 0) {
-        if (tempY == -1) {
             return Direction::LEFT;
         } else {
-            return Direction::RIGHT;
+            return Direction::DOWN_RIGHT;
+        }
+    } else if (tempX == 0) {
+        if (tempY < 0){
+            return Direction::UP;
+        } else {
+            return Direction::DOWN;
         }
     } else {
         if (tempY < 0) {
-            return Direction::DOWN_LEFT;
+            return Direction::UP_RIGHT;
         } else if (tempY == 0) {
-            return Direction::DOWN;
+            return Direction::RIGHT;
         } else {
             return Direction::DOWN_RIGHT;
         }

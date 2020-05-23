@@ -37,11 +37,9 @@ std::vector<Direction> Move::getListDirection(const Field& field) const {
     if (getHumanoid()->getX() != 0) {
         possibleDirection.push_back(Direction::LEFT);
         if (getHumanoid()->getY() != 0) {
-            possibleDirection.push_back(Direction::UP);
             possibleDirection.push_back(Direction::UP_LEFT);
         }
         if (getHumanoid()->getY() != field.getHeight() - 1) {
-            possibleDirection.push_back(Direction::DOWN);
             possibleDirection.push_back(Direction::DOWN_LEFT);
         }
     }
@@ -49,13 +47,18 @@ std::vector<Direction> Move::getListDirection(const Field& field) const {
     if (getHumanoid()->getX() != field.getWidth() - 1) {
         possibleDirection.push_back(Direction::RIGHT);
         if (getHumanoid()->getY() != 0) {
-            possibleDirection.push_back(Direction::UP);
             possibleDirection.push_back(Direction::UP_RIGHT);
         }
         if (getHumanoid()->getY() != field.getHeight() - 1) {
-            possibleDirection.push_back(Direction::DOWN);
             possibleDirection.push_back(Direction::DOWN_RIGHT);
         }
+    }
+
+    if (getHumanoid()->getY() != 0) {
+        possibleDirection.push_back(Direction::UP);
+    }
+    if (getHumanoid()->getY() != field.getHeight() - 1) {
+        possibleDirection.push_back(Direction::DOWN);
     }
     return possibleDirection;
 }

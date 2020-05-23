@@ -18,6 +18,7 @@ void Move::setRandomMove(const Field& field) {
 
     std::vector<Direction> possibleDirection = getListDirection(field);
 
+
     Direction nextDirection = possibleDirection.at(Utils::generateRandom(0,
                                                                          possibleDirection.size()));
 
@@ -43,15 +44,17 @@ std::vector<Direction> Move::getListDirection(const Field& field) const {
             possibleDirection.push_back(Direction::DOWN);
             possibleDirection.push_back(Direction::DOWN_LEFT);
         }
-    } else if (getHumanoid()->getX() != field.getWidth() - 1) {
-        possibleDirection.push_back(Direction::LEFT);
+    }
+
+    if (getHumanoid()->getX() != field.getWidth() - 1) {
+        possibleDirection.push_back(Direction::RIGHT);
         if (getHumanoid()->getY() != 0) {
             possibleDirection.push_back(Direction::UP);
-            possibleDirection.push_back(Direction::UP_LEFT);
+            possibleDirection.push_back(Direction::UP_RIGHT);
         }
         if (getHumanoid()->getY() != field.getHeight() - 1) {
             possibleDirection.push_back(Direction::DOWN);
-            possibleDirection.push_back(Direction::DOWN_LEFT);
+            possibleDirection.push_back(Direction::DOWN_RIGHT);
         }
     }
     return possibleDirection;

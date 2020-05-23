@@ -29,7 +29,7 @@ void FieldDisplayer::display(const Field& field) const {
                 } else {
                     // Display Humanoids here
                     bool printed = false;
-                    for (Humanoid* h :field.getHumanoids()) {
+                    for (std::shared_ptr<Humanoid> h :field.getHumanoids()) {
                         if (h->getX() == x-1 && h->getY() == y-1) {
                             std::cout << h->getSymbole();
                             printed = true;

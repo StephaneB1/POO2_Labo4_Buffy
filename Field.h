@@ -6,16 +6,16 @@ Auteur(s)   : Stéphane Bottin & Chau Ying Kot
 Date        : 14.05.2020
 -----------------------------------------------------------------------------------
  */
- 
+
 
 #ifndef POO2_LABO4_BUFFY_FIELD_H
 #define POO2_LABO4_BUFFY_FIELD_H
 
 
-
 #include <list>
 #include <Humanoid/Vampire.h>
 #include <Humanoid/Human.h>
+#include <memory>
 
 #include "Humanoid/Humanoid.h"
 
@@ -27,11 +27,14 @@ private:
 
     unsigned turn;
 
-    std::list<Humanoid*> humanoids;
+    std::list<std::weak_ptr<Human>> humans;
+    std::list<std::weak_ptr<Vampire>> vampires;
+    std::list<std::shared_ptr<Humanoid>> humanoids;
+
 
 public:
     Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
-            unsigned totalVampire);
+          unsigned totalVampire);
 
     /**
      * Apply a single turn
@@ -52,9 +55,9 @@ public:
 
     void replace(Human* oldPerson, Vampire* newPerson);
 
-    Humanoid* getCloset(const Vampire* v) const;
+    std::shared_ptr<Humanoid> getCloset(const Vampire* v) const;
 
-    const std::list<Humanoid*>& getHumanoids() const;
+    const std::list<std::shared_ptr<Humanoid>>& getHumanoids() const;
 
 private:
 

@@ -22,7 +22,7 @@ void Vampire::setAction(const Field& field) {
             setNextAction(_kill);
         }
     } else {
-        Humanoid* target = field.getCloset(this);
+        std::shared_ptr<Humanoid> target = field.getCloset(this);
         Direction moveDir = Direction::getDirection(getX(), getY(), target->getX(),
                 target->getY());
 

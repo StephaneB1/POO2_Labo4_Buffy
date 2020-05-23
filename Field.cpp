@@ -17,16 +17,19 @@ Field::Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
     unsigned x;
     unsigned y;
     for (int i = 0; i < totalHuman; i++) {
+
         x = Utils::generateRandom(0, _width);
         y = Utils::generateRandom(0, _height);
-        humanoids.push_back(new Human(x, y));
+        std::shared_ptr<Human> h = std::make_shared<Human>(x, y);
+        humans.push_back(h);
+        humanoids.push_back(h);
     }
 
-/*    for (int i = 0; i < totalVampire; i++) {
-        x = Utils::generateRandom(0, _width);
-    y = Utils::generateRandom(0, _height);
-    humanoids.push_back(new Vampire(x, y));
-}*/
+    /* for (int i = 0; i < totalVampire; i++) {
+         x = Utils::generateRandom(0, _width);
+         y = Utils::generateRandom(0, _height);
+         humanoids.push_back(new Vampire(x, y));
+     }*/
     x = Utils::generateRandom(0, _width);
     y = Utils::generateRandom(0, _height);
     //Buffy singleton
@@ -36,19 +39,19 @@ Field::Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
 int Field::nextTurn() {
 
     // Déterminer les prochaines actions
-    for (std::list<Humanoid*>::iterator it = humanoids.begin();
+    for (std::list<std::shared_ptr<Humanoid>>::iterator it = humanoids.begin();
          it != humanoids.end(); it++)
         (*it)->setAction(*this);
     // Executer les actions
-    for (std::list<Humanoid*>::iterator it = humanoids.begin();
+    for (std::list<std::shared_ptr<Humanoid>>::iterator it = humanoids.begin();
          it != humanoids.end(); it++)
         (*it)->executeAction(*this);
     // Enlever les humanoides tués
-    for (std::list<Humanoid*>::iterator it = humanoids.begin();
+    for (std::list<std::shared_ptr<Humanoid>>::iterator it = humanoids.begin();
          it != humanoids.end();)
         if (!(*it)->isAlive()) {
             it = humanoids.erase(it); // suppression de l’élément dans la liste
-            delete *it; // destruction de l’humanoide référencé
+            //delete *it; // destruction de l’humanoide référencé
         } else
             ++it;
     return turn++;
@@ -79,12 +82,12 @@ void Field::replace(Human* oldPerson, Vampire* newPerson) {
 
 }
 
-Humanoid* Field::getCloset(const Vampire* v) const {
+std::shared_ptr<Humanoid> Field::getCloset(const Vampire* v) const {
 
     unsigned minDistance;
-    Humanoid* res;
+    std::shared_ptr<Humanoid> res;
     unsigned hyp;
-    for (Humanoid* h : humanoids) {
+    for (std::shared_ptr<Humanoid> h : humanoids) {
         if (typeid(h).name() == typeid(Human).name()) {
             if ((hyp = hypot(abs(v->getX() - h->getX()), abs(v->getY() - h->getY()))
                 ) < minDistance) {
@@ -96,6 +99,7 @@ Humanoid* Field::getCloset(const Vampire* v) const {
     return res;
 }
 
-const std::list<Humanoid*>& Field::getHumanoids() const {
+const std::list<std::shared_ptr<Humanoid>>& Field::getHumanoids() const {
     return humanoids;
 }
+

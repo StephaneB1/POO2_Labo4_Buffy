@@ -4,14 +4,16 @@
 
 #include "Direction.h"
 
-const Direction Direction::UP = Direction(-1, 0);
+const Direction Direction::UP = Direction(0, -1);
 const Direction Direction::UP_LEFT = Direction(-1, -1);
-const Direction Direction::LEFT = Direction(0, -1);
-const Direction Direction::DOWN_LEFT = Direction(1, -1);
-const Direction Direction::DOWN = Direction(1, 0);
+const Direction Direction::UP_RIGHT = Direction(1, -1);
+
+const Direction Direction::DOWN = Direction(0, 1);
+const Direction Direction::DOWN_LEFT = Direction(-1, 1);
 const Direction Direction::DOWN_RIGHT = Direction(1, 1);
-const Direction Direction::RIGHT = Direction(0, 1);
-const Direction Direction::UP_RIGHT = Direction(-1, 1);
+
+const Direction Direction::LEFT = Direction(-1, 0);
+const Direction Direction::RIGHT = Direction(1, 0);
 
 
 Direction Direction::getDirection(unsigned fromX, unsigned fromY, unsigned toX,

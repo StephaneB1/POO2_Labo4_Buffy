@@ -10,21 +10,27 @@
 
 Vampire::Vampire(unsigned int _x, unsigned int _y) : Humanoid(new Move(1), _x, _y),
                                                      _bite(new Bite()),
-                                                     _kill(new Kill()) {}
+                                                     _kill(new Kill()) {
+    getMove()->setHumanoid(this);
+}
 
 void Vampire::setAction(const Field& field) {
 
-    if (false) {// if humain next to vampire
-        // Set target
-        if (Utils::generateRandom(0, 2)) {
+    std::shared_ptr<Humanoid> target = field.getCloset(this);
+
+    if (target == nullptr) {
+        getMove()->setRandomMove(field);
+        setNextAction(getMove());
+    } else if (hypot(target->getX() - getX(), target->getY() - getY()) == 1) {
+        // if humain next to vampire Set target
+        /*if (Utils::generateRandom(0, 2)) {
             setNextAction(_bite);
         } else {
             setNextAction(_kill);
-        }
+        }*/
     } else {
-        std::shared_ptr<Humanoid> target = field.getCloset(this);
         Direction moveDir = Direction::getDirection(getX(), getY(), target->getX(),
-                target->getY());
+                                                    target->getY());
 
         getMove()->setNextPosition(moveDir);
         setNextAction(getMove());

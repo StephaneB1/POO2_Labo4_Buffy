@@ -7,6 +7,7 @@ Date        : 14.05.2020
 -----------------------------------------------------------------------------------
  */
 
+#include <iostream>
 #include "Field.h"
 #include "Utils.h"
 
@@ -16,20 +17,23 @@ Field::Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
                                       turn(0) {
     unsigned x;
     unsigned y;
-    for (int i = 0; i < totalHuman; i++) {
+/*    for (int i = 0; i < totalHuman; i++) {
 
         x = Utils::generateRandom(0, _width);
         y = Utils::generateRandom(0, _height);
         std::shared_ptr<Human> h = std::make_shared<Human>(x, y);
         humans.push_back(h);
         humanoids.push_back(h);
-    }
+    }*/
 
-    /* for (int i = 0; i < totalVampire; i++) {
-         x = Utils::generateRandom(0, _width);
-         y = Utils::generateRandom(0, _height);
-         humanoids.push_back(new Vampire(x, y));
-     }*/
+
+    for (int i = 0; i < totalVampire; i++) {
+        x = Utils::generateRandom(0, _width);
+        y = Utils::generateRandom(0, _height);
+        std::shared_ptr<Vampire> v = std::make_shared<Vampire>(x, y);
+        vampires.push_back(v);
+        humanoids.push_back(v);
+    }
     x = Utils::generateRandom(0, _width);
     y = Utils::generateRandom(0, _height);
     //Buffy singleton
@@ -84,16 +88,16 @@ void Field::replace(Human* oldPerson, Vampire* newPerson) {
 
 std::shared_ptr<Humanoid> Field::getCloset(const Vampire* v) const {
 
-    unsigned minDistance;
     std::shared_ptr<Humanoid> res;
     unsigned hyp;
-    for (std::shared_ptr<Humanoid> h : humanoids) {
-        if (typeid(h).name() == typeid(Human).name()) {
-            if ((hyp = hypot(abs(v->getX() - h->getX()), abs(v->getY() - h->getY()))
-                ) < minDistance) {
-                minDistance = hyp;
-                res = h;
-            }
+    unsigned minDistance = UINT_MAX;
+    for (std::weak_ptr<Human> h : humans) {
+
+        hyp = hypot(abs(v->getX() - h.lock()->getX()),
+                    abs(v->getY() - h.lock()->getY()));
+        if (hyp < minDistance) {
+            minDistance = hyp;
+            res = h.lock();
         }
     }
     return res;

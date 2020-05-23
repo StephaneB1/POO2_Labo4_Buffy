@@ -29,6 +29,7 @@ private:
 
     std::list<std::weak_ptr<Human>> humans;
     std::list<std::weak_ptr<Vampire>> vampires;
+
     std::list<std::shared_ptr<Humanoid>> humanoids;
 
 

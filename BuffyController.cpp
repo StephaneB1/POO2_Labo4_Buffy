@@ -35,7 +35,7 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans, u
         std::getline(std::cin, input);
         std::cout << "\b";
         if(input.length() != 1) {
-            displayErrorMsg("Input too long. \n    -> Must be one character only.");
+            displayErrorMsg("Invalid input length.\n    -> Must be one character only.");
         } else {
             switch (input[0]) {
                 case 'n':

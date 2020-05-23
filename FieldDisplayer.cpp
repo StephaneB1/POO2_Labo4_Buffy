@@ -8,8 +8,6 @@ Date        : 14.05.2020
  */
 #include "FieldDisplayer.h"
 #include <iostream>
-#include <iomanip>
-
 
 void FieldDisplayer::display(const Field& field) const {
 
@@ -21,7 +19,7 @@ void FieldDisplayer::display(const Field& field) const {
                 } else if (x == field.getWidth() - 1) {
                     std::cout << "+" << std::endl;
                 } else {
-                        std::cout << "-";
+                    std::cout << "-";
                 }
             } else {
                 if(x == 0) {
@@ -29,14 +27,11 @@ void FieldDisplayer::display(const Field& field) const {
                 } else if (x == field.getWidth() - 1) {
                     std::cout << "|" << std::endl;
                 } else {
+                    // Display Humanoids here
                     std::cout << " ";
                 }
             }
         }
     }
-
-}
-
-FieldDisplayer::FieldDisplayer() {
 
 }

@@ -16,7 +16,7 @@ class FieldDisplayer {
 
 public:
 
-    FieldDisplayer();
+    FieldDisplayer() {};
 
     void display(const Field& field) const;
 

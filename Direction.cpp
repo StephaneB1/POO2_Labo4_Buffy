@@ -18,8 +18,8 @@ const Direction Direction::RIGHT = Direction(1, 0);
 
 Direction Direction::getDirection(unsigned fromX, unsigned fromY, unsigned toX,
                                   unsigned toY) {
-    int tempX = fromX - toX;
-    int tempY = fromY - toY;
+    int tempX = toX - fromX;
+    int tempY = toY - fromY;
 
     if (tempX < 0) {
         if (tempY < 0) {

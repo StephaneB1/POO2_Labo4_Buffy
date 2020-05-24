@@ -49,8 +49,8 @@ int Field::nextTurn() {
     for (std::list<Humanoid*>::iterator it = humanoids.begin();
          it != humanoids.end();)
         if (!(*it)->isAlive()) {
+            delete *it; // destruction de l’humanoide référencé
             it = humanoids.erase(it); // suppression de l’élément dans la liste
-            //delete *it; // destruction de l’humanoide référencé
         } else
             ++it;
     return turn++;

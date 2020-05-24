@@ -29,6 +29,8 @@ public:
     static const Direction RIGHT;
     static const Direction UP_RIGHT;
 
+    static const Direction NONE;
+
     /**
      * Give the direction to move given the starting point and the target position
      * @param fromX

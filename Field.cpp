@@ -31,7 +31,6 @@ Field::Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
         y = Utils::generateRandom(0, _height);
         humanoids.push_back(new Vampire(x, y));
     }
-
 }
 
 int Field::nextTurn() {

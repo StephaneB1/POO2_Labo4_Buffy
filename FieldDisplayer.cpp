@@ -11,15 +11,6 @@ Date        : 14.05.2020
 
 void FieldDisplayer::display(const Field& field) const {
 
-/*
-    std::cout << field.getWidth() << "/" << field.getHeight() << std::endl;
-
-    for (std::shared_ptr<Humanoid> h :field.getHumanoids()) {
-            std::cout << h->getSymbole() << " : " << h->getX() << " , " <<h->getY
-            () <<std::endl;
-    }
-*/
-
     for (size_t y = 0; y < field.getHeight() + 2; ++y) {
         for (size_t x = 0; x < field.getWidth() + 2; ++x) {
             if (y == 0 || y == field.getHeight() + 1) {
@@ -39,7 +30,7 @@ void FieldDisplayer::display(const Field& field) const {
                     // Display Humanoids here
                     bool printed = false;
                     for (Humanoid* h :field.getHumanoids()) {
-                        if (h->getX() == x-1 && h->getY() == y-1) {
+                        if (h->getX() + 1 == x && h->getY() + 1 == y) {
                             std::cout << h->getSymbole();
                             printed = true;
                             break;

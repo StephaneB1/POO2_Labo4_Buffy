@@ -12,15 +12,15 @@ Date        : 14.05.2020
 #include "BuffyController.h"
 
 BuffyController::BuffyController()
-: _simulating(false) {
+        : _simulating(false) {
 
 }
 
-void BuffyController::start(size_t width, size_t height, unsigned totalHumans, unsigned totalVampire) {
+void BuffyController::start(size_t width, size_t height, unsigned totalHumans,
+                            unsigned totalVampire) {
 
     // Create new field for the current simulation
     Field field(width, height, totalHumans, totalVampire);
-
     _simulating = true;
 
     std::string input;
@@ -34,8 +34,9 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans, u
         std::cout << "[" << field.nextTurn() << "] " << "q>uit s>tatistics n>ext: ";
         std::getline(std::cin, input);
         std::cout << "\b";
-        if(input.length() != 1) {
-            displayErrorMsg("Invalid input length.\n    -> Must be one character only.");
+        if (input.length() != 1) {
+            displayErrorMsg(
+                    "Invalid input length.\n    -> Must be one character only.");
         } else {
             switch (input[0]) {
                 case 'n':
@@ -69,10 +70,10 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans, u
                     break;
             }
         }
-    } while(!quitting);
+    } while (!quitting);
 }
 
-void BuffyController::displayErrorMsg(const std::string &msg) {
+void BuffyController::displayErrorMsg(const std::string& msg) {
     std::cout << "/!\\ Error : " << msg << std::endl;
 }
 

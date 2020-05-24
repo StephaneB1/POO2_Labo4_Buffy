@@ -9,6 +9,7 @@ Date        : 14.05.2020
  */
 #include "Action.h"
 #include <Utils.h>
+#include <iostream>
 #include "Move.h"
 
 #include "../Field.h"
@@ -39,7 +40,7 @@ void Move::setNextPosition(const Direction& nextDirection) {
 std::vector<Direction> Move::getListDirection(const Field& field) const {
     std::vector<Direction> possibleDirection;
 
-    if (getHumanoid()->getX() >= _stepRange) {
+    if (getHumanoid()->getX() >= _stepRange ) {
         possibleDirection.push_back(Direction::LEFT);
     }
 

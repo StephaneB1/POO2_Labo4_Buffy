@@ -8,15 +8,17 @@
 #include "../Field.h"
 
 Humanoid::Humanoid(Move* _move, unsigned int _x, unsigned int _y) : _move(_move),
-                                                                    _x(_x), _y(_y)
-                                                                    , _isAlive(true) {}
+                                                                    _x(_x), _y(_y),
+                                                                    _isAlive(true) {}
 
 bool Humanoid::isAlive() const {
     return _isAlive;
 }
 
 void Humanoid::executeAction(const Field& field) {
-    _nextAction->execute(field);
+    if (_nextAction != nullptr) {
+        _nextAction->execute(field);
+    }
 }
 
 void Humanoid::setNextAction(Action* nextAction) {

@@ -23,10 +23,10 @@ char Human::getSymbole() const {
 }
 
 int Human::getDistance(const Vampire* v) const {
-    return hypot(abs(getX() - v->getX()), abs(getY() - v->getY()));;
+    return hypot(abs(getX() - v->getX()), abs(getY() - v->getY()));
 }
 
-int Human::getDistance(const Human* h) const {
+int Human::getDistance(const Buffy* h) const {
     return -1;
 }
 

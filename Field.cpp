@@ -18,6 +18,10 @@ Field::Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
                                       turn(0) {
     unsigned x;
     unsigned y;
+    x = Utils::generateRandom(0, _width);
+    y = Utils::generateRandom(0, _height);
+    humanoids.push_back(new Buffy(x,y));
+
     for (int i = 0; i < totalHuman; i++) {
         x = Utils::generateRandom(0, _width);
         y = Utils::generateRandom(0, _height);
@@ -30,10 +34,6 @@ Field::Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
         humanoids.push_back(new Vampire(x, y));
     }
 
-    x = Utils::generateRandom(0, _width);
-    y = Utils::generateRandom(0, _height);
-    //Buffy singleton
-    //humanoids.push_back(new Buffy(x,y))
 }
 
 int Field::nextTurn() {
@@ -73,6 +73,24 @@ Humanoid* Field::getCloset(const Vampire* v) const {
 
     for (Humanoid* h :humanoids) {
         d = h->getDistance(v);
+
+        if (d > 0 && min > d) {
+            min = d;
+            res = h;
+        }
+    }
+
+    return res;
+}
+
+Humanoid* Field::getCloset(const Buffy* b) const {
+
+    Humanoid* res = nullptr;
+    int min = INT_MAX;
+    int d;
+
+    for (Humanoid* h :humanoids) {
+        d = h->getDistance(b);
 
         if (d > 0 && min > d) {
             min = d;

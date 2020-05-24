@@ -15,6 +15,7 @@ Date        : 14.05.2020
 #include <list>
 #include <Humanoid/Vampire.h>
 #include <Humanoid/Human.h>
+#include <Humanoid/Buffy.h>
 #include <memory>
 
 #include "Humanoid/Humanoid.h"
@@ -53,6 +54,9 @@ public:
     void replace(Human* oldPerson, Vampire* newPerson);
 
     Humanoid* getCloset(const Vampire* v) const;
+
+    Humanoid* getCloset(const Buffy* v) const;
+
 
     const std::list<Humanoid*>& getHumanoids() const;
 

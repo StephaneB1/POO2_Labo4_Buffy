@@ -20,6 +20,7 @@ void Vampire::setAction(const Field& field) {
 
 
     if (target == nullptr) {
+        setNextAction(nullptr);
         return;
     } else if (abs(getX() - target->getX()) <= 1 &&
                abs(getY() - target->getY()) <= 1) {
@@ -49,7 +50,7 @@ char Vampire::getSymbole() const {
     return 'v';
 }
 
-int Vampire::getDistance(const Human* h) const {
+int Vampire::getDistance(const Buffy* h) const {
     return hypot(abs(getX() - h->getX()), abs(getY() - h->getY()));
 }
 

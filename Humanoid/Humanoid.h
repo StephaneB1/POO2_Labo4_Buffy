@@ -17,6 +17,8 @@ class Human;
 
 class Vampire;
 
+class Buffy;
+
 class Humanoid {
 
 private:
@@ -57,7 +59,7 @@ public:
 
     virtual char getSymbole() const = 0;
 
-    virtual int getDistance(const Human* h)const = 0;
+    virtual int getDistance(const Buffy* h)const = 0;
 
     virtual int getDistance(const Vampire* v)const = 0;
 };

@@ -23,7 +23,7 @@ public:
      * Execute the corresponding
      * @param field
      */
-    virtual void execute(Field field) = 0;
+    virtual void execute(Field* field) = 0;
 
 };
 

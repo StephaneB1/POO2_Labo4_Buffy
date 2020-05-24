@@ -36,5 +36,5 @@ int Human::getDistance(const Buffy* h) const {
 }
 
 Vampire* Human::becomeAVampire() {
-    return new Vampire(getX(), getY());
+    return new Vampire(this);
 }

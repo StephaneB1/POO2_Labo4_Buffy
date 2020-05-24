@@ -12,9 +12,8 @@ Date        : 14.05.2020
 #include "Action/Action.h"
 #include "../Field.h"
 
-Humanoid::Humanoid(Move* _move, unsigned int _x, unsigned int _y) : _move(_move),
-                                                                    _x(_x), _y(_y),
-                                                                    _isAlive(true) {}
+Humanoid::Humanoid(Move* _move, unsigned int _x, unsigned int _y) :
+        _move(_move), _x(_x), _y(_y), _isAlive(true), _nextAction(nullptr) {}
 
 Humanoid::~Humanoid() {
 
@@ -24,7 +23,7 @@ bool Humanoid::isAlive() const {
     return _isAlive;
 }
 
-void Humanoid::executeAction(const Field& field) {
+void Humanoid::executeAction(Field* field) {
     if (_nextAction != nullptr) {
         _nextAction->execute(field);
     }

@@ -16,11 +16,9 @@ Field::Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
              unsigned totalVampire) : _width(_width),
                                       _height(_height),
                                       turn(0) {
-    unsigned x;
-    unsigned y;
-    x = Utils::generateRandom(0, _width);
-    y = Utils::generateRandom(0, _height);
-    humanoids.push_back(new Buffy(x,y));
+    unsigned x = Utils::generateRandom(0, _width);
+    unsigned y = Utils::generateRandom(0, _height);
+    humanoids.push_back(new Buffy(x, y));
 
     for (int i = 0; i < totalHuman; i++) {
         x = Utils::generateRandom(0, _width);
@@ -45,7 +43,7 @@ int Field::nextTurn() {
     // Executer les actions
     for (std::list<Humanoid*>::iterator it = humanoids.begin();
          it != humanoids.end(); it++)
-        (*it)->executeAction(*this);
+        (*it)->executeAction(this);
     // Enlever les humanoides tués
     for (std::list<Humanoid*>::iterator it = humanoids.begin();
          it != humanoids.end();)

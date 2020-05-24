@@ -15,6 +15,6 @@ void Bite::setTarget(Human* humanoid) {
     _target = humanoid;
 }
 
-void Bite::execute(Field field) {
-    field.replace(_target, _target->becomeAVampire());
+void Bite::execute(Field* field) {
+    field->replace(_target, _target->becomeAVampire());
 }

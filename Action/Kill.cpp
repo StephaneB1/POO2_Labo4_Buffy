@@ -14,7 +14,7 @@ void Kill::setTarget(Humanoid* target) {
     _target = target;
 }
 
-void Kill::execute(Field field) {
+void Kill::execute(Field* field) {
     _target->setIsAlive(false);
 }
 

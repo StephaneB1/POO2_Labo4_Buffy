@@ -20,6 +20,10 @@ Vampire::Vampire(unsigned int _x, unsigned int _y) : Humanoid(new Move(1), _x, _
     getMove()->setHumanoid(this);
 }
 
+Vampire::Vampire(Human* h) : Vampire(h->getX(), h->getY()) {
+
+}
+
 void Vampire::setAction(const Field& field) {
 
     Human* target = (Human*) field.getCloset(this);
@@ -32,11 +36,11 @@ void Vampire::setAction(const Field& field) {
                abs(getY() - target->getY()) <= 1) {
         // if humain next to vampire Set target
         //*if (Utils::generateRandom(0, 2)) {
-        //_bite->setTarget(target);
-        //setNextAction(_bite);
+        _bite->setTarget(target);
+        setNextAction(_bite);
         //} else {
-            _kill->setTarget(target);
-            setNextAction(_kill);
+//            _kill->setTarget(target);
+//            setNextAction(_kill);
         //}
     } else {
         Direction moveDir = Direction::getDirection(getX(), getY(), target->getX(),

@@ -30,7 +30,7 @@ public:
 
     Move(unsigned int _stepRange);
 
-    virtual void execute(Field field);
+    virtual void execute(Field* field);
 
     /**
      * Set the move to be a random direction

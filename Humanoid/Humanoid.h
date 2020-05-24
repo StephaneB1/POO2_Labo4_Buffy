@@ -44,7 +44,7 @@ public:
 
     void setNextAction(Action* nextAction);
 
-    void executeAction(const Field& field);
+    void executeAction(Field* field);
 
     bool isAlive() const;
 

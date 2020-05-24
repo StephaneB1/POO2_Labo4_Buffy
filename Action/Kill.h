@@ -16,7 +16,7 @@ public:
 
     void setTarget(Humanoid* target);
 
-    void execute(Field field);
+    virtual void execute(Field field);
 
 };
 

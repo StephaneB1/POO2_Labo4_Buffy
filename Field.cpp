@@ -8,6 +8,7 @@ Date        : 14.05.2020
  */
 
 #include <iostream>
+#include <algorithm>
 #include "Field.h"
 #include "Utils.h"
 
@@ -85,3 +86,10 @@ Humanoid* Field::getCloset(const Vampire* v) const {
 const std::list<Humanoid*>& Field::getHumanoids() const {
     return humanoids;
 }
+
+void Field::replace(Human* oldPerson, Vampire* newPerson) {
+    oldPerson->set_isAlive(false);
+
+    humanoids.push_back(newPerson);
+}
+

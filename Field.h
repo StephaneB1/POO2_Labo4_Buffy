@@ -50,12 +50,11 @@ public:
 
     unsigned int getHeight() const;
 
-    //void replace(std::weak_ptr<Human> oldPerson);
+    void replace(Human* oldPerson, Vampire* newPerson);
 
     Humanoid* getCloset(const Vampire* v) const;
 
     const std::list<Humanoid*>& getHumanoids() const;
-
 
 private:
 

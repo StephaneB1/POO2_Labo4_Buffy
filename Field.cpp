@@ -106,7 +106,7 @@ const std::list<Humanoid*>& Field::getHumanoids() const {
 }
 
 void Field::replace(Human* oldPerson, Vampire* newPerson) {
-    oldPerson->set_isAlive(false);
+    oldPerson->setIsAlive(false);
 
     humanoids.push_back(newPerson);
 }

@@ -1,6 +1,11 @@
-//
-// Created by Chau Ying on 24.05.2020.
-//
+/*
+-----------------------------------------------------------------------------------
+Laboratoire : 04
+Fichier     : Buffy.h
+Auteur(s)   : Stéphane Bottin & Chau Ying Kot
+Date        : 14.05.2020
+-----------------------------------------------------------------------------------
+ */
 
 #ifndef POO2_LABO4_BUFFY_BUFFY_H
 #define POO2_LABO4_BUFFY_BUFFY_H

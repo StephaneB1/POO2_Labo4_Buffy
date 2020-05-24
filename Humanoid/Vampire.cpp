@@ -1,6 +1,12 @@
-//
-// Created by Chau Ying on 10.05.2020.
-//
+/*
+-----------------------------------------------------------------------------------
+Laboratoire : 04
+Fichier     : Vampire.cpp
+Auteur(s)   : Stéphane Bottin & Chau Ying Kot
+Date        : 14.05.2020
+-----------------------------------------------------------------------------------
+ */
+
 
 #include <Utils.h>
 #include "Vampire.h"
@@ -39,11 +45,6 @@ void Vampire::setAction(const Field& field) {
         getMove()->setNextPosition(moveDir);
         setNextAction(getMove());
     }
-}
-
-Vampire::Vampire(Human* human) : Humanoid(new Move(1), human->getX(), human->getY()),
-                                 _bite(new Bite()),
-                                 _kill(new Kill()) {
 }
 
 char Vampire::getSymbole() const {

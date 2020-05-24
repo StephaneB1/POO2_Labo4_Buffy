@@ -58,6 +58,7 @@ public:
     Humanoid* getCloset(const Buffy* v) const;
 
 
+
     const std::list<Humanoid*>& getHumanoids() const;
 
 private:

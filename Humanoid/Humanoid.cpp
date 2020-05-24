@@ -1,6 +1,11 @@
-//
-// Created by Chau Ying on 05.05.2020.
-//
+/*
+-----------------------------------------------------------------------------------
+Laboratoire : 04
+Fichier     : Humanoid.cpp
+Auteur(s)   : Stéphane Bottin & Chau Ying Kot
+Date        : 14.05.2020
+-----------------------------------------------------------------------------------
+ */
 
 #include "Humanoid.h"
 
@@ -10,6 +15,10 @@
 Humanoid::Humanoid(Move* _move, unsigned int _x, unsigned int _y) : _move(_move),
                                                                     _x(_x), _y(_y),
                                                                     _isAlive(true) {}
+
+Humanoid::~Humanoid() {
+
+}
 
 bool Humanoid::isAlive() const {
     return _isAlive;
@@ -23,11 +32,6 @@ void Humanoid::executeAction(const Field& field) {
 
 void Humanoid::setNextAction(Action* nextAction) {
     _nextAction = nextAction;
-}
-
-
-Action* Humanoid::getNextAction() const {
-    return _nextAction;
 }
 
 unsigned int Humanoid::getX() const {
@@ -50,11 +54,7 @@ Move* Humanoid::getMove() const {
     return _move;
 }
 
-Humanoid::~Humanoid() {
-
-}
-
-void Humanoid::set_isAlive(bool isAlive) {
+void Humanoid::setIsAlive(bool isAlive) {
     _isAlive = isAlive;
 }
 

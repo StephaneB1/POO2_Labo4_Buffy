@@ -1,6 +1,11 @@
-//
-// Created by Chau Ying on 10.05.2020.
-//
+/*
+-----------------------------------------------------------------------------------
+Laboratoire : 04
+Fichier     : Vampire.h
+Auteur(s)   : Stéphane Bottin & Chau Ying Kot
+Date        : 14.05.2020
+-----------------------------------------------------------------------------------
+ */
 
 #ifndef POO2_LABO4_BUFFY_VAMPIRE_H
 #define POO2_LABO4_BUFFY_VAMPIRE_H
@@ -18,8 +23,6 @@ class Vampire : public Humanoid{
 
 public:
     Vampire(unsigned int _x, unsigned int _y);
-
-    Vampire(Human* human);
 
     virtual void setAction(const Field& field) ;
 

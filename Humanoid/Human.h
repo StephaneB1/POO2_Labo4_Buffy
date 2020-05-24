@@ -1,6 +1,12 @@
-//
-// Created by Chau Ying on 10.05.2020.
-//
+/*
+-----------------------------------------------------------------------------------
+Laboratoire : 04
+Fichier     : Human.cpp
+Auteur(s)   : Stéphane Bottin & Chau Ying Kot
+Date        : 14.05.2020
+-----------------------------------------------------------------------------------
+ */
+
 
 #ifndef POO2_LABO4_BUFFY_HUMAIN_H
 #define POO2_LABO4_BUFFY_HUMAIN_H

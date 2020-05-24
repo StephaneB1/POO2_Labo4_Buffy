@@ -28,6 +28,12 @@ private:
 
     unsigned turn;
 
+    unsigned _totalHuman;
+    unsigned _totalVampire;
+
+    unsigned _vCounter;
+    unsigned _hCounter;
+
     std::list<Humanoid*> humanoids;
 
 public:
@@ -62,6 +68,15 @@ public:
 
     const std::list<Humanoid*>& getHumanoids() const;
 
+    void init();
+
+    void decVampire();
+
+    void decHuman();
+
+    bool isFreeOfVampires() const;
+
+    bool isFreeOfHumans() const;
 };
 
 

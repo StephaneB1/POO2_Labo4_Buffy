@@ -15,22 +15,10 @@ Date        : 14.05.2020
 Field::Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
              unsigned totalVampire) : _width(_width),
                                       _height(_height),
-                                      turn(0) {
-    unsigned x = Utils::generateRandom(0, _width);
-    unsigned y = Utils::generateRandom(0, _height);
-    humanoids.push_back(new Buffy(x, y));
-
-    for (int i = 0; i < totalHuman; i++) {
-        x = Utils::generateRandom(0, _width);
-        y = Utils::generateRandom(0, _height);
-        humanoids.push_back(new Human(x, y));
-    }
-
-    for (int i = 0; i < totalVampire; i++) {
-        x = Utils::generateRandom(0, _width);
-        y = Utils::generateRandom(0, _height);
-        humanoids.push_back(new Vampire(x, y));
-    }
+                                      turn(0),
+                                      _totalHuman(totalHuman),
+                                      _totalVampire(totalVampire) {
+    init();
 }
 
 int Field::nextTurn() {
@@ -104,7 +92,46 @@ const std::list<Humanoid*>& Field::getHumanoids() const {
 
 void Field::replace(Human* oldPerson, Vampire* newPerson) {
     oldPerson->setIsAlive(false);
+    _hCounter--;
 
     humanoids.push_back(newPerson);
+    _vCounter++;
+}
+
+void Field::init() {
+
+    _vCounter = _totalVampire;
+    _hCounter = _totalHuman;
+    unsigned x = Utils::generateRandom(0, _width);
+    unsigned y = Utils::generateRandom(0, _height);
+    humanoids.push_back(new Buffy(x, y));
+
+    for (int i = 0; i < _totalHuman; i++) {
+        x = Utils::generateRandom(0, _width);
+        y = Utils::generateRandom(0, _height);
+        humanoids.push_back(new Human(x, y));
+    }
+
+    for (int i = 0; i < _totalVampire; i++) {
+        x = Utils::generateRandom(0, _width);
+        y = Utils::generateRandom(0, _height);
+        humanoids.push_back(new Vampire(x, y));
+    }
+}
+
+void Field::decVampire() {
+    _vCounter--;
+}
+
+bool Field::isFreeOfVampires() const {
+    return _vCounter == 0;
+}
+
+void Field::decHuman() {
+    _hCounter--;
+}
+
+bool Field::isFreeOfHumans() const {
+    return _hCounter == 0;
 }
 

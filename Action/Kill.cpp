@@ -16,6 +16,14 @@ void Kill::setTarget(Humanoid* target) {
 
 void Kill::execute(Field* field) {
     _target->setIsAlive(false);
+    if(targetIsVampire){
+        field->decVampire();
+    }else{
+        field->decHuman();
+    }
 }
 
+
+
+Kill::Kill(bool targetIsVampire) : targetIsVampire(targetIsVampire) {}
 

@@ -16,7 +16,7 @@ Date        : 14.05.2020
 
 Vampire::Vampire(unsigned int _x, unsigned int _y) : Humanoid(new Move(1), _x, _y),
                                                      _bite(new Bite()),
-                                                     _kill(new Kill()) {
+                                                     _kill(new Kill(false)) {
     getMove()->setHumanoid(this);
 }
 

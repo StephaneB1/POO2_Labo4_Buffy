@@ -170,13 +170,13 @@
         <variable const="false" name="width" type="int"/>
         <variable const="false" name="height" type="int"/>
         <variable const="false" name="totalHumans" type="int"/>
-        <variable const="false" name="totalVampire" type="int"/>
+        <variable const="false" name="_totalVampire" type="int"/>
       </method>
       <method isAbstract="false" isStatic="false" name="getStats" returnType="void" view="DEFAULT" visibility="PUBLIC">
         <variable const="false" name="width" type="int"/>
         <variable const="false" name="height" type="int"/>
         <variable const="false" name="totalHumans" type="int"/>
-        <variable const="false" name="totalVampire" type="int"/>
+        <variable const="false" name="_totalVampire" type="int"/>
       </method>
       <method isAbstract="false" isStatic="false" name="quit" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
     </entity>

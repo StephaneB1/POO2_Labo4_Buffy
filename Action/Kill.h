@@ -17,11 +17,17 @@ class Kill : public Action{
 private:
     Humanoid* _target;
 
+    const bool targetIsVampire;
+
 public:
+
+    Kill(bool targetIsVampire);
 
     void setTarget(Humanoid* target);
 
     virtual void execute(Field* field);
+
+
 
 };
 

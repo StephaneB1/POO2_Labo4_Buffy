@@ -20,8 +20,7 @@ void Vampire::setAction(const Field& field) {
 
 
     if (target == nullptr) {
-        getMove()->setRandomMove(field);
-        setNextAction(getMove());
+        return;
     } else if (abs(getX() - target->getX()) <= 1 &&
                abs(getY() - target->getY()) <= 1) {
         // if humain next to vampire Set target

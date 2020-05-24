@@ -1,6 +1,11 @@
-//
-// Created by Chau Ying on 10.05.2020.
-//
+/*
+-----------------------------------------------------------------------------------
+Laboratoire : 04
+Fichier     : Direction.h
+Auteur(s)   : Stéphane Bottin & Chau Ying Kot
+Date        : 14.05.2020
+-----------------------------------------------------------------------------------
+ */
 
 #ifndef POO2_LABO4_BUFFY_DIRECTION_H
 #define POO2_LABO4_BUFFY_DIRECTION_H
@@ -24,6 +29,14 @@ public:
     static const Direction RIGHT;
     static const Direction UP_RIGHT;
 
+    /**
+     * Give the direction to move given the starting point and the target position
+     * @param fromX
+     * @param fromY
+     * @param toX
+     * @param toY
+     * @return
+     */
     static Direction getDirection(unsigned fromX, unsigned fromY, unsigned toX,
                                   unsigned toY);
 

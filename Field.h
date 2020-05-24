@@ -40,29 +40,27 @@ public:
      */
     int nextTurn();
 
-    /**
-     * Find the closest Humanoid from h
-     * @param h
-     * @return return the closest humainoid from h
-     */
-    //Humanoid* getCloset(const Humanoid& h) const;
-
     unsigned int getWidth() const;
 
     unsigned int getHeight() const;
 
     void replace(Human* oldPerson, Vampire* newPerson);
 
+    /**
+    * Find the closest Humain to the vampire v
+    * @param v
+    * @return
+    */
     Humanoid* getCloset(const Vampire* v) const;
 
+    /**
+     * Find the closest Vampire to the Buffy
+     * @param v
+     * @return
+     */
     Humanoid* getCloset(const Buffy* v) const;
 
-
-
     const std::list<Humanoid*>& getHumanoids() const;
-
-private:
-
 
 };
 

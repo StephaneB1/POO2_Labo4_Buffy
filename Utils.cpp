@@ -1,7 +1,11 @@
-//
-// Created by Chau Ying on 10.05.2020.
-//
-
+/*
+-----------------------------------------------------------------------------------
+Laboratoire : 04
+Fichier     : Utils.cpp
+Auteur(s)   : Stéphane Bottin & Chau Ying Kot
+Date        : 14.05.2020
+-----------------------------------------------------------------------------------
+ */
 
 #include "Utils.h"
 #include <random>

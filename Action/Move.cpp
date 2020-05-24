@@ -2,6 +2,7 @@
 // Created by Chau Ying on 09.05.2020.
 //
 
+#include "Action.h"
 #include <Utils.h>
 #include "Move.h"
 
@@ -64,3 +65,10 @@ std::vector<Direction> Move::getListDirection(const Field& field) const {
 }
 
 
+void Move::setHumanoid(Humanoid* _humanoid) {
+    Move::_humanoid = _humanoid;
+}
+
+Humanoid* Move::getHumanoid() const {
+    return _humanoid;
+}

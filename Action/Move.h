@@ -8,11 +8,13 @@
 #include "Action.h"
 #include "Direction.h"
 #include <vector>
+#include <Humanoid/Humanoid.h>
 
 
 class Move : public Action {
 
 private:
+    Humanoid* _humanoid;
     unsigned _stepRange;
 
     unsigned _toX;
@@ -31,6 +33,10 @@ public:
     std::vector<Direction> getListDirection(const Field& field) const;
 
     void setNextPosition(const Direction& nextDirection);
+
+    void setHumanoid(Humanoid* _humanoid);
+
+    Humanoid* getHumanoid() const;
 };
 
 

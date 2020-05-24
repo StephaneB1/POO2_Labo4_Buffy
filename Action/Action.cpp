@@ -7,16 +7,6 @@
 #include "../Field.h"
 
 
-
-
-void Action::setHumanoid(Humanoid* _humanoid) {
-    Action::_humanoid = _humanoid;
-}
-
-Humanoid* Action::getHumanoid() const {
-    return _humanoid;
-}
-
 Action::~Action() {
 
 }

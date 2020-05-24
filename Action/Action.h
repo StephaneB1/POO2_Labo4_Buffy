@@ -11,16 +11,11 @@ class Field;
 
 class Action {
 
-    Humanoid* _humanoid;
-
 public:
     virtual ~Action();
 
     virtual void execute(Field field) = 0;
 
-    void setHumanoid(Humanoid* _humanoid);
-
-    Humanoid* getHumanoid() const;
 };
 
 

@@ -17,23 +17,18 @@ Field::Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
                                       turn(0) {
     unsigned x;
     unsigned y;
-/*    for (int i = 0; i < totalHuman; i++) {
-
+    for (int i = 0; i < totalHuman; i++) {
         x = Utils::generateRandom(0, _width);
         y = Utils::generateRandom(0, _height);
-        std::shared_ptr<Human> h = std::make_shared<Human>(x, y);
-        humans.push_back(h);
-        humanoids.push_back(h);
-    }*/
-
+        humanoids.push_back(new Human(x, y));
+    }
 
     for (int i = 0; i < totalVampire; i++) {
         x = Utils::generateRandom(0, _width);
         y = Utils::generateRandom(0, _height);
-        std::shared_ptr<Vampire> v = std::make_shared<Vampire>(x, y);
-        vampires.push_back(v);
-        humanoids.push_back(v);
+        humanoids.push_back(new Vampire(x, y));
     }
+
     x = Utils::generateRandom(0, _width);
     y = Utils::generateRandom(0, _height);
     //Buffy singleton
@@ -43,15 +38,15 @@ Field::Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
 int Field::nextTurn() {
 
     // Déterminer les prochaines actions
-    for (std::list<std::shared_ptr<Humanoid>>::iterator it = humanoids.begin();
+    for (std::list<Humanoid*>::iterator it = humanoids.begin();
          it != humanoids.end(); it++)
         (*it)->setAction(*this);
     // Executer les actions
-    for (std::list<std::shared_ptr<Humanoid>>::iterator it = humanoids.begin();
+    for (std::list<Humanoid*>::iterator it = humanoids.begin();
          it != humanoids.end(); it++)
         (*it)->executeAction(*this);
     // Enlever les humanoides tués
-    for (std::list<std::shared_ptr<Humanoid>>::iterator it = humanoids.begin();
+    for (std::list<Humanoid*>::iterator it = humanoids.begin();
          it != humanoids.end();)
         if (!(*it)->isAlive()) {
             it = humanoids.erase(it); // suppression de l’élément dans la liste
@@ -69,41 +64,24 @@ unsigned int Field::getHeight() const {
     return _height;
 }
 
-/*Humanoid* Field::getCloset(const Humanoid& h) const {
-    unsigned minDistance;
-    Humanoid* res;
-    for (Humanoid* h : humanoids) {
-        switch (typeid(h)) {
-            case typeid(Human):
+Humanoid* Field::getCloset(const Vampire* v) const {
 
+    Humanoid* res = nullptr;
+    int min = INT_MAX;
+    int d;
+
+    for (Humanoid* h :humanoids) {
+        d = h->getDistance(v);
+
+        if (d > 0 && min > d) {
+            min = d;
+            res = h;
         }
     }
-    return nullptr;
-}*/
 
-
-void Field::replace(Human* oldPerson, Vampire* newPerson) {
-
-}
-
-std::shared_ptr<Humanoid> Field::getCloset(const Vampire* v) const {
-
-    std::shared_ptr<Humanoid> res;
-    unsigned hyp;
-    unsigned minDistance = UINT_MAX;
-    for (std::weak_ptr<Human> h : humans) {
-
-        hyp = hypot(abs(v->getX() - h.lock()->getX()),
-                    abs(v->getY() - h.lock()->getY()));
-        if (hyp < minDistance) {
-            minDistance = hyp;
-            res = h.lock();
-        }
-    }
     return res;
 }
 
-const std::list<std::shared_ptr<Humanoid>>& Field::getHumanoids() const {
+const std::list<Humanoid*>& Field::getHumanoids() const {
     return humanoids;
 }
-

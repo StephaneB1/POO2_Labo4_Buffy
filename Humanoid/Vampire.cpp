@@ -16,18 +16,22 @@ Vampire::Vampire(unsigned int _x, unsigned int _y) : Humanoid(new Move(1), _x, _
 
 void Vampire::setAction(const Field& field) {
 
-    std::shared_ptr<Humanoid> target = field.getCloset(this);
+    Humanoid* target = field.getCloset(this);
+
 
     if (target == nullptr) {
         getMove()->setRandomMove(field);
         setNextAction(getMove());
-    } else if (hypot(target->getX() - getX(), target->getY() - getY()) == 1) {
+    } else if (abs(getX() - target->getX()) <= 1 &&
+               abs(getY() - target->getY()) <= 1) {
         // if humain next to vampire Set target
-        /*if (Utils::generateRandom(0, 2)) {
-            setNextAction(_bite);
-        } else {
+        //*if (Utils::generateRandom(0, 2)) {
+        //_bite->setTarget(target);
+        //setNextAction(_bite);
+        //} else {
+            _kill->setTarget(target);
             setNextAction(_kill);
-        }*/
+        //}
     } else {
         Direction moveDir = Direction::getDirection(getX(), getY(), target->getX(),
                                                     target->getY());
@@ -44,6 +48,14 @@ Vampire::Vampire(Human* human) : Humanoid(new Move(1), human->getX(), human->get
 
 char Vampire::getSymbole() const {
     return 'v';
+}
+
+int Vampire::getDistance(const Human* h) const{
+    return hypot(abs(getX() - h->getX()), abs(getY() -h->getY()));
+}
+
+int Vampire::getDistance(const Vampire* v)  const{
+    return -1;
 }
 
 

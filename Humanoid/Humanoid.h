@@ -13,6 +13,10 @@ class Move;
 
 class Field;
 
+class Human;
+
+class Vampire;
+
 class Humanoid {
 
 private:
@@ -52,6 +56,10 @@ public:
     void set_isAlive(bool _isAlive);
 
     virtual char getSymbole() const = 0;
+
+    virtual int getDistance(const Human* h)const = 0;
+
+    virtual int getDistance(const Vampire* v)const = 0;
 };
 
 

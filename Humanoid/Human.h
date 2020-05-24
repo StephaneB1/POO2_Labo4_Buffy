@@ -21,6 +21,9 @@ public:
 
     virtual char getSymbole()const;
 
+    virtual int getDistance(const Human* h) const;
+
+    virtual int getDistance(const Vampire* v) const;
 };
 
 

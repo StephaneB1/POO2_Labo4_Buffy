@@ -27,11 +27,7 @@ private:
 
     unsigned turn;
 
-    std::list<std::weak_ptr<Human>> humans;
-    std::list<std::weak_ptr<Vampire>> vampires;
-
-    std::list<std::shared_ptr<Humanoid>> humanoids;
-
+    std::list<Humanoid*> humanoids;
 
 public:
     Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
@@ -54,11 +50,12 @@ public:
 
     unsigned int getHeight() const;
 
-    void replace(Human* oldPerson, Vampire* newPerson);
+    //void replace(std::weak_ptr<Human> oldPerson);
 
-    std::shared_ptr<Humanoid> getCloset(const Vampire* v) const;
+    Humanoid* getCloset(const Vampire* v) const;
 
-    const std::list<std::shared_ptr<Humanoid>>& getHumanoids() const;
+    const std::list<Humanoid*>& getHumanoids() const;
+
 
 private:
 

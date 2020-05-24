@@ -21,3 +21,11 @@ void Human::setAction(const Field& field) {
 char Human::getSymbole() const {
     return 'h';
 }
+
+int Human::getDistance(const Vampire* v) const {
+    return hypot(abs(getX() - v->getX()), abs(getY() - v->getY()));;
+}
+
+int Human::getDistance(const Human* h) const {
+    return -1;
+}

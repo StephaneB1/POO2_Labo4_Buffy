@@ -41,30 +41,42 @@ std::vector<Direction> Move::getListDirection(const Field& field) const {
 
     if (getHumanoid()->getX() >= _stepRange) {
         possibleDirection.push_back(Direction::LEFT);
-        if (getHumanoid()->getY() >= _stepRange) {
-            possibleDirection.push_back(Direction::UP_LEFT);
-        }
-        if (getHumanoid()->getY() <= field.getHeight() - _stepRange) {
-            possibleDirection.push_back(Direction::DOWN_LEFT);
-        }
     }
 
-    if (getHumanoid()->getX() <= field.getWidth() - _stepRange) {
-        possibleDirection.push_back(Direction::RIGHT);
-        if (getHumanoid()->getY() >= _stepRange) {
-            possibleDirection.push_back(Direction::UP_RIGHT);
-        }
-        if (getHumanoid()->getY() <= field.getHeight() - _stepRange) {
-            possibleDirection.push_back(Direction::DOWN_RIGHT);
-        }
+    if ((getHumanoid()->getX() >= _stepRange) &&
+        (getHumanoid()->getY() >= _stepRange)) {
+        possibleDirection.push_back(Direction::UP_LEFT);
     }
+
+    if ((getHumanoid()->getX() >= _stepRange) &&
+        (getHumanoid()->getY() < field.getHeight() - _stepRange)) {
+        possibleDirection.push_back(Direction::DOWN_LEFT);
+    }
+
+    if (getHumanoid()->getX() < field.getWidth() - _stepRange) {
+
+        possibleDirection.push_back(Direction::RIGHT);
+    }
+
+    if ((getHumanoid()->getX() < field.getWidth() - _stepRange) &&
+        (getHumanoid()->getY() >= _stepRange)) {
+        possibleDirection.push_back(Direction::UP_RIGHT);
+    }
+
+    if ((getHumanoid()->getX() < field.getWidth() - _stepRange) &&
+        (getHumanoid()->getY() < field.getHeight() - _stepRange)) {
+        possibleDirection.push_back(Direction::DOWN_RIGHT);
+    }
+
 
     if (getHumanoid()->getY() >= _stepRange) {
         possibleDirection.push_back(Direction::UP);
     }
-    if (getHumanoid()->getY() <= field.getHeight() - _stepRange) {
+
+    if (getHumanoid()->getY() < field.getHeight() - _stepRange) {
         possibleDirection.push_back(Direction::DOWN);
     }
+
     return possibleDirection;
 }
 

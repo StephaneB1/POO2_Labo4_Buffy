@@ -1,7 +1,12 @@
-//
-// Created by Chau Ying on 09.05.2020.
-//
-
+/*
+-----------------------------------------------------------------------------------
+Laboratoire : 04
+Fichier     : Move.cpp
+Auteur(s)   : Stéphane Bottin & Chau Ying Kot
+Date        : 14.05.2020
+---------
+ --------------------------------------------------------------------------
+ */
 #include "Action.h"
 #include <Utils.h>
 #include "Move.h"
@@ -18,7 +23,6 @@ void Move::execute(Field field) {
 void Move::setRandomMove(const Field& field) {
 
     std::vector<Direction> possibleDirection = getListDirection(field);
-
 
     Direction nextDirection = possibleDirection.at(Utils::generateRandom(0,
                                                                          possibleDirection.size()));

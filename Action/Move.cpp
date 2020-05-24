@@ -35,30 +35,30 @@ void Move::setNextPosition(const Direction& nextDirection) {
 std::vector<Direction> Move::getListDirection(const Field& field) const {
     std::vector<Direction> possibleDirection;
 
-    if (getHumanoid()->getX() != 0) {
+    if (getHumanoid()->getX() >= _stepRange) {
         possibleDirection.push_back(Direction::LEFT);
-        if (getHumanoid()->getY() != 0) {
+        if (getHumanoid()->getY() >= _stepRange) {
             possibleDirection.push_back(Direction::UP_LEFT);
         }
-        if (getHumanoid()->getY() != field.getHeight() - 1) {
+        if (getHumanoid()->getY() <= field.getHeight() - _stepRange) {
             possibleDirection.push_back(Direction::DOWN_LEFT);
         }
     }
 
-    if (getHumanoid()->getX() != field.getWidth() - 1) {
+    if (getHumanoid()->getX() <= field.getWidth() - _stepRange) {
         possibleDirection.push_back(Direction::RIGHT);
-        if (getHumanoid()->getY() != 0) {
+        if (getHumanoid()->getY() >= _stepRange) {
             possibleDirection.push_back(Direction::UP_RIGHT);
         }
-        if (getHumanoid()->getY() != field.getHeight() - 1) {
+        if (getHumanoid()->getY() <= field.getHeight() - _stepRange) {
             possibleDirection.push_back(Direction::DOWN_RIGHT);
         }
     }
 
-    if (getHumanoid()->getY() != 0) {
+    if (getHumanoid()->getY() >= _stepRange) {
         possibleDirection.push_back(Direction::UP);
     }
-    if (getHumanoid()->getY() != field.getHeight() - 1) {
+    if (getHumanoid()->getY() <= field.getHeight() - _stepRange) {
         possibleDirection.push_back(Direction::DOWN);
     }
     return possibleDirection;

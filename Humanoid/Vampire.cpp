@@ -16,7 +16,7 @@ Vampire::Vampire(unsigned int _x, unsigned int _y) : Humanoid(new Move(1), _x, _
 
 void Vampire::setAction(const Field& field) {
 
-    Humanoid* target = field.getCloset(this);
+    Human* target = (Human*) field.getCloset(this);
 
 
     if (target == nullptr) {
@@ -50,11 +50,11 @@ char Vampire::getSymbole() const {
     return 'v';
 }
 
-int Vampire::getDistance(const Human* h) const{
-    return hypot(abs(getX() - h->getX()), abs(getY() -h->getY()));
+int Vampire::getDistance(const Human* h) const {
+    return hypot(abs(getX() - h->getX()), abs(getY() - h->getY()));
 }
 
-int Vampire::getDistance(const Vampire* v)  const{
+int Vampire::getDistance(const Vampire* v) const {
     return -1;
 }
 

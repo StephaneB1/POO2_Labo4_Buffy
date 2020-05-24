@@ -21,7 +21,7 @@ public:
 
     Vampire(Human* human);
 
-    void setAction(const Field& field) ;
+    virtual void setAction(const Field& field) ;
 
     virtual char getSymbole()const;
 

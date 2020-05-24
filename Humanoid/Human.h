@@ -24,6 +24,8 @@ public:
     virtual int getDistance(const Human* h) const;
 
     virtual int getDistance(const Vampire* v) const;
+
+    Vampire* becomeAVampire();
 };
 
 

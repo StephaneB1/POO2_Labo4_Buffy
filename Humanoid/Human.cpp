@@ -29,3 +29,7 @@ int Human::getDistance(const Vampire* v) const {
 int Human::getDistance(const Human* h) const {
     return -1;
 }
+
+Vampire* Human::becomeAVampire() {
+    return new Vampire(getX(), getY());
+}

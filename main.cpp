@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------
 Laboratoire : 04
 Fichier     : main.cpp
-Auteur(s)   : Stéphane Bottin & Chau Ying Kot
+Auteur(s)   : StÃ©phane Bottin & Chau Ying Kot
 Date        : 14.05.2020
 -----------------------------------------------------------------------------------
  */

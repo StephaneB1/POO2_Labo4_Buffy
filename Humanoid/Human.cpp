@@ -23,7 +23,7 @@ void Human::setAction(const Field& field) {
     getMove()->setRandomMove(field);
 }
 
-char Human::getSymbole() const {
+char Human::getSymbol() const {
     return 'h';
 }
 

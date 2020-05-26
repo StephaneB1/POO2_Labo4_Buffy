@@ -27,7 +27,7 @@ public:
 
     virtual void setAction(const Field& field) ;
 
-    virtual char getSymbole()const;
+    virtual char getSymbol()const;
 
     virtual int getDistance(const Buffy* h) const;
 

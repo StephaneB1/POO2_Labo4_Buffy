@@ -17,7 +17,7 @@ class Field;
 class Action {
 
 public:
-    virtual ~Action();
+    ~Action();
 
     /**
      * Execute the corresponding

@@ -51,12 +51,12 @@ void Vampire::setAction(const Field& field) {
     }
 }
 
-char Vampire::getSymbole() const {
+char Vampire::getSymbol() const {
     return 'v';
 }
 
 int Vampire::getDistance(const Buffy* h) const {
-    return hypot(abs(getX() - h->getX()), abs(getY() - h->getY()));
+    return (int) hypot(abs(getX() - h->getX()), abs(getY() - h->getY()));
 }
 
 int Vampire::getDistance(const Vampire* v) const {

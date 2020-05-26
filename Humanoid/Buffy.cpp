@@ -41,7 +41,7 @@ void Buffy::setAction(const Field& field) {
     }
 }
 
-char Buffy::getSymbole() const {
+char Buffy::getSymbol() const {
     return 'b';
 }
 

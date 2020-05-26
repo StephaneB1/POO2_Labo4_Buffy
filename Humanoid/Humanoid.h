@@ -60,7 +60,7 @@ public:
 
     void setIsAlive(bool _isAlive);
 
-    virtual char getSymbole() const = 0;
+    virtual char getSymbol() const = 0;
 
     /**
      * Get the distance between Buffy and this

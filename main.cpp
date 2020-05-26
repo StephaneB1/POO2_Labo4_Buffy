@@ -7,13 +7,33 @@ Date        : 14.05.2020
 -----------------------------------------------------------------------------------
  */
 
+
+#include <cstdlib>
 #include <iostream>
+#include "Action/Move.h"
+#include "Humanoid/Human.h"
+#include "Field.h"
 #include "BuffyController.h"
+
+using namespace std;
 
 int main() {
 
     BuffyController controller;
     controller.start(50, 30, 20, 10);
+
+
+/*
+    Field f(10, 10);
+    Human h(5, 5);
+    cout << h.getX() << " " << h.getY() << endl;
+    h.setAction(f);
+    h.executeAction(f);
+    cout << h.getX() << " " << h.getY() << endl;
+
+    Vampire v(6,6);
+    v.setAction(f);
+    v.executeAction(f);*/
 
     return EXIT_SUCCESS;
 }

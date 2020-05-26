@@ -11,24 +11,35 @@ Date        : 14.05.2020
 
 void FieldDisplayer::display(const Field& field) const {
 
-    for(size_t y = 0; y < field.getHeight(); ++y) {
-        for(size_t x = 0; x < field.getWidth(); ++x) {
-            if(y == 0 || y == field.getHeight() - 1) {
-                if(x == 0) {
+    for (size_t y = 0; y < field.getHeight() + 2; ++y) {
+        for (size_t x = 0; x < field.getWidth() + 2; ++x) {
+            if (y == 0 || y == field.getHeight() + 1) {
+                if (x == 0) {
                     std::cout << "+";
-                } else if (x == field.getWidth() - 1) {
+                } else if (x == field.getWidth() + 1) {
                     std::cout << "+" << std::endl;
                 } else {
                     std::cout << "-";
                 }
             } else {
-                if(x == 0) {
+                if (x == 0) {
                     std::cout << "|";
-                } else if (x == field.getWidth() - 1) {
+                } else if (x == field.getWidth() + 1) {
                     std::cout << "|" << std::endl;
                 } else {
                     // Display Humanoids here
-                    std::cout << " ";
+                    bool printed = false;
+                    for (Humanoid* h :field.getHumanoids()) {
+                        if (h->getX() + 1 == x && h->getY() + 1 == y) {
+                            std::cout << h->getSymbole();
+                            printed = true;
+                            break;
+                        }
+                    }
+
+                    if (!printed)
+                        std::cout << " ";
+
                 }
             }
         }

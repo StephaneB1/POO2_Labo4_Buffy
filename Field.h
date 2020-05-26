@@ -26,7 +26,7 @@ private:
     unsigned _width;
     unsigned _height;
 
-    unsigned turn;
+    unsigned _turn;
 
     unsigned _totalHuman;
     unsigned _totalVampire;
@@ -34,7 +34,7 @@ private:
     unsigned _vCounter;
     unsigned _hCounter;
 
-    std::list<Humanoid*> humanoids;
+    std::list<Humanoid*> _humanoids;
 
 public:
     Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
@@ -44,7 +44,7 @@ public:
      * Apply a single turn
      * @return retunn next turn count
      */
-    int nextTurn();
+    unsigned nextTurn();
 
     unsigned int getWidth() const;
 
@@ -60,6 +60,7 @@ public:
     Humanoid* getCloset(const Vampire* v) const;
 
     /**
+     * -> Refactor into getClosest(Humanoid*) ?
      * Find the closest Vampire to the Buffy
      * @param v
      * @return
@@ -67,6 +68,8 @@ public:
     Humanoid* getCloset(const Buffy* v) const;
 
     const std::list<Humanoid*>& getHumanoids() const;
+
+    void reset();
 
     void init();
 

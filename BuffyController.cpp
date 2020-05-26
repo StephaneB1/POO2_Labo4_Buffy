@@ -38,29 +38,33 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans,
             displayErrorMsg(
                     "Invalid input length.\n    -> Must be one character only.");
         } else {
+            unsigned int success = 0;
             switch (input[0]) {
                 case 'n':
                     _displayer.display(field);
 
                     break;
                 case 's':
-                    /*for(int i = 0; i < TOTAL_SIMULATION; ++i) {
-                        PSEUDO CODE
-                        (1) Resetting the positions of the humanoids randomly on the field
-                        field.resetPositions()
+                    std::cout << "Simulating [";
+                    for(int i = 0; i < TOTAL_SIMULATION; ++i) {
+                        field.reset();
+                        field.init();
 
-                        (2) Simulate the field actions until there's no vampires left
                         do {
+                            field.nextTurn();
+                            _displayer.display(field);
+                        } while (!field.isFreeOfVampires());
 
-                        } while (field.isFreeOfVampires())
+                        if(!field.isFreeOfHumans()) success++;
 
-                        (3) update information on display (buffy success)
-                        buffyAttempts++;
-                        if(!field.isFreeOfHumans()) buffySuccess++;
-
+                        /*if((i % (TOTAL_SIMULATION / 30)) == 0)*/ std::cout << ".";
                     }
-                    std::cout << "Buffy success rate : "
-                              << buffyAttempts / buffySucess * 100 << std::endl*/
+
+                    std::cout << "]" << std::endl;
+
+                    std::cout << "Buffy success rate for " << TOTAL_SIMULATION
+                              << " simulations : "
+                              << (success / TOTAL_SIMULATION * 100) << std::endl;
                     break;
                 case 'q':
                     quitting = true;

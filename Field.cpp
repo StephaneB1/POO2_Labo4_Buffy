@@ -18,31 +18,31 @@ class Utils;
 Field::Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
              unsigned totalVampire) : _width(_width),
                                       _height(_height),
-                                      turn(0),
+                                      _turn(0),
                                       _totalHuman(totalHuman),
                                       _totalVampire(totalVampire) {
     init();
 }
 
-int Field::nextTurn() {
+unsigned Field::nextTurn() {
 
     // Déterminer les prochaines actions
-    for (std::list<Humanoid*>::iterator it = humanoids.begin();
-         it != humanoids.end(); it++)
+    for (std::list<Humanoid*>::iterator it = _humanoids.begin();
+         it != _humanoids.end(); it++)
         (*it)->setAction(*this);
     // Executer les actions
-    for (std::list<Humanoid*>::iterator it = humanoids.begin();
-         it != humanoids.end(); it++)
+    for (std::list<Humanoid*>::iterator it = _humanoids.begin();
+         it != _humanoids.end(); it++)
         (*it)->executeAction(this);
     // Enlever les humanoides tués
-    for (std::list<Humanoid*>::iterator it = humanoids.begin();
-         it != humanoids.end();)
+    for (std::list<Humanoid*>::iterator it = _humanoids.begin();
+         it != _humanoids.end();)
         if (!(*it)->isAlive()) {
             delete *it; // destruction de l’humanoide référencé
-            it = humanoids.erase(it); // suppression de l’élément dans la liste
+            it = _humanoids.erase(it); // suppression de l’élément dans la liste
         } else
             ++it;
-    return turn++;
+    return _turn++;
 }
 
 unsigned int Field::getWidth() const {
@@ -59,7 +59,7 @@ Humanoid* Field::getCloset(const Vampire* v) const {
     int min = INT_MAX;
     int d;
 
-    for (Humanoid* h :humanoids) {
+    for (Humanoid* h :_humanoids) {
         d = h->getDistance(v);
 
         if (d > 0 && min > d) {
@@ -77,7 +77,7 @@ Humanoid* Field::getCloset(const Buffy* b) const {
     int min = INT_MAX;
     int d;
 
-    for (Humanoid* h :humanoids) {
+    for (Humanoid* h :_humanoids) {
         d = h->getDistance(b);
 
         if (d > 0 && min > d) {
@@ -90,15 +90,20 @@ Humanoid* Field::getCloset(const Buffy* b) const {
 }
 
 const std::list<Humanoid*>& Field::getHumanoids() const {
-    return humanoids;
+    return _humanoids;
 }
 
 void Field::replace(Human* oldPerson, Vampire* newPerson) {
     oldPerson->setIsAlive(false);
     _hCounter--;
 
-    humanoids.push_back(newPerson);
+    _humanoids.push_back(newPerson);
     _vCounter++;
+}
+
+void Field::reset() {
+    _turn = 0;
+    _humanoids.clear();
 }
 
 void Field::init() {
@@ -107,18 +112,18 @@ void Field::init() {
     _hCounter = _totalHuman;
     unsigned x = Utils::generateRandom(0, _width);
     unsigned y = Utils::generateRandom(0, _height);
-    humanoids.push_back(new Buffy(x, y));
+    _humanoids.push_back(new Buffy(x, y));
 
     for (int i = 0; i < _totalHuman; i++) {
         x = Utils::generateRandom(0, _width);
         y = Utils::generateRandom(0, _height);
-        humanoids.push_back(new Human(x, y));
+        _humanoids.push_back(new Human(x, y));
     }
 
     for (int i = 0; i < _totalVampire; i++) {
         x = Utils::generateRandom(0, _width);
         y = Utils::generateRandom(0, _height);
-        humanoids.push_back(new Vampire(x, y));
+        _humanoids.push_back(new Vampire(x, y));
     }
 }
 

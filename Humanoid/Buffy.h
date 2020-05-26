@@ -13,8 +13,8 @@ Date        : 14.05.2020
 
 #include "Humanoid.h"
 #include "Vampire.h"
-#include <Action/Kill.h>
-#include <Action/Bite.h>
+#include "../Action/Kill.h"
+#include "../Action/Bite.h"
 
 
 class Buffy : public Humanoid{

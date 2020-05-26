@@ -7,7 +7,7 @@ Date        : 14.05.2020
 -----------------------------------------------------------------------------------
  */
 
-#include <Utils.h>
+#include "../Utils.h"
 #include "Human.h"
 #include "../Action/Move.h"
 

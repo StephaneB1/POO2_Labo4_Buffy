@@ -11,9 +11,9 @@ Date        : 14.05.2020
 #define POO2_LABO4_BUFFY_MOVE_H
 
 #include "Action.h"
-#include "Direction.h"
+#include "../Direction.h"
 #include <vector>
-#include <Humanoid/Humanoid.h>
+#include "../Humanoid/Humanoid.h"
 
 
 class Move : public Action {

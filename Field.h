@@ -13,9 +13,9 @@ Date        : 14.05.2020
 
 
 #include <list>
-#include <Humanoid/Vampire.h>
-#include <Humanoid/Human.h>
-#include <Humanoid/Buffy.h>
+#include "Humanoid/Vampire.h"
+#include "Humanoid/Human.h"
+#include "Humanoid/Buffy.h"
 #include <memory>
 
 #include "Humanoid/Humanoid.h"

@@ -8,11 +8,11 @@ Date        : 14.05.2020
  */
 
 
-#include <Utils.h>
+#include "../Utils.h"
 #include "Vampire.h"
 
 #include "../Action/Move.h"
-#include "Field.h"
+#include "../Field.h"
 
 Vampire::Vampire(unsigned int _x, unsigned int _y) : Humanoid(new Move(1), _x, _y),
                                                      _bite(new Bite()),

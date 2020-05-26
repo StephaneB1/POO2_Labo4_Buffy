@@ -11,8 +11,8 @@ Date        : 14.05.2020
 #define POO2_LABO4_BUFFY_VAMPIRE_H
 
 
-#include <Action/Kill.h>
-#include <Action/Bite.h>
+#include "../Action/Kill.h"
+#include "../Action/Bite.h"
 #include "Humanoid.h"
 #include "Human.h"
 

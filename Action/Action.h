@@ -10,7 +10,7 @@ Date        : 14.05.2020
 #ifndef POO2_LABO4_BUFFY_ACTION_H
 #define POO2_LABO4_BUFFY_ACTION_H
 
-#include <Humanoid/Humanoid.h>
+#include "../Humanoid/Humanoid.h"
 
 class Field;
 

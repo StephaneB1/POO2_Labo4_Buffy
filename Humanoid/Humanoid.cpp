@@ -9,7 +9,7 @@ Date        : 14.05.2020
 
 #include "Humanoid.h"
 
-#include "Action/Action.h"
+#include "../Action/Action.h"
 #include "../Field.h"
 
 Humanoid::Humanoid(Move* _move, unsigned int _x, unsigned int _y) :

@@ -9,10 +9,8 @@ Date        : 14.05.2020
 
 
 #include <cstdlib>
-#include <iostream>
 #include "Action/Move.h"
 #include "Humanoid/Human.h"
-#include "Field.h"
 #include "BuffyController.h"
 
 using namespace std;

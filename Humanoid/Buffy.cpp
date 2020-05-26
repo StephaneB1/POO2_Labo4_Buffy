@@ -12,7 +12,7 @@ Date        : 14.05.2020
 #include "Vampire.h"
 
 #include "../Action/Move.h"
-#include "Field.h"
+#include "../Field.h"
 
 Buffy::Buffy(unsigned int _x, unsigned int _y) :
         Humanoid(new Move(2), _x, _y), _kill(new Kill(true)) {

@@ -1,7 +1,7 @@
 /*
 -----------------------------------------------------------------------------------
 Laboratoire : 04
-Fichier     : Field.h
+Fichier     : Field.cpp
 Auteur(s)   : Stéphane Bottin & Chau Ying Kot
 Date        : 14.05.2020
 -----------------------------------------------------------------------------------
@@ -9,8 +9,11 @@ Date        : 14.05.2020
 
 #include <iostream>
 #include <algorithm>
+#include <climits>
 #include "Field.h"
 #include "Utils.h"
+
+class Utils;
 
 Field::Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
              unsigned totalVampire) : _width(_width),

@@ -23,7 +23,7 @@ void Move::execute(Field* field) {
 
 void Move::setRandomMove(const Field& field) {
 
-    std::vector<Direction> possibleDirection = getListDirection(field);
+    std::vector<Direction> possibleDirection = getPossibleDirections(field);
 
     Direction nextDirection = possibleDirection.at(Utils::generateRandom(0,
                                                                          possibleDirection.size()));
@@ -37,44 +37,47 @@ void Move::setNextPosition(const Direction& nextDirection) {
     _toY = getHumanoid()->getY() + nextDirection.getY() * _stepRange;
 }
 
-std::vector<Direction> Move::getListDirection(const Field& field) const {
+std::vector<Direction> Move::getPossibleDirections(const Field& field) const {
     std::vector<Direction> possibleDirection;
 
-    if (getHumanoid()->getX() >= _stepRange ) {
+    int humX = _humanoid->getX();
+    int humY = _humanoid->getY();
+
+    if (_humanoid->getX() >= _stepRange ) {
         possibleDirection.push_back(Direction::LEFT);
     }
 
-    if ((getHumanoid()->getX() >= _stepRange) &&
-        (getHumanoid()->getY() >= _stepRange)) {
+    if ((_humanoid->getX() >= _stepRange) &&
+        (_humanoid->getY() >= _stepRange)) {
         possibleDirection.push_back(Direction::UP_LEFT);
     }
 
-    if ((getHumanoid()->getX() >= _stepRange) &&
-        (getHumanoid()->getY() < field.getHeight() - _stepRange)) {
+    if ((_humanoid->getX() >= _stepRange) &&
+        (_humanoid->getY() < field.getHeight() - _stepRange)) {
         possibleDirection.push_back(Direction::DOWN_LEFT);
     }
 
-    if (getHumanoid()->getX() < field.getWidth() - _stepRange) {
+    if (_humanoid->getX() < field.getWidth() - _stepRange) {
 
         possibleDirection.push_back(Direction::RIGHT);
     }
 
-    if ((getHumanoid()->getX() < field.getWidth() - _stepRange) &&
-        (getHumanoid()->getY() >= _stepRange)) {
+    if ((_humanoid->getX() < field.getWidth() - _stepRange) &&
+        (_humanoid->getY() >= _stepRange)) {
         possibleDirection.push_back(Direction::UP_RIGHT);
     }
 
-    if ((getHumanoid()->getX() < field.getWidth() - _stepRange) &&
-        (getHumanoid()->getY() < field.getHeight() - _stepRange)) {
+    if ((_humanoid->getX() < field.getWidth() - _stepRange) &&
+        (_humanoid->getY() < field.getHeight() - _stepRange)) {
         possibleDirection.push_back(Direction::DOWN_RIGHT);
     }
 
 
-    if (getHumanoid()->getY() >= _stepRange) {
+    if (_humanoid->getY() >= _stepRange) {
         possibleDirection.push_back(Direction::UP);
     }
 
-    if (getHumanoid()->getY() < field.getHeight() - _stepRange) {
+    if (_humanoid->getY() < field.getHeight() - _stepRange) {
         possibleDirection.push_back(Direction::DOWN);
     }
 

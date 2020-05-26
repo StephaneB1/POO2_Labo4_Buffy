@@ -60,6 +60,8 @@ public:
 
     void setIsAlive(bool _isAlive);
 
+    bool standsHere(unsigned int x, unsigned int y);
+
     virtual char getSymbol() const = 0;
 
     /**

@@ -12,7 +12,7 @@ Date        : 14.05.2020
 
 #include "Action.h"
 
-class Kill : public Action{
+class Kill : public Action {
 
 private:
     Humanoid* _target;

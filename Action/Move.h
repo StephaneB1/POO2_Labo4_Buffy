@@ -30,7 +30,7 @@ public:
 
     Move(unsigned int _stepRange);
 
-    virtual void execute(Field* field);
+    void execute(Field* field) override;
 
     /**
      * Set the move to be a random direction
@@ -43,7 +43,7 @@ public:
      * @param field
      * @return
      */
-    std::vector<Direction> getListDirection(const Field& field) const;
+    std::vector<Direction> getPossibleDirections(const Field& field) const;
 
     /**
      * Set the position for the next turn

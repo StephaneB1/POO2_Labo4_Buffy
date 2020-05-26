@@ -22,7 +22,6 @@ public:
 
     Human(unsigned int _x, unsigned int _y);
 
-
     void setAction(const Field& field) override;
 
     char getSymbol() const override;

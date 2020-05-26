@@ -17,6 +17,8 @@ class Field;
 class Action {
 
 public:
+    Action() {};
+
     ~Action();
 
     /**

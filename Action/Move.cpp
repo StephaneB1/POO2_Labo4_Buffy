@@ -17,6 +17,8 @@ Date        : 14.05.2020
 Move::Move(unsigned int _stepRange) : _stepRange(_stepRange), _toY(0), _toX(0) {}
 
 void Move::execute(Field* field) {
+    std::cout << getHumanoid()->getSymbol() << " : (" << getHumanoid()->getX() << ", " << getHumanoid()->getY() << ") -> (" << _toX << ", " << _toY << ")." << std::endl;
+
     getHumanoid()->setY(_toY);
     getHumanoid()->setX(_toX);
 }

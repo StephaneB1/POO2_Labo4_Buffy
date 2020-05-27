@@ -38,6 +38,7 @@ unsigned Field::nextTurn() {
     for (std::list<Humanoid*>::iterator it = _humanoids.begin();
          it != _humanoids.end();)
         if (!(*it)->isAlive()) {
+            std::cout << "kill!" << std::endl;
             delete *it; // destruction de l’humanoide référencé
             it = _humanoids.erase(it); // suppression de l’élément dans la liste
         } else

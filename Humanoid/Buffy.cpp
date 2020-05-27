@@ -32,11 +32,12 @@ void Buffy::setAction(const Field& field) {
         _kill->setTarget(target);
         setNextAction(_kill);
     } else {
+
         Direction moveDir = Direction::getDirection(getX(), getY(),
                                                     target->getX(),
                                                     target->getY());
 
-        getMove()->setNextPosition(moveDir);
+        getMove()->setNextPosition(moveDir, field);
         setNextAction(getMove());
     }
 }

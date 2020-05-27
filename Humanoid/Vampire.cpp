@@ -46,7 +46,7 @@ void Vampire::setAction(const Field& field) {
         Direction moveDir = Direction::getDirection(getX(), getY(), target->getX(),
                                                     target->getY());
 
-        getMove()->setNextPosition(moveDir);
+        getMove()->setNextPosition(moveDir, field);
         setNextAction(getMove());
     }
 }

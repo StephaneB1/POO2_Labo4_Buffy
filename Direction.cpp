@@ -24,8 +24,8 @@ const Direction Direction::RIGHT = Direction(1, 0);
 const Direction Direction::NONE = Direction(0, 0);
 
 
-Direction Direction::getDirection(unsigned fromX, unsigned fromY, unsigned toX,
-                                  unsigned toY) {
+Direction
+Direction::getDirection(unsigned fromX, unsigned fromY, unsigned toX, unsigned toY) {
     int tempX = toX - fromX;
     int tempY = toY - fromY;
 

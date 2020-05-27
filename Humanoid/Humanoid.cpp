@@ -61,3 +61,4 @@ bool Humanoid::standsHere(unsigned int x, unsigned int y) {
     return _x + 1 == x && _y + 1 == y;
 }
 
+

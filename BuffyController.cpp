@@ -38,7 +38,7 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans,
             displayErrorMsg(
                     "Invalid input length.\n    -> Must be one character only.");
         } else {
-            unsigned int success = 0;
+            double success = 0;
             switch (input[0]) {
                 case 'n':
                     _displayer.display(field);
@@ -52,7 +52,7 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans,
 
                         do {
                             field.nextTurn();
-                            _displayer.display(field); // temp : debug
+                            //_displayer.display(field); // temp : debug
                         } while (!field.isFreeOfVampires());
 
                         if(!field.isFreeOfHumans()) success++;
@@ -64,7 +64,8 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans,
 
                     std::cout << "Buffy success rate for " << TOTAL_SIMULATION
                               << " simulations : "
-                              << (success / TOTAL_SIMULATION * 100) << std::endl;
+                              << (success /  TOTAL_SIMULATION * 100) <<
+                              std::endl;
                     break;
                 case 'q':
                     quitting = true;

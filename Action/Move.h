@@ -49,7 +49,7 @@ public:
      * Set the position for the next turn
      * @param nextDirection
      */
-    void setNextPosition(const Direction& nextDirection);
+    void setNextPosition(const Direction& nextDirection, const Field& field);
 
     /**
      * Set the humanoid that own this move
@@ -59,6 +59,10 @@ public:
 
 
     Humanoid* getHumanoid() const;
+
+    unsigned int get_stepRange() const;
+
+
 };
 
 

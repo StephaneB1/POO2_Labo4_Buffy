@@ -17,8 +17,10 @@ Date        : 14.05.2020
 Move::Move(unsigned int _stepRange) : _stepRange(_stepRange), _toY(0), _toX(0) {}
 
 void Move::execute(Field* field) {
-    std::cout << getHumanoid()->getSymbol() << " : (" << getHumanoid()->getX() << ", " << getHumanoid()->getY() << ") -> (" << _toX << ", " << _toY << ")." << std::endl;
-
+   /* std::cout << getHumanoid()->getSymbol() << " : (" << getHumanoid()->getX()
+              << ", " << getHumanoid()->getY() << ") -> (" << _toX << ", " << _toY
+              << ")." << std::endl;
+*/
     getHumanoid()->setY(_toY);
     getHumanoid()->setX(_toX);
 }
@@ -29,12 +31,32 @@ void Move::setRandomMove(const Field& field) {
     Direction nextDirection = possibleDirection.at(
             Utils::generateRandom(0, possibleDirection.size()));
 
-    setNextPosition(nextDirection);
+    setNextPosition(nextDirection, field);
 }
 
-void Move::setNextPosition(const Direction& nextDirection) {
-    _toX = getHumanoid()->getX() + nextDirection.getX() * _stepRange;
-    _toY = getHumanoid()->getY() + nextDirection.getY() * _stepRange;
+void Move::setNextPosition(const Direction& nextDirection, const Field& field) {
+
+
+    int newX = getHumanoid()->getX() + nextDirection.getX() * _stepRange;
+    int newY = getHumanoid()->getY() + nextDirection.getY() * _stepRange;
+    // without an explicit cast, the compiler cast into unsigned
+    if (newX >= (int) field.getWidth()) {
+        _toX = field.getWidth() - 1;
+    } else if (newX < 0) {
+        _toX = 0;
+    } else {
+        _toX = newX;
+    }
+
+    if (newY >= (int) field.getHeight()) {
+        _toY = field.getHeight() - 1;
+    } else if (newY < 0) {
+        _toY = 0;
+    } else {
+        _toY = newY;
+    }
+
+
 }
 
 std::vector<Direction> Move::getPossibleDirections(const Field& field) const {
@@ -63,7 +85,8 @@ std::vector<Direction> Move::getPossibleDirections(const Field& field) const {
         possibleDirection.push_back(Direction::UP_RIGHT);
     }
 
-    if (humX < field.getWidth() - _stepRange && humY < field.getHeight() - _stepRange) {
+    if (humX < field.getWidth() - _stepRange &&
+        humY < field.getHeight() - _stepRange) {
         possibleDirection.push_back(Direction::DOWN_RIGHT);
     }
 
@@ -85,4 +108,8 @@ void Move::setHumanoid(Humanoid* _humanoid) {
 
 Humanoid* Move::getHumanoid() const {
     return _humanoid;
+}
+
+unsigned int Move::get_stepRange() const {
+    return _stepRange;
 }

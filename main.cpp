@@ -18,7 +18,7 @@ using namespace std;
 int main() {
 
     BuffyController controller;
-    controller.start(50, 30, 1, 5);
+    controller.start(50, 30, 0, 5);
 
     return EXIT_SUCCESS;
 }

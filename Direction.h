@@ -10,6 +10,8 @@ Date        : 14.05.2020
 #ifndef POO2_LABO4_BUFFY_DIRECTION_H
 #define POO2_LABO4_BUFFY_DIRECTION_H
 
+#include <cstddef>
+
 class Direction {
 
 private:
@@ -39,8 +41,8 @@ public:
      * @param toY
      * @return
      */
-    static Direction getDirection(unsigned fromX, unsigned fromY, unsigned toX,
-                                  unsigned toY);
+    static Direction
+    getDirection(unsigned fromX, unsigned fromY, unsigned toX, unsigned toY);
 
     int getX() const;
 

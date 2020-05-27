@@ -81,7 +81,7 @@ Humanoid* Field::getCloset(const Buffy* b) const {
     for (Humanoid* h :_humanoids) {
         d = h->getDistance(b);
 
-        if (d > 0 && min > d) {
+        if (d >= 0 && min > d) {
             min = d;
             res = h;
         }

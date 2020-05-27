@@ -17,6 +17,7 @@ using namespace std;
 
 int main() {
 
+    // Target stats : ~16%
     BuffyController controller;
     controller.start(50, 30, 20, 10);
 

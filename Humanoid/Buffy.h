@@ -25,13 +25,13 @@ private:
 public:
     Buffy(unsigned int _x, unsigned int _y);
 
-    virtual void setAction(const Field& field) ;
+    void setAction(const Field& field) override;
 
-    virtual char getSymbol()const;
+    char getSymbol() const override;
 
-    virtual int getDistance(const Buffy* h) const;
+    int getDistance(const Buffy* h) const override;
 
-    virtual int getDistance(const Vampire* v)  const;
+    int getDistance(const Vampire* v)  const override;
 };
 
 

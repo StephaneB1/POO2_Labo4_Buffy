@@ -52,7 +52,7 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans,
 
                         do {
                             field.nextTurn();
-                            _displayer.display(field);
+                            _displayer.display(field); // temp : debug
                         } while (!field.isFreeOfVampires());
 
                         if(!field.isFreeOfHumans()) success++;

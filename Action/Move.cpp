@@ -22,14 +22,12 @@ void Move::execute(Field* field) {
 }
 
 void Move::setRandomMove(const Field& field) {
-
     std::vector<Direction> possibleDirection = getPossibleDirections(field);
 
-    Direction nextDirection = possibleDirection.at(Utils::generateRandom(0,
-                                                                         possibleDirection.size()));
+    Direction nextDirection = possibleDirection.at(
+            Utils::generateRandom(0, possibleDirection.size()));
 
     setNextPosition(nextDirection);
-
 }
 
 void Move::setNextPosition(const Direction& nextDirection) {
@@ -40,44 +38,38 @@ void Move::setNextPosition(const Direction& nextDirection) {
 std::vector<Direction> Move::getPossibleDirections(const Field& field) const {
     std::vector<Direction> possibleDirection;
 
-    int humX = _humanoid->getX();
-    int humY = _humanoid->getY();
+    unsigned int humX = _humanoid->getX();
+    unsigned int humY = _humanoid->getY();
 
-    if (_humanoid->getX() >= _stepRange ) {
+    if (humX >= _stepRange) {
         possibleDirection.push_back(Direction::LEFT);
     }
 
-    if ((_humanoid->getX() >= _stepRange) &&
-        (_humanoid->getY() >= _stepRange)) {
+    if (humX >= _stepRange && humY >= _stepRange) {
         possibleDirection.push_back(Direction::UP_LEFT);
     }
 
-    if ((_humanoid->getX() >= _stepRange) &&
-        (_humanoid->getY() < field.getHeight() - _stepRange)) {
+    if (humX >= _stepRange && humY < field.getHeight() - _stepRange) {
         possibleDirection.push_back(Direction::DOWN_LEFT);
     }
 
-    if (_humanoid->getX() < field.getWidth() - _stepRange) {
-
+    if (humX < field.getWidth() - _stepRange) {
         possibleDirection.push_back(Direction::RIGHT);
     }
 
-    if ((_humanoid->getX() < field.getWidth() - _stepRange) &&
-        (_humanoid->getY() >= _stepRange)) {
+    if (humX < field.getWidth() - _stepRange && humY >= _stepRange) {
         possibleDirection.push_back(Direction::UP_RIGHT);
     }
 
-    if ((_humanoid->getX() < field.getWidth() - _stepRange) &&
-        (_humanoid->getY() < field.getHeight() - _stepRange)) {
+    if (humX < field.getWidth() - _stepRange && humY < field.getHeight() - _stepRange) {
         possibleDirection.push_back(Direction::DOWN_RIGHT);
     }
 
-
-    if (_humanoid->getY() >= _stepRange) {
+    if (humY >= _stepRange) {
         possibleDirection.push_back(Direction::UP);
     }
 
-    if (_humanoid->getY() < field.getHeight() - _stepRange) {
+    if (humY < field.getHeight() - _stepRange) {
         possibleDirection.push_back(Direction::DOWN);
     }
 

@@ -19,7 +19,7 @@ class Action {
 public:
     Action() {};
 
-    ~Action();
+    virtual ~Action();
 
     /**
      * Execute the corresponding

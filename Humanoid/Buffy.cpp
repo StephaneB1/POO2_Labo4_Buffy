@@ -21,14 +21,13 @@ Buffy::Buffy(unsigned int _x, unsigned int _y) :
 
 void Buffy::setAction(const Field& field) {
 
-    Vampire* target = (Vampire*) field.getCloset(this);
+    Vampire* target = (Vampire*) field.getClosest(this);
 
     if (target == nullptr) { // If Null (Zero Vampire in the board)
         getMove()->setRandomMove(field);
         setNextAction(getMove());
     } else if (abs(getX() - target->getX()) <= 1 &&
                abs(getY() - target->getY()) <= 1) { // If next to a Vampire
-
         _kill->setTarget(target);
         setNextAction(_kill);
     } else {

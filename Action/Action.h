@@ -19,7 +19,7 @@ class Action {
 public:
     Action() {};
 
-    ~Action();
+    ~Action() {};
 
     /**
      * Execute the corresponding

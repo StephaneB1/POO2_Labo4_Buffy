@@ -31,15 +31,16 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans,
               << "   >> PRESS \'n\' TO START <<   \n\n";
 
     do {
-        std::cout << "[" << field.nextTurn() << "] " << "q>uit s>tatistics n>ext: ";
+        std::cout << "[" << field.getTurn() << "] " << "q>uit s>tatistics n>ext: ";
         std::getline(std::cin, input);
         std::cout << "\b";
         if (input.length() != 1) {
             displayErrorMsg(
-                    "Invalid input length.\n    -> Must be one character only.");
+                    "Invalid input length.\n\t-> Must be one character only.");
         } else {
             switch (input[0]) {
                 case 'n':
+                    field.nextTurn();
                     _displayer.display(field);
                     break;
                 case 's':
@@ -61,7 +62,7 @@ void BuffyController::displayErrorMsg(const std::string& msg) {
 }
 
 void BuffyController::displayStats(size_t width, size_t height,
-        int totalHumans, int totalVampire) {
+        unsigned totalHumans, unsigned totalVampire) {
 
     double success = 0;
     Field field(width, height, totalHumans, totalVampire);

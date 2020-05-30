@@ -50,6 +50,8 @@ public:
 
     unsigned int getHeight() const;
 
+    unsigned int getTurn() const;
+
     void replace(Human* oldPerson, Vampire* newPerson);
 
     /**
@@ -66,6 +68,9 @@ public:
      * @return
      */
     Humanoid* getClosest(const Buffy* b) const;
+
+    template<typename F>
+    Humanoid* getClosest(const Humanoid* source, F lambda) const;
 
     const std::list<Humanoid*>& getHumanoids() const;
 

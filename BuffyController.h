@@ -26,8 +26,7 @@ public:
     BuffyController();
 
     void start(size_t width, size_t height, unsigned totalHumans, unsigned totalVampire);
-    void displayStats(size_t width, size_t height, int totalHumans, int totalVampire);
-    void quit();
+    void displayStats(size_t width, size_t height, unsigned totalHumans, unsigned totalVampire);
 
 private:
     const unsigned TOTAL_SIMULATION = 10000;

@@ -17,6 +17,6 @@ void Bite::setTarget(Human* humanoid) {
 }
 
 void Bite::execute(Field* field) {
-    //std::cout << "Biting : " << _target->getSymbol() << std::endl;
+    //std::cout << "bite!" << std::endl;
     field->replace(_target, _target->becomeAVampire());
 }

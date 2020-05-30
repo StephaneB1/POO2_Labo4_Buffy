@@ -8,5 +8,3 @@ Date        : 14.05.2020
  */
 
 #include "Action.h"
-
-Action::~Action() {}

@@ -37,13 +37,14 @@ unsigned Field::nextTurn() {
     // Enlever les humanoides tués
     for (std::list<Humanoid*>::iterator it = _humanoids.begin();
          it != _humanoids.end();) {
-        //std::cout << (*it)->getSymbol() << " : alive ? " << (*it)->isAlive() << std::endl;
         if (!(*it)->isAlive()) {
             delete *it; // destruction de l’humanoide référencé
             it = _humanoids.erase(it); // suppression de l’élément dans la liste
         } else
             ++it;
     }
+
+    //std::cout << "TOTAL LEFT : " << _humanoids.size() << std::endl;
 
     return _turn++;
 }
@@ -56,14 +57,14 @@ unsigned int Field::getHeight() const {
     return _height;
 }
 
-Humanoid* Field::getClosest(const Vampire* v) const {
-
+template<typename F>
+Humanoid* Field::getClosest(const Humanoid* source, F distFunc) const {
     Humanoid* res = nullptr;
     int min = INT_MAX;
     int d;
 
     for (Humanoid* h :_humanoids) {
-        d = h->getDistance(v);
+        d = distFunc(h, source);
 
         if (d > 0 && min > d) {
             min = d;
@@ -74,22 +75,16 @@ Humanoid* Field::getClosest(const Vampire* v) const {
     return res;
 }
 
+Humanoid* Field::getClosest(const Vampire* v) const {
+    return getClosest(v, [](const Humanoid* h1, const Humanoid* h2) {
+        return h1->getDistance((Vampire*) h2);
+    });
+}
+
 Humanoid* Field::getClosest(const Buffy* b) const {
-
-    Humanoid* res = nullptr;
-    int min = INT_MAX;
-    int d;
-
-    for (Humanoid* h :_humanoids) {
-        d = h->getDistance(b);
-
-        if (d >= 0 && min > d) {
-            min = d;
-            res = h;
-        }
-    }
-
-    return res;
+    return getClosest(b, [](const Humanoid* h1, const Humanoid* h2) {
+        return h1->getDistance((Buffy*) h2);
+    });
 }
 
 const std::list<Humanoid*>& Field::getHumanoids() const {
@@ -113,8 +108,10 @@ void Field::init() {
 
     _vCounter = _totalVampire;
     _hCounter = _totalHuman;
+
     unsigned x = Utils::generateRandom(0, _width);
     unsigned y = Utils::generateRandom(0, _height);
+
     _humanoids.push_back(new Buffy(x, y));
 
     for (int i = 0; i < _totalHuman; i++) {
@@ -134,15 +131,19 @@ void Field::decVampire() {
     _vCounter--;
 }
 
-bool Field::isFreeOfVampires() const {
-    return _vCounter == 0;
-}
-
 void Field::decHuman() {
     _hCounter--;
 }
 
+bool Field::isFreeOfVampires() const {
+    return _vCounter <= 0;
+}
+
 bool Field::hasHumans() const {
     return _hCounter > 0;
+}
+
+unsigned int Field::getTurn() const {
+    return _turn;
 }
 

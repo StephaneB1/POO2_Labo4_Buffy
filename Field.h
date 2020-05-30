@@ -31,8 +31,8 @@ private:
     unsigned _totalHuman;
     unsigned _totalVampire;
 
-    unsigned _vCounter;
-    unsigned _hCounter;
+    int _vCounter;
+    int _hCounter;
 
     std::list<Humanoid*> _humanoids;
 
@@ -57,15 +57,15 @@ public:
     * @param v
     * @return
     */
-    Humanoid* getCloset(const Vampire* v) const;
+    Humanoid* getClosest(const Vampire* v) const;
 
     /**
      * -> Refactor into getClosest(Humanoid*) ?
      * Find the closest Vampire to the Buffy
-     * @param v
+     * @param b
      * @return
      */
-    Humanoid* getCloset(const Buffy* v) const;
+    Humanoid* getClosest(const Buffy* b) const;
 
     const std::list<Humanoid*>& getHumanoids() const;
 
@@ -79,7 +79,7 @@ public:
 
     bool isFreeOfVampires() const;
 
-    bool isFreeOfHumans() const;
+    bool hasHumans() const;
 };
 
 

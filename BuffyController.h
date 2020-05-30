@@ -26,7 +26,7 @@ public:
     BuffyController();
 
     void start(size_t width, size_t height, unsigned totalHumans, unsigned totalVampire);
-    void getStats();
+    void displayStats(size_t width, size_t height, int totalHumans, int totalVampire);
     void quit();
 
 private:

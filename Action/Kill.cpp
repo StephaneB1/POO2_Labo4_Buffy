@@ -7,6 +7,7 @@ Date        : 14.05.2020
 -----------------------------------------------------------------------------------
  */
 
+#include <iostream>
 #include "Kill.h"
 #include "../Field.h"
 
@@ -15,6 +16,8 @@ void Kill::setTarget(Humanoid* target) {
 }
 
 void Kill::execute(Field* field) {
+    //std::cout << "Killing : " << _target->getSymbol() << std::endl;
+
     _target->setIsAlive(false);
     if(targetIsVampire){
         field->decVampire();

@@ -38,34 +38,12 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans,
             displayErrorMsg(
                     "Invalid input length.\n    -> Must be one character only.");
         } else {
-            double success = 0;
             switch (input[0]) {
                 case 'n':
                     _displayer.display(field);
-
                     break;
                 case 's':
-                    std::cout << "Simulating [";
-                    for(int i = 0; i < TOTAL_SIMULATION; ++i) {
-                        field.reset();
-                        field.init();
-
-                        do {
-                            field.nextTurn();
-                            //_displayer.display(field); // temp : debug
-                        } while (!field.isFreeOfVampires());
-
-                        if(!field.isFreeOfHumans()) success++;
-
-                        /*if((i % (TOTAL_SIMULATION / 30)) == 0)*/ std::cout << ".";
-                    }
-
-                    std::cout << "]" << std::endl;
-
-                    std::cout << "Buffy success rate for " << TOTAL_SIMULATION
-                              << " simulations : "
-                              << (success /  TOTAL_SIMULATION * 100) <<
-                              std::endl;
+                    displayStats(width, height, totalHumans, totalVampire);
                     break;
                 case 'q':
                     quitting = true;
@@ -80,5 +58,37 @@ void BuffyController::start(size_t width, size_t height, unsigned totalHumans,
 
 void BuffyController::displayErrorMsg(const std::string& msg) {
     std::cout << "/!\\ Error : " << msg << std::endl;
+}
+
+void BuffyController::displayStats(size_t width, size_t height,
+        int totalHumans, int totalVampire) {
+
+    double success = 0;
+    Field field(width, height, totalHumans, totalVampire);
+
+    std::cout << "Simulating [";
+
+    for(int i = 0; i < TOTAL_SIMULATION; ++i) {
+        field.reset();
+        field.init();
+
+        do {
+            field.nextTurn();
+        } while (!field.isFreeOfVampires());
+
+        if(field.hasHumans())
+            success++;
+
+        // Loading animation
+        if((i % (TOTAL_SIMULATION / 30)) == 0)
+            std::cout << ".";
+    }
+
+    std::cout << "]" << std::endl;
+
+    std::cout << "Buffy success rate for " << TOTAL_SIMULATION
+              << " simulations : "
+              << (success / TOTAL_SIMULATION) * 100 << "%" <<
+              std::endl;
 }
 

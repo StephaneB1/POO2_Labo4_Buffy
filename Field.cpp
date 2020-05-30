@@ -36,13 +36,15 @@ unsigned Field::nextTurn() {
         (*it)->executeAction(this);
     // Enlever les humanoides tués
     for (std::list<Humanoid*>::iterator it = _humanoids.begin();
-         it != _humanoids.end();)
+         it != _humanoids.end();) {
+        //std::cout << (*it)->getSymbol() << " : alive ? " << (*it)->isAlive() << std::endl;
         if (!(*it)->isAlive()) {
-            std::cout << "kill!" << std::endl;
             delete *it; // destruction de l’humanoide référencé
             it = _humanoids.erase(it); // suppression de l’élément dans la liste
         } else
             ++it;
+    }
+
     return _turn++;
 }
 
@@ -54,7 +56,7 @@ unsigned int Field::getHeight() const {
     return _height;
 }
 
-Humanoid* Field::getCloset(const Vampire* v) const {
+Humanoid* Field::getClosest(const Vampire* v) const {
 
     Humanoid* res = nullptr;
     int min = INT_MAX;
@@ -72,7 +74,7 @@ Humanoid* Field::getCloset(const Vampire* v) const {
     return res;
 }
 
-Humanoid* Field::getCloset(const Buffy* b) const {
+Humanoid* Field::getClosest(const Buffy* b) const {
 
     Humanoid* res = nullptr;
     int min = INT_MAX;
@@ -140,7 +142,7 @@ void Field::decHuman() {
     _hCounter--;
 }
 
-bool Field::isFreeOfHumans() const {
-    return _hCounter == 0;
+bool Field::hasHumans() const {
+    return _hCounter > 0;
 }
 

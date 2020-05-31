@@ -12,8 +12,9 @@ Date        : 14.05.2020
 
 #include "Action.h"
 #include "../Direction.h"
-#include <vector>
 #include "../Humanoid/Humanoid.h"
+
+#include <vector>
 
 class Move : public Action {
 

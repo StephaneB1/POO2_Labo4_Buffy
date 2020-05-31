@@ -11,10 +11,10 @@ Date        : 14.05.2020
 #include "../Field.h"
 
 
-
 void Kill::execute(Field* field) {
     // Replace the target by nothing (= kill)
-    _target.lock()->kill();
+    field->kill(_target, _targetIsVampire);
+
 }
 
 
@@ -22,7 +22,7 @@ Kill::~Kill() {
 
 }
 
-Kill::Kill(bool targetIsVampire) : _targetIsVampire(targetIsVampire){
+Kill::Kill(bool targetIsVampire) : _targetIsVampire(targetIsVampire) {
 
 }
 

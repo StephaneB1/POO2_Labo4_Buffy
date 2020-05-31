@@ -52,7 +52,7 @@ public:
 
     unsigned int getTurn() const;
 
-    void replace(std::weak_ptr<Humanoid> target);
+    void replaceByAVampire(std::weak_ptr<Humanoid> target);
     /**
     * Find the closest Humain to the vampire v
     * @param v
@@ -83,6 +83,9 @@ public:
     bool isFreeOfVampires() const;
 
     bool hasHumans() const;
+
+    void kill(std::weak_ptr<Humanoid> v, bool targetIsVampire);
+
 };
 
 

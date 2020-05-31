@@ -30,7 +30,6 @@ public:
 
     virtual ~Buffy();
 
-    std::shared_ptr<Buffy> getBuffy();
 };
 
 

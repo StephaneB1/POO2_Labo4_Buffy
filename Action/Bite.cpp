@@ -12,7 +12,7 @@ Date        : 14.05.2020
 #include "../Field.h"
 
 void Bite::execute(Field* field) {
-    field->replace(_target);
+    field->replaceByAVampire(_target);
 }
 
 Bite::~Bite() {

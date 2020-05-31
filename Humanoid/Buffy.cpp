@@ -34,7 +34,5 @@ Action* Buffy::getAttackAction(const Field &field, std::weak_ptr<Humanoid>target
 Buffy::~Buffy() {
 }
 
-std::shared_ptr<Buffy> Buffy::getBuffy() {
-    return  shared_from_this();
-}
+
 

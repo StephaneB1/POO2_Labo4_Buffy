@@ -29,9 +29,9 @@ char Vampire::getSymbol() const {
     return 'v';
 }
 
-int Vampire::getDistance(std::weak_ptr<Buffy> b) const {
-    return Humanoid::getDistance(b);
-    //return (int) hypot(abs(getX() - h->getX()), abs(getY() - h->getY()));
+int Vampire::getDistanceTo(std::weak_ptr<Buffy> b) const {
+    //return Humanoid::getDistanceTo(b);
+    return (int) hypot(abs(getX() - b.lock()->getX()), abs(getY() - b.lock()->getY()));
 }
 
 std::weak_ptr<Humanoid> Vampire::getTarget(const Field& field) {
@@ -50,7 +50,7 @@ Action* Vampire::getAttackAction(const Field &field,  std::weak_ptr<Humanoid> ta
     }
 }
 
-Action *Vampire::getIdleAction(const Field &field) {
+Action* Vampire::getIdleAction(const Field &field) {
     return nullptr;
 }
 

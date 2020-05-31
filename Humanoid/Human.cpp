@@ -15,15 +15,16 @@ Date        : 14.05.2020
 
 
 Human::Human(unsigned int _x, unsigned int _y)
-: Humanoid(new Move(1, this), _x, _y) {
+        : Humanoid(new Move(1, this), _x, _y) {
 }
 
 char Human::getSymbol() const {
     return 'h';
 }
 
-int Human::getDistance(std::weak_ptr<Vampire> v) const {
-    return Humanoid::getDistance(v);
+int Human::getDistanceTo(std::weak_ptr<Vampire> v) const {
+    return (int) hypot(abs((int) getX() - v.lock()->getX()),
+                       abs((int) getY() - v.lock()->getY()));
 }
 
 Human::~Human() {

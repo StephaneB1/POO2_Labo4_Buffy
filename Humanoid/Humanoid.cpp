@@ -93,11 +93,11 @@ int Humanoid::getDistance(const Humanoid *humanoid) const {
     return (int) hypot(abs(getX() - humanoid->getX()), abs(getY() - humanoid->getY()));
 }
 
-int Humanoid::getDistance(std::weak_ptr<Buffy> b) const {
+int Humanoid::getDistanceTo(std::weak_ptr<Buffy> b) const {
     return -1;
 }
 
-int Humanoid::getDistance(std::weak_ptr<Vampire>v) const {
+int Humanoid::getDistanceTo(std::weak_ptr<Vampire> v) const {
     return -1;
 }
 

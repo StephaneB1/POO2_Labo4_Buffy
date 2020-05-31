@@ -12,8 +12,6 @@ Date        : 14.05.2020
 
 #include "../Field.h"
 
-Move::Move(unsigned int _stepRange) : Move(_stepRange, nullptr) {}
-
 Move::Move(unsigned int _stepRange, Humanoid* humanoid)
         : _stepRange(_stepRange), _humanoid(humanoid), _toY(0), _toX(0) {
 }
@@ -95,11 +93,6 @@ std::vector<Direction> Move::getPossibleDirections(const Field& field) const {
     }
 
     return possibleDirection;
-}
-
-
-void Move::setHumanoid(Humanoid* _humanoid) {
-    Move::_humanoid = _humanoid;
 }
 
 Humanoid* Move::getHumanoid() const {

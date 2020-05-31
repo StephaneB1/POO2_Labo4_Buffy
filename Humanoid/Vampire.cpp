@@ -40,3 +40,7 @@ Action* Vampire::getAttackAction(const Field &field, Humanoid* target) {
            (Action*) new Bite((Human*) target) :
            (Action*) new Kill(target, false);
 }
+
+Action *Vampire::getIdleAction(const Field &field) {
+    return nullptr;
+}

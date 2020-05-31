@@ -27,6 +27,8 @@ public:
 
     Action* getAttackAction(const Field &field, Humanoid* target) override;
 
+    Action* getIdleAction(const Field& field) override;
+
     char getSymbol()const override;
 
     int getDistance(const Buffy* h) const override;

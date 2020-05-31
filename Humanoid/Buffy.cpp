@@ -12,7 +12,6 @@ Date        : 14.05.2020
 
 #include "../Action/Move.h"
 #include "../Field.h"
-#include "../Utils.h"
 
 Buffy::Buffy(unsigned int _x, unsigned int _y) :
     Humanoid(new Move(2, this), _x, _y) {
@@ -27,8 +26,8 @@ Humanoid *Buffy::getTarget(const Field &field) {
 }
 
 Action* Buffy::getIdleAction(const Field &field) {
-    getMove()->setRandomMove(field);
-    return getMove();
+    _move->setRandomMove(field);
+    return _move;
 }
 
 Action* Buffy::getAttackAction(const Field &field, Humanoid *target) {

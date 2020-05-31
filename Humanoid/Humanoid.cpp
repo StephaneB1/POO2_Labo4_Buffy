@@ -53,10 +53,6 @@ void Humanoid::setY(unsigned int y) {
     _y = y;
 }
 
-Move* Humanoid::getMove() const {
-    return _move;
-}
-
 void Humanoid::setIsAlive(bool isAlive) {
     _isAlive = isAlive;
 }
@@ -69,10 +65,13 @@ void Humanoid::setAction(const Field &field) {
     Humanoid* target = getTarget(field);
 
     if (target == nullptr) {
+        // No target to chase or to kill
         _nextAction = getIdleAction(field);
     } else if (Utils::isNextToTarget(this, target)) {
+        // Target is close enough for a kill
         _nextAction = getAttackAction(field, target);
     } else {
+        // Target is too far : the chase has begun !
         _nextAction = getChaseAction(field, target);
     }
 }
@@ -83,8 +82,9 @@ Humanoid *Humanoid::getTarget(const Field &field) {
 }
 
 Action *Humanoid::getIdleAction(const Field &field) {
-    // no idle action by default
-    return nullptr;
+    // Random walking on the field by default
+    _move->setRandomMove(field);
+    return _move;
 }
 
 Action* Humanoid::getAttackAction(const Field &field, Humanoid *target) {

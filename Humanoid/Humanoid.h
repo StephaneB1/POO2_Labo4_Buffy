@@ -26,9 +26,11 @@ class Buffy;
 
 class Humanoid {
 
+protected:
+    Move* _move;
+
 private:
     bool _isAlive;
-    Move* _move;
     unsigned _x;
     unsigned _y;
 
@@ -41,8 +43,6 @@ public:
     virtual ~Humanoid();
 
     void setAction(const Field& field);
-
-    void setNextAction(Action* nextAction);
 
     void executeAction(Field* field);
 
@@ -62,8 +62,6 @@ public:
     unsigned int getY() const;
 
     void setY(unsigned int y);
-
-    Move* getMove() const;
 
     void setIsAlive(bool _isAlive);
 

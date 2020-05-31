@@ -31,6 +31,6 @@ Vampire* Human::becomeAVampire() {
 }
 
 Action* Human::getIdleAction(const Field& field) {
-    getMove()->setRandomMove(field);
-    return getMove();
+    _move->setRandomMove(field);
+    return _move;
 }

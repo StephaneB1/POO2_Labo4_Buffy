@@ -40,11 +40,18 @@ public:
 
     virtual ~Humanoid();
 
-    virtual void setAction(const Field& field) = 0;
+    void setAction(const Field& field);
 
     void setNextAction(Action* nextAction);
 
     void executeAction(Field* field);
+
+    virtual Humanoid* getTarget(const Field& field);
+
+    // Humanoid actions
+    virtual void setIdleAction(const Field& field) = 0;
+    virtual void setAttackAction(const Field& field, Humanoid* target);
+    virtual void setDefaultAction(const Field& field, Humanoid* target);
 
     bool isAlive() const;
 

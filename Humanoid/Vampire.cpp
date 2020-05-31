@@ -22,7 +22,7 @@ Vampire::Vampire(Human* h) : Vampire(h->getX(), h->getY()) {
 
 }
 
-void Vampire::setAction(const Field& field) {
+/*void Vampire::setAction(const Field& field) {
 
     Human* target = (Human*) field.getClosest(this);
 
@@ -30,8 +30,7 @@ void Vampire::setAction(const Field& field) {
     if (target == nullptr) {
         setNextAction(nullptr);
         return;
-    } else if (abs(getX() - target->getX()) <= 1 &&
-               abs(getY() - target->getY()) <= 1) {
+    } else if (Utils::isNextToTarget(this, target)) {
         // Attack (50/50) : bite or kill for the next action
         setNextAction(Utils::generateRandom(0, 2) == 0 ?
                       (Action*) new Bite(target) :
@@ -43,7 +42,7 @@ void Vampire::setAction(const Field& field) {
         getMove()->setNextPosition(moveDir, field);
         setNextAction(getMove());
     }
-}
+}*/
 
 char Vampire::getSymbol() const {
     return 'v';
@@ -55,5 +54,27 @@ int Vampire::getDistance(const Buffy* h) const {
 
 int Vampire::getDistance(const Vampire* v) const {
     return -1;
+}
+
+Humanoid *Vampire::getTarget(const Field& field) {
+    return (Human*) field.getClosest(this);
+}
+
+void Vampire::setIdleAction(const Field &field) {
+    setNextAction(nullptr);
+}
+
+void Vampire::setAttackAction(const Field &field, Humanoid* target) {
+    setNextAction(Utils::generateRandom(0, 2) == 0 ?
+                  (Action*) new Bite((Human*) target) :
+                  (Action*) new Kill(target, false));
+}
+
+void Vampire::setDefaultAction(const Field &field, Humanoid* target) {
+    Direction moveDir = Direction::getDirection(getX(), getY(), target->getX(),
+                                                target->getY());
+
+    getMove()->setNextPosition(moveDir, field);
+    setNextAction(getMove());
 }
 

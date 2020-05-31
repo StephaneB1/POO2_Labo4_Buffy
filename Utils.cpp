@@ -20,3 +20,8 @@ unsigned Utils::generateRandom(unsigned min, unsigned max) {
 std::minstd_rand0 Utils::generator(
         std::chrono::system_clock::now().time_since_epoch().count());
 
+bool Utils::isNextToTarget(Humanoid *source, Humanoid *target) {
+    return abs(source->getX() - target->getX()) <= 1 &&
+           abs(source->getY() - target->getY()) <= 1;
+}
+

@@ -11,6 +11,7 @@ Date        : 14.05.2020
 
 #include <chrono>
 #include <random>
+#include "Humanoid/Humanoid.h"
 
 class Utils {
 
@@ -29,6 +30,8 @@ public:
      * @return
      */
     static unsigned generateRandom(unsigned min, unsigned max);
+
+    static bool isNextToTarget(Humanoid* source, Humanoid* target);
 
 };
 

@@ -23,7 +23,13 @@ public:
 
     Vampire(Human* h);
 
-    void setAction(const Field& field) override;
+    Humanoid *getTarget(const Field& field) override;
+
+    void setIdleAction(const Field &field) override;
+
+    void setAttackAction(const Field &field, Humanoid* target) override;
+
+    void setDefaultAction(const Field &field, Humanoid* target) override;
 
     char getSymbol()const override;
 

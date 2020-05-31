@@ -19,9 +19,9 @@ Human::Human(unsigned int _x, unsigned int _y) : Humanoid(new Move(1), _x, _y) {
     getMove()->setHumanoid(this);
 }
 
-void Human::setAction(const Field& field) {
+/*void Human::setAction(const Field& field) {
     getMove()->setRandomMove(field);
-}
+}*/
 
 char Human::getSymbol() const {
     return 'h';
@@ -37,4 +37,8 @@ int Human::getDistance(const Buffy* h) const {
 
 Vampire* Human::becomeAVampire() {
     return new Vampire(this);
+}
+
+void Human::setIdleAction(const Field& field) {
+    getMove()->setRandomMove(field);
 }

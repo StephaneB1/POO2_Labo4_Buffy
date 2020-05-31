@@ -84,7 +84,11 @@ public:
 
     bool hasHumans() const;
 
-    void kill(std::weak_ptr<Humanoid> v, bool targetIsVampire);
+    void kill(std::weak_ptr<Humanoid>& h, bool targetIsVampire);
+
+    int get_vCounter() const;
+
+    int get_hCounter() const;
 
 };
 

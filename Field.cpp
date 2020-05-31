@@ -137,7 +137,7 @@ Field::replaceByAVampire(std::weak_ptr<Humanoid> target) {
 }
 
 
-void Field::kill(std::weak_ptr<Humanoid> h, bool targetIsVampire) {
+void Field::kill(std::weak_ptr<Humanoid>& h, bool targetIsVampire) {
     h.lock()->kill();
 
     if (targetIsVampire) {
@@ -145,5 +145,13 @@ void Field::kill(std::weak_ptr<Humanoid> h, bool targetIsVampire) {
     } else {
         _hCounter--;
     }
+}
+
+int Field::get_vCounter() const {
+    return _vCounter;
+}
+
+int Field::get_hCounter() const {
+    return _hCounter;
 }
 

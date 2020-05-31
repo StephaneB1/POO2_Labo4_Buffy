@@ -130,22 +130,19 @@ const std::list<std::shared_ptr<Humanoid>>& Field::getHumanoids() const {
 
 void
 Field::replaceByAVampire(std::weak_ptr<Humanoid> target) {
+
     _vCounter++;
-    _hCounter--;
-
-    _humanoids.push_back(std::make_shared<Vampire>(target.lock()->getX(), target
-            .lock()->getY()));
-    target.lock()->kill();
+    _humanoids.push_back(std::make_shared<Vampire>(target.lock()->getX(),
+                                                   target.lock()->getY()));
 }
-
 
 
 void Field::kill(std::weak_ptr<Humanoid> h, bool targetIsVampire) {
     h.lock()->kill();
 
-    if(targetIsVampire){
+    if (targetIsVampire) {
         _vCounter--;
-    }else{
+    } else {
         _hCounter--;
     }
 }

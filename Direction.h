@@ -42,7 +42,7 @@ public:
      * @return
      */
     static Direction
-    getDirection(unsigned fromX, unsigned fromY, unsigned toX, unsigned toY);
+    getDirection(int fromX, int fromY, int toX, int toY);
 
     int getX() const;
 

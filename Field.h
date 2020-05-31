@@ -78,6 +78,9 @@ public:
 
     void init();
 
+    template <typename T>
+    void addToHumanoids(unsigned total);
+
     void decVampire();
 
     void decHuman();

@@ -104,24 +104,21 @@ void Field::reset() {
 
 void Field::init() {
 
-    _vCounter = _totalVampire;
-    _hCounter = _totalHuman;
+    _vCounter = (int) _totalVampire;
+    _hCounter = (int) _totalHuman;
 
-    unsigned x = Utils::generateRandom(0, _width);
-    unsigned y = Utils::generateRandom(0, _height);
+    addToHumanoids<Buffy>(1);
+    addToHumanoids<Human>(_totalHuman);
+    addToHumanoids<Vampire>(_totalVampire);
+}
 
-    _humanoids.push_back(new Buffy(x, y));
-
-    for (int i = 0; i < _totalHuman; i++) {
+template <typename T>
+void Field::addToHumanoids(unsigned total) {
+    unsigned x, y;
+    for (int i = 0; i < total; i++) {
         x = Utils::generateRandom(0, _width);
         y = Utils::generateRandom(0, _height);
-        _humanoids.push_back(new Human(x, y));
-    }
-
-    for (int i = 0; i < _totalVampire; i++) {
-        x = Utils::generateRandom(0, _width);
-        y = Utils::generateRandom(0, _height);
-        _humanoids.push_back(new Vampire(x, y));
+        _humanoids.push_back(new T(x, y));
     }
 }
 

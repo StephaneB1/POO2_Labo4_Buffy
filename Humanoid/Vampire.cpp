@@ -32,9 +32,9 @@ char Vampire::getSymbol() const {
 }
 
 int Vampire::getDistanceTo(std::weak_ptr<Buffy> b) const {
-    //return Humanoid::getDistanceTo(b);
-    return (int) hypot(abs( getX() - b.lock()->getX()),
-                       abs( getY() - b.lock()->getY()));
+    return Utils::getEuclideanDistance(getX(), getY(), b.lock()->getX(),
+                                       b.lock()->getY());
+
 }
 
 std::weak_ptr<Humanoid> Vampire::getTarget(const Field& field) {

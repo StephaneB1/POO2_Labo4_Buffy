@@ -24,3 +24,9 @@ bool Utils::isNextToTarget(Humanoid* source, std::weak_ptr<Humanoid> target) {
     return abs(source->getX() - target.lock()->getX()) <= 1 &&
            abs(source->getY() - target.lock()->getY()) <= 1;
 }
+
+int Utils::getEuclideanDistance(int fromX, int fromY, int toX, int toY) {
+    return (int) hypot(fromX - toX, fromY - toY);
+}
+
+

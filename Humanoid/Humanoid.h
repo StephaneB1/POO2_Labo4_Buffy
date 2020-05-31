@@ -49,6 +49,11 @@ public:
 
     void executeAction(Field* field);
 
+    /**
+     * Get the closest target
+     * @param field
+     * @return A waek ptr to the closest target
+     */
     virtual std::weak_ptr<Humanoid> getTarget(const Field& field);
 
     // Humanoid actions
@@ -75,14 +80,14 @@ public:
     virtual char getSymbol() const = 0;
 
     /**
-     * Get the distance between Buffy and this
+     * Get the distance between Buffy and this (Euclidean distance)
      * @param b
      * @return if this is a Vampire return the distance otherwise -1
      */
     virtual int getDistanceTo(std::weak_ptr<Buffy> b) const ;
 
     /**
-     * Get the distance between a vampire and this
+     * Get the distance between a vampire and this (Euclidean distance)
      * @param v
      * @return if this is a Human return the distance otherwise -1
      */

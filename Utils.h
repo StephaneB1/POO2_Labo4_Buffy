@@ -31,7 +31,9 @@ public:
      */
     static unsigned generateRandom(unsigned min, unsigned max);
 
-    static bool isNextToTarget(Humanoid* source,  std::weak_ptr<Humanoid> target);
+    static bool isNextToTarget(Humanoid* source, std::weak_ptr<Humanoid> target);
+
+    static int getEuclideanDistance(int fromX, int fromY, int toX, int toY);
 
 };
 

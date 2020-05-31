@@ -23,8 +23,8 @@ char Human::getSymbol() const {
 }
 
 int Human::getDistanceTo(std::weak_ptr<Vampire> v) const {
-    return (int) hypot(abs(getX() - v.lock()->getX()),
-                       abs(getY() - v.lock()->getY()));
+    return Utils::getEuclideanDistance(getX(), getY(), v.lock()->getX(),
+                                       v.lock()->getY());
 }
 
 Human::~Human() {

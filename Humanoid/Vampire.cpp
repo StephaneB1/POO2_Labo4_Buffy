@@ -14,9 +14,7 @@ Date        : 14.05.2020
 #include "../Action/Move.h"
 #include "../Field.h"
 
-Vampire::Vampire(unsigned int _x, unsigned int _y) : Humanoid(new Move(1), _x, _y),
-                                                     _bite(new Bite()),
-                                                     _kill(new Kill(false)) {
+Vampire::Vampire(unsigned int _x, unsigned int _y) : Humanoid(new Move(1), _x, _y) {
     getMove()->setHumanoid(this);
 }
 
@@ -58,11 +56,4 @@ int Vampire::getDistance(const Buffy* h) const {
 int Vampire::getDistance(const Vampire* v) const {
     return -1;
 }
-
-Vampire::~Vampire() {
-    delete _bite;
-    delete _kill;
-}
-
-
 

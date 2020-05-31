@@ -18,9 +18,6 @@ Date        : 14.05.2020
 
 class Vampire : public Humanoid{
 
-    Bite* _bite;
-    Kill* _kill;
-
 public:
     Vampire(unsigned int _x, unsigned int _y);
 
@@ -33,8 +30,6 @@ public:
     virtual int getDistance(const Vampire* v)  const;
 
     Vampire(Human* h);
-
-    ~Vampire();
 };
 
 

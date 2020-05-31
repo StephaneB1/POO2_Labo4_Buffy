@@ -55,6 +55,7 @@ Vampire::getAttackAction(const Field& field, const std::weak_ptr<Humanoid>& targ
 }
 
 Action* Vampire::getIdleAction(const Field& field) {
+    // Do nothing
     return nullptr;
 }
 

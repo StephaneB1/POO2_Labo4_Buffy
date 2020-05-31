@@ -16,8 +16,8 @@ Date        : 14.05.2020
 #include "../Action/Move.h"
 
 Humanoid::Humanoid(Move* _move, int _x, int _y) :
-        _move(_move), _x(_x), _y(_y), _isAlive(true), _nextAction(nullptr), _id
-        (_counter++) {}
+        _move(_move), _x(_x), _y(_y), _isAlive(true), _nextAction(nullptr),
+        _id(_counter++) {}
 
 Humanoid::~Humanoid() {
 
@@ -58,7 +58,7 @@ void Humanoid::setAction(const Field& field) {
     } else if (Utils::isNextToTarget(this, target)) {
         // Target is close enough for a kill
         _nextAction = getAttackAction(field, target);
-    } else{
+    } else {
         // Target is too far : the chase has begun !
         _nextAction = getChaseAction(field, target);
     }
@@ -76,13 +76,14 @@ Action* Humanoid::getIdleAction(const Field& field) {
 }
 
 Action*
-Humanoid::getAttackAction(const Field& field,const std::weak_ptr<Humanoid>& target) {
+Humanoid::getAttackAction(const Field& field,
+                          const std::weak_ptr<Humanoid>& target) {
     // No attack by default
     return nullptr;
 }
 
 Action*
-Humanoid::getChaseAction(const Field& field, const std::weak_ptr<Humanoid>& target){
+Humanoid::getChaseAction(const Field& field, const std::weak_ptr<Humanoid>& target) {
     // Chase target by default
     Direction moveDir = Direction::getDirection(getX(), getY(),
                                                 target.lock()->getX(),
@@ -105,8 +106,8 @@ void Humanoid::setPosition(int x, int y) {
     _y = y;
 }
 
-unsigned Humanoid::_counter = 0;
-
 unsigned int Humanoid::get_id() const {
     return _id;
 }
+
+unsigned Humanoid::_counter = 0;

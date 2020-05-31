@@ -17,19 +17,22 @@ class Kill : public Action {
 private:
     std::weak_ptr<Humanoid> _target;
 
+    // Indicate if the humanoid target is a Vampire
     const bool _targetIsVampire;
 
 public:
 
-
     Kill(bool targetIsVampire);
 
+    virtual ~Kill();
+
+    /**
+     * Set which humanoid to execute the action
+     * @param target
+     */
     void setTarget(std::weak_ptr<Humanoid> target);
 
     virtual void execute(Field* field);
-
-
-    virtual ~Kill();
 
 };
 

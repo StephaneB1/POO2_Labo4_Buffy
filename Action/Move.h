@@ -19,8 +19,10 @@ Date        : 14.05.2020
 class Move : public Action {
 
 private:
+
+    // Which Humanoid own this move
     Humanoid* _humanoid;
-    unsigned _stepRange;
+    const unsigned _stepRange;
 
     int _toX;
     int _toY;
@@ -28,6 +30,8 @@ private:
 public:
 
     Move(unsigned int _stepRange, Humanoid* humanoid);
+
+    virtual ~Move();
 
     void execute(Field* field) override;
 
@@ -51,8 +55,6 @@ public:
     void setNextPosition(const Direction& nextDirection, const Field& field);
 
     Humanoid* getHumanoid() const;
-
-    virtual ~Move();
 
 };
 

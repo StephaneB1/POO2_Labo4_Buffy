@@ -23,6 +23,10 @@ public:
 
     virtual void execute(Field* field);
 
+    /**
+     * Set which humanoid to execute the action
+     * @param target
+     */
     void setTarget(std::weak_ptr<Humanoid> target);
 
     virtual ~Bite();

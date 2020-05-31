@@ -23,6 +23,7 @@ void Move::execute(Field* field) {
 void Move::setRandomMove(const Field& field) {
     std::vector<Direction> possibleDirection = getPossibleDirections(field);
 
+    // Choose a random direction in the possible list
     Direction nextDirection = possibleDirection.at(
             Utils::generateRandom(0, possibleDirection.size()));
 
@@ -30,9 +31,12 @@ void Move::setRandomMove(const Field& field) {
 }
 
 void Move::setNextPosition(const Direction& nextDirection, const Field& field) {
+
     int newX = getHumanoid()->getX() + nextDirection.getX() * _stepRange;
     int newY = getHumanoid()->getY() + nextDirection.getY() * _stepRange;
+
     // without an explicit cast, the compiler cast into unsigned
+    // if the new position is outside the board, we replace inside the board
     if (newX >= (int) field.getWidth()) {
         _toX = field.getWidth() - 1;
     } else if (newX < 0) {

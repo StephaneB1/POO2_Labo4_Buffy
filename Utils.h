@@ -31,8 +31,22 @@ public:
      */
     static unsigned generateRandom(unsigned min, unsigned max);
 
+    /**
+     * Indicate if the nearby his target (one case distance)
+     * @param source
+     * @param target
+     * @return true is the source is one case distance to the source
+     */
     static bool isNextToTarget(Humanoid* source, std::weak_ptr<Humanoid> target);
 
+    /**
+     * Return the euclidean distance between from and to
+     * @param fromX
+     * @param fromY
+     * @param toX
+     * @param toY
+     * @return euclidean distance casted into int
+     */
     static int getEuclideanDistance(int fromX, int fromY, int toX, int toY);
 
 };

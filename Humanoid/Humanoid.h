@@ -80,22 +80,20 @@ public:
     virtual char getSymbol() const = 0;
 
     /**
-     * Get the distance between Buffy and this (Euclidean distance)
+     * Get the distance between Buffy and this humanoid(Euclidean distance)
      * @param b
      * @return if this is a Vampire return the distance otherwise -1
      */
     virtual int getDistanceTo(std::weak_ptr<Buffy> b) const ;
 
     /**
-     * Get the distance between a vampire and this (Euclidean distance)
+     * Get the distance between a vampire and this humanoid(Euclidean distance)
      * @param v
      * @return if this is a Human return the distance otherwise -1
      */
     virtual int getDistanceTo(std::weak_ptr<Vampire> v) const;
 
     unsigned int get_id() const;
-
-
 
 };
 

@@ -12,6 +12,7 @@ Date        : 14.05.2020
 #include "../Field.h"
 
 void Bite::execute(Field* field) {
+    // Execute only if the target is alive
     if(_target.lock()->isAlive()) {
         field->kill(_target, false);
         field->replaceByAVampire(_target);

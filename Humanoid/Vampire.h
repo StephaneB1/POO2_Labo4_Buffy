@@ -16,7 +16,7 @@ Date        : 14.05.2020
 #include "Humanoid.h"
 #include "Human.h"
 
-class Vampire : public Humanoid, public std::enable_shared_from_this<Vampire>{
+class Vampire : public Humanoid, public std::enable_shared_from_this<Vampire> {
 
     Kill* _kill;
     Bite* _bite;
@@ -33,7 +33,7 @@ public:
 
     Action* getIdleAction(const Field& field) override;
 
-    char getSymbol()const override;
+    char getSymbol() const override;
 
     int getDistanceTo(std::weak_ptr<Buffy> b) const override;
 

@@ -12,7 +12,10 @@ Date        : 14.05.2020
 #include "../Field.h"
 
 void Bite::execute(Field* field) {
-    field->replaceByAVampire(_target);
+    if(_target.lock()->isAlive()) {
+        field->kill(_target, false);
+        field->replaceByAVampire(_target);
+    }
 }
 
 Bite::~Bite() {

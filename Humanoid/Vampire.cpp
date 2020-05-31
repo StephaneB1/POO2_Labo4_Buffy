@@ -35,7 +35,7 @@ int Vampire::getDistance(std::weak_ptr<Buffy> b) const {
 }
 
 std::weak_ptr<Humanoid> Vampire::getTarget(const Field& field) {
-    return field.getClosest(shared_from_this());
+    return field.getClosest(weak_from_this());
 }
 
 Action* Vampire::getAttackAction(const Field &field,  std::weak_ptr<Humanoid> target) {
@@ -48,9 +48,6 @@ Action* Vampire::getAttackAction(const Field &field,  std::weak_ptr<Humanoid> ta
         _bite->setTarget(target);
         return _bite;
     }
-   /* return Utils::generateRandom(0, 2) == 0 ?
-           ((Action*) new Bite((Human*) target)) :
-           ((Action*) new Kill(target, false));*/
 }
 
 Action *Vampire::getIdleAction(const Field &field) {

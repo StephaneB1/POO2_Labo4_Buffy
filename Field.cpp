@@ -57,7 +57,7 @@ unsigned int Field::getHeight() const {
 
 template<typename F>
 std::weak_ptr<Humanoid>
-Field::getClosest(std::weak_ptr<Humanoid> source, F distFunc) const {
+Field::getClosest(F distFunc) const {
     std::weak_ptr<Humanoid> res;
     int min = INT_MAX;
     int d;
@@ -75,13 +75,13 @@ Field::getClosest(std::weak_ptr<Humanoid> source, F distFunc) const {
 }
 
 std::weak_ptr<Humanoid> Field::getClosest(std::weak_ptr<Vampire> v) const {
-    return getClosest(v, [&](std::weak_ptr<Humanoid> h1) {
+    return getClosest([&](std::weak_ptr<Humanoid> h1) {
         return h1.lock()->getDistance(v);
     });
 }
 
 std::weak_ptr<Humanoid> Field::getClosest(std::weak_ptr<Buffy> b) const {
-    return getClosest(b, [&](std::weak_ptr<Humanoid> h1) {
+    return getClosest([&](std::weak_ptr<Humanoid> h1) {
         return h1.lock()->getDistance(b);
     });
 }

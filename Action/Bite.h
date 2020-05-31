@@ -21,13 +21,9 @@ public:
 
     Bite();
 
-
-    Bite(const std::weak_ptr<Human>& _target);
-
     virtual void execute(Field* field);
 
     void setTarget(std::weak_ptr<Humanoid> target);
-
 
     virtual ~Bite();
 };

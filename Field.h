@@ -69,7 +69,7 @@ public:
 
     template<typename F>
     std::weak_ptr<Humanoid>
-    getClosest(std::weak_ptr<Humanoid> source, F lambda) const;
+    getClosest(F lambda) const;
 
     const std::list<std::shared_ptr<Humanoid>>& getHumanoids() const;
 

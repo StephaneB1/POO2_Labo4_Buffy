@@ -20,7 +20,6 @@ Bite::~Bite() {
 
 Bite::Bite() {}
 
-Bite::Bite(const std::weak_ptr<Human>& _target) : _target(_target) {}
 
 void Bite::setTarget(std::weak_ptr<Humanoid> target) {
     _target = target;

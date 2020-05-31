@@ -23,7 +23,7 @@ char Buffy::getSymbol() const {
 }
 
 std::weak_ptr<Humanoid> Buffy::getTarget(const Field &field) {
-    return field.getClosest(shared_from_this());
+    return field.getClosest(weak_from_this());
 }
 
 Action* Buffy::getAttackAction(const Field &field, std::weak_ptr<Humanoid>target) {

@@ -49,8 +49,8 @@ void Humanoid::setY(unsigned int y) {
     _y = y;
 }
 
-void Humanoid::setIsAlive(bool isAlive) {
-    _isAlive = isAlive;
+void Humanoid::kill() {
+    _isAlive = false;
 }
 
 bool Humanoid::standsHere(unsigned int x, unsigned int y) {

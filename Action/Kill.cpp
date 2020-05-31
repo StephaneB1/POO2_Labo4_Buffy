@@ -7,29 +7,18 @@ Date        : 14.05.2020
 -----------------------------------------------------------------------------------
  */
 
-#include <iostream>
 #include "Kill.h"
 #include "../Field.h"
 
-Kill::Kill(bool targetIsVampire) : Kill(nullptr, targetIsVampire) {}
-
-void Kill::setTarget(Humanoid* target) {
-    _target = target;
+Kill::Kill(Humanoid *target, bool targetIsVampire)
+        : _target(target), _targetIsVampire(targetIsVampire) {
 }
 
 void Kill::execute(Field* field) {
-    _target->setIsAlive(false);
-    if(_targetIsVampire){
-        field->decVampire();
-    }else{
-        field->decHuman();
-    }
+    // Replace the target by nothing (= kill)
+    field->replace(_target, nullptr, _targetIsVampire);
 }
 
-Kill::Kill(Humanoid *target, bool targetIsVampire) : _target(target),
-                                                  _targetIsVampire(targetIsVampire) {
-
-}
 
 Kill::~Kill() {
 

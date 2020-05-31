@@ -8,6 +8,7 @@ Date        : 14.05.2020
  */
 
 
+#include <iostream>
 #include "../Utils.h"
 #include "Vampire.h"
 
@@ -37,8 +38,8 @@ Humanoid *Vampire::getTarget(const Field& field) {
 Action* Vampire::getAttackAction(const Field &field, Humanoid* target) {
     // 50/50 between bite and kill human
     return Utils::generateRandom(0, 2) == 0 ?
-           (Action*) new Bite((Human*) target) :
-           (Action*) new Kill(target, false);
+           ((Action*) new Bite((Human*) target)) :
+           ((Action*) new Kill(target, false));
 }
 
 Action *Vampire::getIdleAction(const Field &field) {

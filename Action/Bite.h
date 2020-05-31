@@ -21,8 +21,6 @@ public:
 
     Bite(Human* target);
 
-    void setTarget(Human* humanoid);
-
     virtual void execute(Field* field);
 
     ~Bite();

@@ -63,7 +63,7 @@ public:
 
     void setY(unsigned int y);
 
-    void setIsAlive(bool _isAlive);
+    void kill();
 
     bool standsHere(unsigned int x, unsigned int y);
 

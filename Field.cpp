@@ -89,12 +89,19 @@ const std::list<Humanoid*>& Field::getHumanoids() const {
     return _humanoids;
 }
 
-void Field::replace(Human* oldPerson, Vampire* newPerson) {
-    oldPerson->setIsAlive(false);
-    _hCounter--;
+void Field::replace(Humanoid* target, Vampire* replacement, bool targetIsVampire) {
+    // Killing the humanoid
+    if(target != nullptr) {
+        target->kill();
+        if(targetIsVampire) _vCounter--;
+        else                _hCounter--;
+    }
 
-    _humanoids.push_back(newPerson);
-    _vCounter++;
+    // replacing the dead human by a vampire
+    if(replacement != nullptr) {
+        _humanoids.push_back(replacement);
+        _vCounter++;
+    }
 }
 
 void Field::reset() {

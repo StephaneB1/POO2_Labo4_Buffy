@@ -52,7 +52,7 @@ public:
 
     unsigned int getTurn() const;
 
-    void replace(Human* oldPerson, Vampire* newPerson);
+    void replace(Humanoid* target, Vampire* replacement, bool targetIsVampire);
 
     /**
     * Find the closest Humain to the vampire v

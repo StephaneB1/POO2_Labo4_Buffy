@@ -11,18 +11,12 @@ Date        : 14.05.2020
 
 #include "../Field.h"
 
-void Bite::setTarget(Human* humanoid) {
-    _target = humanoid;
+Bite::Bite(Human* target) : _target(target) {
 }
 
 void Bite::execute(Field* field) {
-    field->replace(_target, _target->becomeAVampire());
-}
-
-Bite::Bite(Human* target) : _target(target) {
-
+    field->replace(_target, _target->becomeAVampire(), false);
 }
 
 Bite::~Bite() {
-
 }

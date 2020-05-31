@@ -17,9 +17,11 @@ class Kill : public Action {
 private:
     Humanoid* _target;
 
-    const bool targetIsVampire;
+    const bool _targetIsVampire;
 
 public:
+
+    Kill(Human* target, bool targetIsVampire);
 
     Kill(bool targetIsVampire);
 

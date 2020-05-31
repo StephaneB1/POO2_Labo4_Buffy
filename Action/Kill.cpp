@@ -11,20 +11,24 @@ Date        : 14.05.2020
 #include "Kill.h"
 #include "../Field.h"
 
-Kill::Kill(bool targetIsVampire) : targetIsVampire(targetIsVampire) {}
+Kill::Kill(bool targetIsVampire) : Kill(nullptr, targetIsVampire) {}
 
 void Kill::setTarget(Humanoid* target) {
     _target = target;
 }
 
 void Kill::execute(Field* field) {
-    //std::cout << "kill!" << std::endl;
     _target->setIsAlive(false);
-    if(targetIsVampire){
+    if(_targetIsVampire){
         field->decVampire();
     }else{
         field->decHuman();
     }
+}
+
+Kill::Kill(Human *target, bool targetIsVampire) : _target(target),
+                                                  _targetIsVampire(targetIsVampire) {
+
 }
 
 

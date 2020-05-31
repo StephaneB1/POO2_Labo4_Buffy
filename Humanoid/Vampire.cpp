@@ -34,13 +34,10 @@ void Vampire::setAction(const Field& field) {
         return;
     } else if (abs(getX() - target->getX()) <= 1 &&
                abs(getY() - target->getY()) <= 1) {
-        if (Utils::generateRandom(0, 2)) {
-            _bite->setTarget(target);
-            setNextAction(_bite);
-        } else {
-            _kill->setTarget(target);
-            setNextAction(_kill);
-        }
+        // Attack (50/50) : bite or kill for the next action
+        setNextAction(Utils::generateRandom(0, 2) == 0 ?
+                      (Action*) new Bite(target) :
+                      (Action*) new Kill(target, false));
     } else {
         Direction moveDir = Direction::getDirection(getX(), getY(), target->getX(),
                                                     target->getY());
@@ -60,6 +57,11 @@ int Vampire::getDistance(const Buffy* h) const {
 
 int Vampire::getDistance(const Vampire* v) const {
     return -1;
+}
+
+Vampire::~Vampire() {
+    delete _bite;
+    delete _kill;
 }
 
 

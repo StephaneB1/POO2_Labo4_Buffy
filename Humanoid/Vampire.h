@@ -33,6 +33,8 @@ public:
     virtual int getDistance(const Vampire* v)  const;
 
     Vampire(Human* h);
+
+    ~Vampire();
 };
 
 

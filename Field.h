@@ -81,10 +81,6 @@ public:
     template <typename T>
     void addToHumanoids(unsigned total);
 
-    void decVampire();
-
-    void decHuman();
-
     bool isFreeOfVampires() const;
 
     bool hasHumans() const;

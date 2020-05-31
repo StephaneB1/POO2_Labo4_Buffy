@@ -90,7 +90,7 @@ const std::list<Humanoid*>& Field::getHumanoids() const {
 }
 
 void Field::replace(Humanoid* target, Vampire* replacement, bool targetIsVampire) {
-    // Killing the humanoid
+    // Killing the humanoid (human or vampire)
     if(target != nullptr) {
         target->kill();
         if(targetIsVampire) _vCounter--;
@@ -98,7 +98,7 @@ void Field::replace(Humanoid* target, Vampire* replacement, bool targetIsVampire
     }
 
     // replacing the dead human by a vampire
-    if(replacement != nullptr) {
+    if(!targetIsVampire && replacement != nullptr) {
         _humanoids.push_back(replacement);
         _vCounter++;
     }
@@ -127,14 +127,6 @@ void Field::addToHumanoids(unsigned total) {
         y = Utils::generateRandom(0, _height);
         _humanoids.push_back(new T(x, y));
     }
-}
-
-void Field::decVampire() {
-    _vCounter--;
-}
-
-void Field::decHuman() {
-    _hCounter--;
 }
 
 bool Field::isFreeOfVampires() const {

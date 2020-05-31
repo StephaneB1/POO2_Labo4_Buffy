@@ -87,9 +87,17 @@ void Humanoid::setAttackAction(const Field &field, Humanoid *target) {
 
 void Humanoid::setChaseAction(const Field &field, Humanoid *target) {
     // Chase target by default
-    Direction moveDir =
-            Direction::getDirection(getX(), getY(), target->getX(), target->getY());
+    Direction moveDir = Direction::getDirection(getX(), getY(),
+            target->getX(), target->getY());
 
     _move->setNextPosition(moveDir, field);
     setNextAction(_move);
+}
+
+int Humanoid::getDistance(const Buffy *b) const {
+    return -1;
+}
+
+int Humanoid::getDistance(const Vampire *v) const {
+    return -1;
 }

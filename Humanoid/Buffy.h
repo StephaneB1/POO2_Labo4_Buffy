@@ -27,13 +27,7 @@ public:
 
     void setAttackAction(const Field &field, Humanoid *target) override;
 
-    //void setChaseAction(const Field &field, Humanoid *target) override;
-
     char getSymbol() const override;
-
-    int getDistance(const Buffy* h) const override;
-
-    int getDistance(const Vampire* v)  const override;
 };
 
 

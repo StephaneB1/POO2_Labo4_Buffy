@@ -22,38 +22,12 @@ Vampire::Vampire(Human* h) : Vampire(h->getX(), h->getY()) {
 
 }
 
-/*void Vampire::setAction(const Field& field) {
-
-    Human* target = (Human*) field.getClosest(this);
-
-
-    if (target == nullptr) {
-        setNextAction(nullptr);
-        return;
-    } else if (Utils::isNextToTarget(this, target)) {
-        // Attack (50/50) : bite or kill for the next action
-        setNextAction(Utils::generateRandom(0, 2) == 0 ?
-                      (Action*) new Bite(target) :
-                      (Action*) new Kill(target, false));
-    } else {
-        Direction moveDir = Direction::getDirection(getX(), getY(), target->getX(),
-                                                    target->getY());
-
-        getMove()->setNextPosition(moveDir, field);
-        setNextAction(getMove());
-    }
-}*/
-
 char Vampire::getSymbol() const {
     return 'v';
 }
 
 int Vampire::getDistance(const Buffy* h) const {
     return (int) hypot(abs(getX() - h->getX()), abs(getY() - h->getY()));
-}
-
-int Vampire::getDistance(const Vampire* v) const {
-    return -1;
 }
 
 Humanoid *Vampire::getTarget(const Field& field) {
@@ -70,13 +44,3 @@ void Vampire::setAttackAction(const Field &field, Humanoid* target) {
                   (Action*) new Bite((Human*) target) :
                   (Action*) new Kill(target, false));
 }
-
-/*void Vampire::setChaseAction(const Field &field, Humanoid* target) {
-
-    Direction moveDir = Direction::getDirection(getX(), getY(), target->getX(),
-                                                target->getY());
-
-    getMove()->setNextPosition(moveDir, field);
-    setNextAction(getMove());
-}*/
-

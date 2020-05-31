@@ -76,14 +76,14 @@ public:
      * @param b
      * @return if this is a Vampire return the distance otherwise -1
      */
-    virtual int getDistance(const Buffy* b)const = 0;
+    virtual int getDistance(const Buffy* b) const;
 
     /**
      * Get the distance between a vampire and this
      * @param v
      * @return if this is a Human return the distance otherwise -1
      */
-    virtual int getDistance(const Vampire* v)const = 0;
+    virtual int getDistance(const Vampire* v) const;
 };
 
 

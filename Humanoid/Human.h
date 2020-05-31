@@ -26,8 +26,6 @@ public:
 
     char getSymbol() const override;
 
-    int getDistance(const Buffy* h) const override;
-
     int getDistance(const Vampire* v) const override;
 
     Vampire* becomeAVampire();

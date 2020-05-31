@@ -24,4 +24,3 @@ bool Utils::isNextToTarget(Humanoid *source, Humanoid *target) {
     return abs(source->getX() - target->getX()) <= 1 &&
            abs(source->getY() - target->getY()) <= 1;
 }
-

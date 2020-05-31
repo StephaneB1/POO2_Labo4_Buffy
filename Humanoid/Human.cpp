@@ -19,20 +19,12 @@ Human::Human(unsigned int _x, unsigned int _y) : Humanoid(new Move(1), _x, _y) {
     getMove()->setHumanoid(this);
 }
 
-/*void Human::setAction(const Field& field) {
-    getMove()->setRandomMove(field);
-}*/
-
 char Human::getSymbol() const {
     return 'h';
 }
 
 int Human::getDistance(const Vampire* v) const {
     return hypot(abs(getX() - v->getX()), abs(getY() - v->getY()));
-}
-
-int Human::getDistance(const Buffy* h) const {
-    return -1;
 }
 
 Vampire* Human::becomeAVampire() {

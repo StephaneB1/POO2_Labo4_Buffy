@@ -33,10 +33,6 @@ void Humanoid::executeAction(Field* field) {
     }
 }
 
-void Humanoid::setNextAction(Action* nextAction) {
-    _nextAction = nextAction;
-}
-
 unsigned int Humanoid::getX() const {
     return _x;
 }

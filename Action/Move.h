@@ -28,8 +28,6 @@ public:
 
     Move(unsigned int _stepRange, Humanoid* humanoid);
 
-    Move(unsigned int _stepRange);
-
     void execute(Field* field) override;
 
     /**
@@ -50,13 +48,6 @@ public:
      * @param nextDirection
      */
     void setNextPosition(const Direction& nextDirection, const Field& field);
-
-    /**
-     * Set the humanoid that own this move
-     * @param _humanoid
-     */
-    void setHumanoid(Humanoid* _humanoid);
-
 
     Humanoid* getHumanoid() const;
 

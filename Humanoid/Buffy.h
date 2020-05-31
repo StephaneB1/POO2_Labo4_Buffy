@@ -27,7 +27,7 @@ public:
 
     void setAttackAction(const Field &field, Humanoid *target) override;
 
-    void setDefaultAction(const Field &field, Humanoid *target) override;
+    //void setChaseAction(const Field &field, Humanoid *target) override;
 
     char getSymbol() const override;
 

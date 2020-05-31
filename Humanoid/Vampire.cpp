@@ -65,16 +65,18 @@ void Vampire::setIdleAction(const Field &field) {
 }
 
 void Vampire::setAttackAction(const Field &field, Humanoid* target) {
+    // 50/50 between bite and kill human
     setNextAction(Utils::generateRandom(0, 2) == 0 ?
                   (Action*) new Bite((Human*) target) :
                   (Action*) new Kill(target, false));
 }
 
-void Vampire::setDefaultAction(const Field &field, Humanoid* target) {
+/*void Vampire::setChaseAction(const Field &field, Humanoid* target) {
+
     Direction moveDir = Direction::getDirection(getX(), getY(), target->getX(),
                                                 target->getY());
 
     getMove()->setNextPosition(moveDir, field);
     setNextAction(getMove());
-}
+}*/
 

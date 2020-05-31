@@ -15,7 +15,6 @@ Date        : 14.05.2020
 #include <vector>
 #include "../Humanoid/Humanoid.h"
 
-
 class Move : public Action {
 
 private:

@@ -12,6 +12,8 @@ Date        : 14.05.2020
 #include "../Action/Action.h"
 #include "../Field.h"
 #include "../Utils.h"
+#include "../Direction.h"
+#include "../Action/Move.h"
 
 Humanoid::Humanoid(Move* _move, unsigned int _x, unsigned int _y) :
         _move(_move), _x(_x), _y(_y), _isAlive(true), _nextAction(nullptr) {}
@@ -70,19 +72,24 @@ void Humanoid::setAction(const Field &field) {
     } else if (Utils::isNextToTarget(this, target)) {
         setAttackAction(field, target);
     } else {
-        setDefaultAction(field, target);
+        setChaseAction(field, target);
     }
 }
 
 Humanoid *Humanoid::getTarget(const Field &field) {
+    // No target by default
     return nullptr;
 }
 
 void Humanoid::setAttackAction(const Field &field, Humanoid *target) {
-    // No attack
+    // No attack by default
 }
 
-void Humanoid::setDefaultAction(const Field &field, Humanoid *target) {
-    // No default
-}
+void Humanoid::setChaseAction(const Field &field, Humanoid *target) {
+    // Chase target by default
+    Direction moveDir =
+            Direction::getDirection(getX(), getY(), target->getX(), target->getY());
 
+    _move->setNextPosition(moveDir, field);
+    setNextAction(_move);
+}

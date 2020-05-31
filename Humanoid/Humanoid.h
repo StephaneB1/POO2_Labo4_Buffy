@@ -51,7 +51,7 @@ public:
     // Humanoid actions
     virtual void setIdleAction(const Field& field) = 0;
     virtual void setAttackAction(const Field& field, Humanoid* target);
-    virtual void setDefaultAction(const Field& field, Humanoid* target);
+    virtual void setChaseAction(const Field& field, Humanoid* target);
 
     bool isAlive() const;
 

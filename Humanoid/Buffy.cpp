@@ -68,11 +68,11 @@ void Buffy::setAttackAction(const Field &field, Humanoid *target) {
     setNextAction(new Kill(target, true));
 }
 
-void Buffy::setDefaultAction(const Field &field, Humanoid *target) {
+/*void Buffy::setChaseAction(const Field &field, Humanoid *target) {
     Direction moveDir = Direction::getDirection(getX(), getY(),
                                                 target->getX(),
                                                 target->getY());
 
     getMove()->setNextPosition(moveDir, field);
     setNextAction(getMove());
-}
+}*/

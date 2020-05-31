@@ -4,24 +4,20 @@ Laboratoire : 04
 Fichier     : Move.cpp
 Auteur(s)   : Stéphane Bottin & Chau Ying Kot
 Date        : 14.05.2020
----------
- --------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
  */
 #include "Action.h"
 #include "../Utils.h"
-#include <iostream>
 #include "Move.h"
 
 #include "../Field.h"
 
-Move::Move(unsigned int _stepRange) : _stepRange(_stepRange), _toY(0), _toX(0) {}
+Move::Move(unsigned int _stepRange, Humanoid* humanoid)
+        : _stepRange(_stepRange), _humanoid(humanoid), _toY(0), _toX(0) {
+}
 
 void Move::execute(Field* field) {
-    /*std::cout << getHumanoid()->getSymbol() << " : (" << getHumanoid()->getX()
-              << ", " << getHumanoid()->getY() << ") -> (" << _toX << ", " << _toY
-              << ")." << std::endl;*/
-    getHumanoid()->setY(_toY);
-    getHumanoid()->setX(_toX);
+    getHumanoid()->setPosition(_toX, _toY);
 }
 
 void Move::setRandomMove(const Field& field) {
@@ -34,8 +30,6 @@ void Move::setRandomMove(const Field& field) {
 }
 
 void Move::setNextPosition(const Direction& nextDirection, const Field& field) {
-
-
     int newX = getHumanoid()->getX() + nextDirection.getX() * _stepRange;
     int newY = getHumanoid()->getY() + nextDirection.getY() * _stepRange;
     // without an explicit cast, the compiler cast into unsigned
@@ -100,15 +94,10 @@ std::vector<Direction> Move::getPossibleDirections(const Field& field) const {
     return possibleDirection;
 }
 
-
-void Move::setHumanoid(Humanoid* _humanoid) {
-    Move::_humanoid = _humanoid;
-}
-
 Humanoid* Move::getHumanoid() const {
     return _humanoid;
 }
 
-unsigned int Move::get_stepRange() const {
-    return _stepRange;
+Move::~Move() {
+
 }

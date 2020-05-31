@@ -7,7 +7,6 @@ Date        : 14.05.2020
 -----------------------------------------------------------------------------------
  */
 
-#include <cmath>
 #include "Buffy.h"
 #include "Vampire.h"
 
@@ -15,40 +14,17 @@ Date        : 14.05.2020
 #include "../Field.h"
 
 Buffy::Buffy(unsigned int _x, unsigned int _y) :
-        Humanoid(new Move(2), _x, _y), _kill(new Kill(true)) {
-    getMove()->setHumanoid(this);
-}
-
-void Buffy::setAction(const Field& field) {
-
-    Vampire* target = (Vampire*) field.getClosest(this);
-
-    if (target == nullptr) { // If Null (Zero Vampire in the board)
-        getMove()->setRandomMove(field);
-        setNextAction(getMove());
-    } else if (abs(getX() - target->getX()) <= 1 &&
-               abs(getY() - target->getY()) <= 1) { // If next to a Vampire
-        _kill->setTarget(target);
-        setNextAction(_kill);
-    } else {
-
-        Direction moveDir = Direction::getDirection(getX(), getY(),
-                                                    target->getX(),
-                                                    target->getY());
-
-        getMove()->setNextPosition(moveDir, field);
-        setNextAction(getMove());
-    }
+    Humanoid(new Move(2, this), _x, _y) {
 }
 
 char Buffy::getSymbol() const {
     return 'b';
 }
 
-int Buffy::getDistance(const Buffy* b) const {
-    return -1;
+Humanoid *Buffy::getTarget(const Field &field) {
+    return (Vampire*) field.getClosest(this);
 }
 
-int Buffy::getDistance(const Vampire* v) const {
-    return -1;
+Action* Buffy::getAttackAction(const Field &field, Humanoid *target) {
+    return new Kill(target, true);
 }

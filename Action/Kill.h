@@ -17,9 +17,11 @@ class Kill : public Action {
 private:
     Humanoid* _target;
 
-    const bool targetIsVampire;
+    const bool _targetIsVampire;
 
 public:
+
+    Kill(Humanoid* target, bool targetIsVampire);
 
     Kill(bool targetIsVampire);
 
@@ -28,6 +30,7 @@ public:
     virtual void execute(Field* field);
 
 
+    ~Kill();
 
 };
 

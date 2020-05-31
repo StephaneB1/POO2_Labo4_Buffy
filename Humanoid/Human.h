@@ -22,15 +22,9 @@ public:
 
     Human(unsigned int _x, unsigned int _y);
 
-    void setAction(const Field& field) override;
-
     char getSymbol() const override;
 
-    int getDistance(const Buffy* h) const override;
-
     int getDistance(const Vampire* v) const override;
-
-    Vampire* becomeAVampire();
 };
 
 

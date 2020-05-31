@@ -18,21 +18,21 @@ Date        : 14.05.2020
 
 class Vampire : public Humanoid{
 
-    Bite* _bite;
-    Kill* _kill;
-
 public:
     Vampire(unsigned int _x, unsigned int _y);
 
-    virtual void setAction(const Field& field) ;
-
-    virtual char getSymbol()const;
-
-    virtual int getDistance(const Buffy* h) const;
-
-    virtual int getDistance(const Vampire* v)  const;
-
     Vampire(Human* h);
+
+    Humanoid *getTarget(const Field& field) override;
+
+    Action* getAttackAction(const Field &field, Humanoid* target) override;
+
+    Action* getIdleAction(const Field& field) override;
+
+    char getSymbol()const override;
+
+    int getDistance(const Buffy* h) const override;
+
 };
 
 

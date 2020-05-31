@@ -19,9 +19,11 @@ class Bite : public Action{
 
 public:
 
-    void setTarget(Human* humanoid);
+    Bite(Human* target);
 
     virtual void execute(Field* field);
+
+    ~Bite();
 };
 
 

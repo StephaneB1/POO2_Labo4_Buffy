@@ -7,16 +7,16 @@ Date        : 14.05.2020
 -----------------------------------------------------------------------------------
  */
 
-#include <iostream>
 #include "Bite.h"
 
 #include "../Field.h"
 
-void Bite::setTarget(Human* humanoid) {
-    _target = humanoid;
+Bite::Bite(Human* target) : _target(target) {
 }
 
 void Bite::execute(Field* field) {
-    //std::cout << "bite!" << std::endl;
-    field->replace(_target, _target->becomeAVampire());
+    field->replace(_target, new Vampire(_target), false);
+}
+
+Bite::~Bite() {
 }

@@ -18,20 +18,14 @@ Date        : 14.05.2020
 
 
 class Buffy : public Humanoid{
-
-private:
-    Kill* _kill;
-
 public:
     Buffy(unsigned int _x, unsigned int _y);
 
-    void setAction(const Field& field) override;
+    Humanoid *getTarget(const Field &field) override;
+
+    Action* getAttackAction(const Field &field, Humanoid *target) override;
 
     char getSymbol() const override;
-
-    int getDistance(const Buffy* h) const override;
-
-    int getDistance(const Vampire* v)  const override;
 };
 
 

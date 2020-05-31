@@ -28,10 +28,10 @@ class Humanoid {
 
 private:
     bool _isAlive;
-    Move* _move;
     unsigned _x;
     unsigned _y;
 
+    Move* _move;
     Action* _nextAction;
 
 public:
@@ -40,25 +40,26 @@ public:
 
     virtual ~Humanoid();
 
-    virtual void setAction(const Field& field) = 0;
-
-    void setNextAction(Action* nextAction);
+    void setAction(const Field& field);
 
     void executeAction(Field* field);
+
+    virtual Humanoid* getTarget(const Field& field);
+
+    // Humanoid actions
+    virtual Action* getIdleAction(const Field& field);
+    virtual Action* getAttackAction(const Field& field, Humanoid* target);
+    virtual Action* getChaseAction(const Field& field, Humanoid* target);
 
     bool isAlive() const;
 
     unsigned int getX() const;
 
-    void setX(unsigned int x);
-
     unsigned int getY() const;
 
-    void setY(unsigned int y);
+    void setPosition(unsigned x, unsigned y);
 
-    Move* getMove() const;
-
-    void setIsAlive(bool _isAlive);
+    void kill();
 
     bool standsHere(unsigned int x, unsigned int y);
 
@@ -69,14 +70,16 @@ public:
      * @param b
      * @return if this is a Vampire return the distance otherwise -1
      */
-    virtual int getDistance(const Buffy* b)const = 0;
+    virtual int getDistance(const Buffy* b) const;
 
     /**
      * Get the distance between a vampire and this
      * @param v
      * @return if this is a Human return the distance otherwise -1
      */
-    virtual int getDistance(const Vampire* v)const = 0;
+    virtual int getDistance(const Vampire* v) const;
+
+    int getDistance(const Humanoid* humanoid) const;
 };
 
 

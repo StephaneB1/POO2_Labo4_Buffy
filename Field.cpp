@@ -44,8 +44,6 @@ unsigned Field::nextTurn() {
             ++it;
     }
 
-    //std::cout << "TOTAL LEFT : " << _humanoids.size() << std::endl;
-
     return _turn++;
 }
 
@@ -66,7 +64,7 @@ Humanoid* Field::getClosest(const Humanoid* source, F distFunc) const {
     for (Humanoid* h :_humanoids) {
         d = distFunc(h, source);
 
-        if (d > 0 && min > d) {
+        if (d >= 0 && min > d) {
             min = d;
             res = h;
         }
@@ -91,12 +89,19 @@ const std::list<Humanoid*>& Field::getHumanoids() const {
     return _humanoids;
 }
 
-void Field::replace(Human* oldPerson, Vampire* newPerson) {
-    oldPerson->setIsAlive(false);
-    _hCounter--;
+void Field::replace(Humanoid* target, Vampire* replacement, bool targetIsVampire) {
+    // Killing the humanoid (human or vampire)
+    if(target != nullptr) {
+        target->kill();
+        if(targetIsVampire) _vCounter--;
+        else                _hCounter--;
+    }
 
-    _humanoids.push_back(newPerson);
-    _vCounter++;
+    // replacing the dead human by a vampire
+    if(!targetIsVampire && replacement != nullptr) {
+        _humanoids.push_back(replacement);
+        _vCounter++;
+    }
 }
 
 void Field::reset() {
@@ -106,33 +111,22 @@ void Field::reset() {
 
 void Field::init() {
 
-    _vCounter = _totalVampire;
-    _hCounter = _totalHuman;
+    _vCounter = (int) _totalVampire;
+    _hCounter = (int) _totalHuman;
 
-    unsigned x = Utils::generateRandom(0, _width);
-    unsigned y = Utils::generateRandom(0, _height);
-
-    _humanoids.push_back(new Buffy(x, y));
-
-    for (int i = 0; i < _totalHuman; i++) {
-        x = Utils::generateRandom(0, _width);
-        y = Utils::generateRandom(0, _height);
-        _humanoids.push_back(new Human(x, y));
-    }
-
-    for (int i = 0; i < _totalVampire; i++) {
-        x = Utils::generateRandom(0, _width);
-        y = Utils::generateRandom(0, _height);
-        _humanoids.push_back(new Vampire(x, y));
-    }
+    addToHumanoids<Buffy>(1);
+    addToHumanoids<Human>(_totalHuman);
+    addToHumanoids<Vampire>(_totalVampire);
 }
 
-void Field::decVampire() {
-    _vCounter--;
-}
-
-void Field::decHuman() {
-    _hCounter--;
+template <typename T>
+void Field::addToHumanoids(unsigned total) {
+    unsigned x, y;
+    for (int i = 0; i < total; i++) {
+        x = Utils::generateRandom(0, _width);
+        y = Utils::generateRandom(0, _height);
+        _humanoids.push_back(new T(x, y));
+    }
 }
 
 bool Field::isFreeOfVampires() const {

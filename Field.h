@@ -52,7 +52,7 @@ public:
 
     unsigned int getTurn() const;
 
-    void replace(Human* oldPerson, Vampire* newPerson);
+    void replace(Humanoid* target, Vampire* replacement, bool targetIsVampire);
 
     /**
     * Find the closest Humain to the vampire v
@@ -62,7 +62,6 @@ public:
     Humanoid* getClosest(const Vampire* v) const;
 
     /**
-     * -> Refactor into getClosest(Humanoid*) ?
      * Find the closest Vampire to the Buffy
      * @param b
      * @return
@@ -78,9 +77,8 @@ public:
 
     void init();
 
-    void decVampire();
-
-    void decHuman();
+    template <typename T>
+    void addToHumanoids(unsigned total);
 
     bool isFreeOfVampires() const;
 

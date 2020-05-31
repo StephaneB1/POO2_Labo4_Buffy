@@ -15,7 +15,6 @@ Date        : 14.05.2020
 #include <vector>
 #include "../Humanoid/Humanoid.h"
 
-
 class Move : public Action {
 
 private:
@@ -27,8 +26,7 @@ private:
 
 public:
 
-
-    Move(unsigned int _stepRange);
+    Move(unsigned int _stepRange, Humanoid* humanoid);
 
     void execute(Field* field) override;
 
@@ -51,17 +49,9 @@ public:
      */
     void setNextPosition(const Direction& nextDirection, const Field& field);
 
-    /**
-     * Set the humanoid that own this move
-     * @param _humanoid
-     */
-    void setHumanoid(Humanoid* _humanoid);
-
-
     Humanoid* getHumanoid() const;
 
-    unsigned int get_stepRange() const;
-
+    ~Move();
 
 };
 

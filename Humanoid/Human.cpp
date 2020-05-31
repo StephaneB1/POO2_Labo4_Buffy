@@ -14,13 +14,8 @@ Date        : 14.05.2020
 #include "../Field.h"
 
 
-Human::Human(unsigned int _x, unsigned int _y) : Humanoid(new Move(1), _x, _y) {
-    setNextAction(getMove());
-    getMove()->setHumanoid(this);
-}
-
-void Human::setAction(const Field& field) {
-    getMove()->setRandomMove(field);
+Human::Human(unsigned int _x, unsigned int _y)
+: Humanoid(new Move(1, this), _x, _y) {
 }
 
 char Human::getSymbol() const {
@@ -28,13 +23,5 @@ char Human::getSymbol() const {
 }
 
 int Human::getDistance(const Vampire* v) const {
-    return hypot(abs(getX() - v->getX()), abs(getY() - v->getY()));
-}
-
-int Human::getDistance(const Buffy* h) const {
-    return -1;
-}
-
-Vampire* Human::becomeAVampire() {
-    return new Vampire(this);
+    return Humanoid::getDistance((Humanoid*) v);
 }

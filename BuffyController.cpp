@@ -7,8 +7,6 @@ Date        : 14.05.2020
 -----------------------------------------------------------------------------------
  */
 #include <iostream>
-#include <vector>
-#include <iterator>
 #include "BuffyController.h"
 
 BuffyController::BuffyController()

@@ -7,7 +7,6 @@ Date        : 14.05.2020
 -----------------------------------------------------------------------------------
  */
 
-#include <iostream>
 #include "Bite.h"
 
 #include "../Field.h"
@@ -17,6 +16,5 @@ void Bite::setTarget(Human* humanoid) {
 }
 
 void Bite::execute(Field* field) {
-    //std::cout << "bite!" << std::endl;
     field->replace(_target, _target->becomeAVampire());
 }

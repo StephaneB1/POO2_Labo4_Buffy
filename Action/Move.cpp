@@ -4,12 +4,10 @@ Laboratoire : 04
 Fichier     : Move.cpp
 Auteur(s)   : Stéphane Bottin & Chau Ying Kot
 Date        : 14.05.2020
----------
- --------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
  */
 #include "Action.h"
 #include "../Utils.h"
-#include <iostream>
 #include "Move.h"
 
 #include "../Field.h"
@@ -17,9 +15,6 @@ Date        : 14.05.2020
 Move::Move(unsigned int _stepRange) : _stepRange(_stepRange), _toY(0), _toX(0) {}
 
 void Move::execute(Field* field) {
-    /*std::cout << getHumanoid()->getSymbol() << " : (" << getHumanoid()->getX()
-              << ", " << getHumanoid()->getY() << ") -> (" << _toX << ", " << _toY
-              << ")." << std::endl;*/
     getHumanoid()->setY(_toY);
     getHumanoid()->setX(_toX);
 }
@@ -34,8 +29,6 @@ void Move::setRandomMove(const Field& field) {
 }
 
 void Move::setNextPosition(const Direction& nextDirection, const Field& field) {
-
-
     int newX = getHumanoid()->getX() + nextDirection.getX() * _stepRange;
     int newY = getHumanoid()->getY() + nextDirection.getY() * _stepRange;
     // without an explicit cast, the compiler cast into unsigned

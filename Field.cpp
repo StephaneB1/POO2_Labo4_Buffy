@@ -44,8 +44,6 @@ unsigned Field::nextTurn() {
             ++it;
     }
 
-    //std::cout << "TOTAL LEFT : " << _humanoids.size() << std::endl;
-
     return _turn++;
 }
 
@@ -66,7 +64,7 @@ Humanoid* Field::getClosest(const Humanoid* source, F distFunc) const {
     for (Humanoid* h :_humanoids) {
         d = distFunc(h, source);
 
-        if (d > 0 && min > d) {
+        if (d >= 0 && min > d) {
             min = d;
             res = h;
         }

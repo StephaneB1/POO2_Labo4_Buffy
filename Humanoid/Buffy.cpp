@@ -25,11 +25,6 @@ Humanoid *Buffy::getTarget(const Field &field) {
     return (Vampire*) field.getClosest(this);
 }
 
-Action* Buffy::getIdleAction(const Field &field) {
-    _move->setRandomMove(field);
-    return _move;
-}
-
 Action* Buffy::getAttackAction(const Field &field, Humanoid *target) {
     return new Kill(target, true);
 }

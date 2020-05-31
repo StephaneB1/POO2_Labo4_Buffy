@@ -29,8 +29,3 @@ int Human::getDistance(const Vampire* v) const {
 Vampire* Human::becomeAVampire() {
     return new Vampire(this);
 }
-
-Action* Human::getIdleAction(const Field& field) {
-    _move->setRandomMove(field);
-    return _move;
-}

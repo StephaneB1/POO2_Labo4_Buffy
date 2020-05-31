@@ -22,9 +22,7 @@ public:
     Buffy(unsigned int _x, unsigned int _y);
 
     Humanoid *getTarget(const Field &field) override;
-
-    Action* getIdleAction(const Field &field) override;
-
+    
     Action* getAttackAction(const Field &field, Humanoid *target) override;
 
     char getSymbol() const override;

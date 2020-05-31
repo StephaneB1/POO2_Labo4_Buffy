@@ -22,8 +22,6 @@ public:
 
     Human(unsigned int _x, unsigned int _y);
 
-    Action* getIdleAction(const Field& field) override;
-
     char getSymbol() const override;
 
     int getDistance(const Vampire* v) const override;

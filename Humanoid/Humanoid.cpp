@@ -37,16 +37,8 @@ unsigned int Humanoid::getX() const {
     return _x;
 }
 
-void Humanoid::setX(unsigned int x) {
-    _x = x;
-}
-
 unsigned int Humanoid::getY() const {
     return _y;
-}
-
-void Humanoid::setY(unsigned int y) {
-    _y = y;
 }
 
 void Humanoid::kill() {
@@ -103,4 +95,9 @@ int Humanoid::getDistance(const Buffy *b) const {
 
 int Humanoid::getDistance(const Vampire *v) const {
     return -1;
+}
+
+void Humanoid::setPosition(unsigned x, unsigned y) {
+    _x = x;
+    _y = y;
 }

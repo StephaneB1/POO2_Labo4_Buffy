@@ -26,14 +26,12 @@ class Buffy;
 
 class Humanoid {
 
-protected:
-    Move* _move;
-
 private:
     bool _isAlive;
     unsigned _x;
     unsigned _y;
 
+    Move* _move;
     Action* _nextAction;
 
 public:
@@ -56,12 +54,10 @@ public:
     bool isAlive() const;
 
     unsigned int getX() const;
-
-    void setX(unsigned int x);
-
+    
     unsigned int getY() const;
 
-    void setY(unsigned int y);
+    void setPosition(unsigned x, unsigned y);
 
     void kill();
 

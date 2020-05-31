@@ -17,8 +17,7 @@ Move::Move(unsigned int _stepRange, Humanoid* humanoid)
 }
 
 void Move::execute(Field* field) {
-    getHumanoid()->setY(_toY);
-    getHumanoid()->setX(_toX);
+    getHumanoid()->setPosition(_toX, _toY);
 }
 
 void Move::setRandomMove(const Field& field) {

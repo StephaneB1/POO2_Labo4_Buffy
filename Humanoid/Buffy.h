@@ -18,9 +18,12 @@ Date        : 14.05.2020
 
 class Buffy : public Humanoid, public std::enable_shared_from_this<Buffy>{
 
+private:
     Kill* _kill;
+
 public:
-    Buffy(unsigned int _x, unsigned int _y);
+
+    Buffy(int _x, int _y);
 
     std::weak_ptr<Humanoid> getTarget(const Field &field) override;
 

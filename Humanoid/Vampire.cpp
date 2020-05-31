@@ -17,11 +17,13 @@ Date        : 14.05.2020
 #include "../Action/Bite.h"
 #include "../Field.h"
 
-Vampire::Vampire(unsigned int _x, unsigned int _y)
-: Humanoid(new Move(1, this), _x, _y), _kill(new Kill(false)), _bite(new Bite()) {
+Vampire::Vampire(int _x, int _y)
+        : Humanoid(new Move(1, this), _x, _y), _kill(new Kill(false)),
+          _bite(new Bite()) {
 }
 
-Vampire::Vampire(std::weak_ptr<Human> h) : Vampire(h.lock()->getX(), h.lock()->getY()) {
+Vampire::Vampire(std::weak_ptr<Human> h) : Vampire(h.lock()->getX(),
+                                                   h.lock()->getY()) {
 
 }
 
@@ -31,26 +33,28 @@ char Vampire::getSymbol() const {
 
 int Vampire::getDistanceTo(std::weak_ptr<Buffy> b) const {
     //return Humanoid::getDistanceTo(b);
-    return (int) hypot(abs(getX() - b.lock()->getX()), abs(getY() - b.lock()->getY()));
+    return (int) hypot(abs( getX() - b.lock()->getX()),
+                       abs( getY() - b.lock()->getY()));
 }
 
 std::weak_ptr<Humanoid> Vampire::getTarget(const Field& field) {
     return field.getClosest(weak_from_this());
 }
 
-Action* Vampire::getAttackAction(const Field &field,  std::weak_ptr<Humanoid> target) {
+Action*
+Vampire::getAttackAction(const Field& field, std::weak_ptr<Humanoid> target) {
     // 50/50 between bite and kill human
 
-    if(Utils::generateRandom(0, 2)){
+    if (Utils::generateRandom(0, 2)) {
         _kill->setTarget(target);
         return _kill;
-    }else{
+    } else {
         _bite->setTarget(target);
         return _bite;
     }
 }
 
-Action* Vampire::getIdleAction(const Field &field) {
+Action* Vampire::getIdleAction(const Field& field) {
     return nullptr;
 }
 

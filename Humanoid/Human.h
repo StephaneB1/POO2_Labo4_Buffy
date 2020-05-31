@@ -20,7 +20,7 @@ class Human: public Humanoid {
 
 public:
 
-    Human(unsigned int _x, unsigned int _y);
+    Human(int _x, int _y);
 
     char getSymbol() const override;
 

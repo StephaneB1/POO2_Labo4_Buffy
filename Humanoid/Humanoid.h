@@ -29,15 +29,15 @@ class Humanoid {
 
 private:
     bool _isAlive;
-    unsigned _x;
-    unsigned _y;
+    int _x;
+    int _y;
 
     Move* _move;
     Action* _nextAction;
 
 public:
 
-    Humanoid(Move* _move, unsigned int _x, unsigned int _y);
+    Humanoid(Move* _move, int _x, int _y);
 
     virtual ~Humanoid();
 
@@ -45,7 +45,7 @@ public:
 
     void executeAction(Field* field);
 
-    virtual std::weak_ptr<Humanoid> getTarget(const Field& field) ;
+    virtual std::weak_ptr<Humanoid> getTarget(const Field& field);
 
     // Humanoid actions
     virtual Action* getIdleAction(const Field& field);
@@ -58,11 +58,11 @@ public:
 
     bool isAlive() const;
 
-    unsigned int getX() const;
+    int getX() const;
 
-    unsigned int getY() const;
+    int getY() const;
 
-    void setPosition(unsigned x, unsigned y);
+    void setPosition(int x, int y);
 
     void kill();
 
@@ -75,7 +75,7 @@ public:
      * @param b
      * @return if this is a Vampire return the distance otherwise -1
      */
-    virtual int getDistanceTo(std::weak_ptr<Buffy> b) const;
+    virtual int getDistanceTo(std::weak_ptr<Buffy> b) const ;
 
     /**
      * Get the distance between a vampire and this
@@ -83,8 +83,6 @@ public:
      * @return if this is a Human return the distance otherwise -1
      */
     virtual int getDistanceTo(std::weak_ptr<Vampire> v) const;
-
-    int getDistance(const Humanoid* humanoid) const;
 
 };
 

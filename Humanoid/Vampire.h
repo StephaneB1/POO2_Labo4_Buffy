@@ -22,7 +22,7 @@ class Vampire : public Humanoid, public std::enable_shared_from_this<Vampire>{
     Bite* _bite;
 
 public:
-    Vampire(unsigned int _x, unsigned int _y);
+    Vampire(int _x, int _y);
 
     Vampire(std::weak_ptr<Human> h);
 

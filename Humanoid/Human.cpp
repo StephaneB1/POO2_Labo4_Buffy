@@ -14,7 +14,7 @@ Date        : 14.05.2020
 #include "../Field.h"
 
 
-Human::Human(unsigned int _x, unsigned int _y)
+Human::Human(int _x, int _y)
         : Humanoid(new Move(1, this), _x, _y) {
 }
 
@@ -23,8 +23,8 @@ char Human::getSymbol() const {
 }
 
 int Human::getDistanceTo(std::weak_ptr<Vampire> v) const {
-    return (int) hypot(abs((int) getX() - v.lock()->getX()),
-                       abs((int) getY() - v.lock()->getY()));
+    return (int) hypot(abs(getX() - v.lock()->getX()),
+                       abs(getY() - v.lock()->getY()));
 }
 
 Human::~Human() {

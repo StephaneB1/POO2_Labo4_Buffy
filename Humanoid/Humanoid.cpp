@@ -15,7 +15,7 @@ Date        : 14.05.2020
 #include "../Direction.h"
 #include "../Action/Move.h"
 
-Humanoid::Humanoid(Move* _move, unsigned int _x, unsigned int _y) :
+Humanoid::Humanoid(Move* _move, int _x, int _y) :
         _move(_move), _x(_x), _y(_y), _isAlive(true), _nextAction(nullptr) {}
 
 Humanoid::~Humanoid() {
@@ -32,11 +32,11 @@ void Humanoid::executeAction(Field* field) {
     }
 }
 
-unsigned int Humanoid::getX() const {
+int Humanoid::getX() const {
     return _x;
 }
 
-unsigned int Humanoid::getY() const {
+int Humanoid::getY() const {
     return _y;
 }
 
@@ -48,7 +48,7 @@ bool Humanoid::standsHere(unsigned int x, unsigned int y) {
     return _x + 1 == x && _y + 1 == y;
 }
 
-void Humanoid::setAction(const Field &field) {
+void Humanoid::setAction(const Field& field) {
     std::weak_ptr<Humanoid> target = getTarget(field);
 
     if (target.expired()) {
@@ -63,34 +63,32 @@ void Humanoid::setAction(const Field &field) {
     }
 }
 
-std::weak_ptr<Humanoid> Humanoid::getTarget(const Field &field) {
+std::weak_ptr<Humanoid> Humanoid::getTarget(const Field& field) {
     // No target by default
     return std::weak_ptr<Humanoid>();
 }
 
-Action *Humanoid::getIdleAction(const Field &field) {
+Action* Humanoid::getIdleAction(const Field& field) {
     // Random walking on the field by default
     _move->setRandomMove(field);
     return _move;
 }
 
-Action* Humanoid::getAttackAction(const Field &field,  std::weak_ptr<Humanoid>target) {
+Action*
+Humanoid::getAttackAction(const Field& field, std::weak_ptr<Humanoid> target) {
     // No attack by default
     return nullptr;
 }
 
-Action* Humanoid::getChaseAction(const Field &field,  std::weak_ptr<Humanoid>
-        target) {
+Action* Humanoid::getChaseAction(const Field& field, std::weak_ptr<Humanoid>
+target) {
     // Chase target by default
     Direction moveDir = Direction::getDirection(getX(), getY(),
-            target.lock()->getX(), target.lock()->getY());
+                                                target.lock()->getX(),
+                                                target.lock()->getY());
 
     _move->setNextPosition(moveDir, field);
     return _move;
-}
-
-int Humanoid::getDistance(const Humanoid *humanoid) const {
-    return (int) hypot(abs(getX() - humanoid->getX()), abs(getY() - humanoid->getY()));
 }
 
 int Humanoid::getDistanceTo(std::weak_ptr<Buffy> b) const {
@@ -101,7 +99,7 @@ int Humanoid::getDistanceTo(std::weak_ptr<Vampire> v) const {
     return -1;
 }
 
-void Humanoid::setPosition(unsigned x, unsigned y) {
+void Humanoid::setPosition(int x, int y) {
     _x = x;
     _y = y;
 }

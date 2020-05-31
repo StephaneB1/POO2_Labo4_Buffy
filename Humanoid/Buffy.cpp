@@ -14,7 +14,7 @@ Date        : 14.05.2020
 #include "../Field.h"
 
 
-Buffy::Buffy(unsigned int _x, unsigned int _y) :
+Buffy::Buffy(int _x, int _y) :
     Humanoid(new Move(2, this), _x, _y), _kill(new Kill(true)) {
 }
 
@@ -33,6 +33,5 @@ Action* Buffy::getAttackAction(const Field &field, std::weak_ptr<Humanoid>target
 
 Buffy::~Buffy() {
 }
-
 
 

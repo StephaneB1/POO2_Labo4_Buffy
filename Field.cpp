@@ -62,7 +62,7 @@ Humanoid* Field::getClosest(const Humanoid* source, F distFunc) const {
     int d;
 
     for (Humanoid* h :_humanoids) {
-        d = distFunc(h, source);
+        d = distFunc(h);
 
         if (d >= 0 && min > d) {
             min = d;
@@ -74,14 +74,14 @@ Humanoid* Field::getClosest(const Humanoid* source, F distFunc) const {
 }
 
 Humanoid* Field::getClosest(const Vampire* v) const {
-    return getClosest(v, [](const Humanoid* h1, const Humanoid* h2) {
-        return h1->getDistance((Vampire*) h2);
+    return getClosest(v, [&](const Humanoid* h1) {
+        return h1->getDistance(v);
     });
 }
 
 Humanoid* Field::getClosest(const Buffy* b) const {
-    return getClosest(b, [](const Humanoid* h1, const Humanoid* h2) {
-        return h1->getDistance((Buffy*) h2);
+    return getClosest(b, [&](const Humanoid* h1) {
+        return h1->getDistance(b);
     });
 }
 

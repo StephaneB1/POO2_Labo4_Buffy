@@ -23,7 +23,7 @@ public:
 
     virtual void execute(Field* field);
 
-    ~Bite();
+    virtual ~Bite();
 };
 
 

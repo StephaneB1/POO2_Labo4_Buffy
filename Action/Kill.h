@@ -30,7 +30,7 @@ public:
     virtual void execute(Field* field);
 
 
-    ~Kill();
+    virtual ~Kill();
 
 };
 

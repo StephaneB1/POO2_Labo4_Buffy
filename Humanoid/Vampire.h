@@ -33,6 +33,8 @@ public:
 
     int getDistance(const Buffy* h) const override;
 
+    virtual ~Vampire();
+
 };
 
 

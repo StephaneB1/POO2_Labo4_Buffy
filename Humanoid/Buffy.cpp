@@ -28,3 +28,7 @@ Humanoid *Buffy::getTarget(const Field &field) {
 Action* Buffy::getAttackAction(const Field &field, Humanoid *target) {
     return new Kill(target, true);
 }
+
+Buffy::~Buffy() {
+
+}

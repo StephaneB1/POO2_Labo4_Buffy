@@ -26,6 +26,8 @@ public:
     Action* getAttackAction(const Field &field, Humanoid *target) override;
 
     char getSymbol() const override;
+
+    virtual ~Buffy();
 };
 
 

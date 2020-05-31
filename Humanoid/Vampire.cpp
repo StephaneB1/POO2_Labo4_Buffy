@@ -46,3 +46,7 @@ Action* Vampire::getAttackAction(const Field &field, Humanoid* target) {
 Action *Vampire::getIdleAction(const Field &field) {
     return nullptr;
 }
+
+Vampire::~Vampire() {
+
+}

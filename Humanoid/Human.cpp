@@ -25,3 +25,7 @@ char Human::getSymbol() const {
 int Human::getDistance(const Vampire* v) const {
     return Humanoid::getDistance((Humanoid*) v);
 }
+
+Human::~Human() {
+
+}

@@ -51,7 +51,7 @@ public:
 
     Humanoid* getHumanoid() const;
 
-    ~Move();
+    virtual ~Move();
 
 };
 

@@ -49,9 +49,9 @@ public:
     virtual Humanoid* getTarget(const Field& field);
 
     // Humanoid actions
-    virtual void setIdleAction(const Field& field) = 0;
-    virtual void setAttackAction(const Field& field, Humanoid* target);
-    virtual void setChaseAction(const Field& field, Humanoid* target);
+    virtual Action* getIdleAction(const Field& field);
+    virtual Action* getAttackAction(const Field& field, Humanoid* target);
+    virtual Action* getChaseAction(const Field& field, Humanoid* target);
 
     bool isAlive() const;
 

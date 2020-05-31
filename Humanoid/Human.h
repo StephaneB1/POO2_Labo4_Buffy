@@ -22,7 +22,7 @@ public:
 
     Human(unsigned int _x, unsigned int _y);
 
-    void setIdleAction(const Field& field) override;
+    Action* getIdleAction(const Field& field) override;
 
     char getSymbol() const override;
 

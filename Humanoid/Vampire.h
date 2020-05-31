@@ -25,9 +25,7 @@ public:
 
     Humanoid *getTarget(const Field& field) override;
 
-    void setIdleAction(const Field &field) override;
-
-    void setAttackAction(const Field &field, Humanoid* target) override;
+    Action* getAttackAction(const Field &field, Humanoid* target) override;
 
     char getSymbol()const override;
 

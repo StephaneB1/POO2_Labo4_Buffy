@@ -26,6 +26,7 @@ private:
 
 public:
 
+    Move(unsigned int _stepRange, Humanoid* humanoid);
 
     Move(unsigned int _stepRange);
 
@@ -61,6 +62,7 @@ public:
 
     unsigned int get_stepRange() const;
 
+    ~Move();
 
 };
 

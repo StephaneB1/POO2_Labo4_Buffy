@@ -31,4 +31,8 @@ Kill::Kill(Humanoid *target, bool targetIsVampire) : _target(target),
 
 }
 
+Kill::~Kill() {
+
+}
+
 

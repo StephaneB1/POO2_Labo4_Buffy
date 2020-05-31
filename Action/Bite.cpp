@@ -22,3 +22,7 @@ void Bite::execute(Field* field) {
 Bite::Bite(Human* target) : _target(target) {
 
 }
+
+Bite::~Bite() {
+
+}

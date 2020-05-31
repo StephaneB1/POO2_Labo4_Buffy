@@ -14,9 +14,8 @@ Date        : 14.05.2020
 #include "../Field.h"
 
 
-Human::Human(unsigned int _x, unsigned int _y) : Humanoid(new Move(1), _x, _y) {
-    setNextAction(getMove());
-    getMove()->setHumanoid(this);
+Human::Human(unsigned int _x, unsigned int _y)
+: Humanoid(new Move(1, this), _x, _y) {
 }
 
 char Human::getSymbol() const {
@@ -31,6 +30,7 @@ Vampire* Human::becomeAVampire() {
     return new Vampire(this);
 }
 
-void Human::setIdleAction(const Field& field) {
+Action* Human::getIdleAction(const Field& field) {
     getMove()->setRandomMove(field);
+    return getMove();
 }

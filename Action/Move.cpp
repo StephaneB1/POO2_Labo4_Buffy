@@ -12,7 +12,11 @@ Date        : 14.05.2020
 
 #include "../Field.h"
 
-Move::Move(unsigned int _stepRange) : _stepRange(_stepRange), _toY(0), _toX(0) {}
+Move::Move(unsigned int _stepRange) : Move(_stepRange, nullptr) {}
+
+Move::Move(unsigned int _stepRange, Humanoid* humanoid)
+        : _stepRange(_stepRange), _humanoid(humanoid), _toY(0), _toX(0) {
+}
 
 void Move::execute(Field* field) {
     getHumanoid()->setY(_toY);
@@ -104,4 +108,8 @@ Humanoid* Move::getHumanoid() const {
 
 unsigned int Move::get_stepRange() const {
     return _stepRange;
+}
+
+Move::~Move() {
+
 }

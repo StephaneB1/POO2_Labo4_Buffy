@@ -19,7 +19,8 @@ Humanoid::Humanoid(Move* _move, unsigned int _x, unsigned int _y) :
         _move(_move), _x(_x), _y(_y), _isAlive(true), _nextAction(nullptr) {}
 
 Humanoid::~Humanoid() {
-
+    delete _move;
+    delete _nextAction;
 }
 
 bool Humanoid::isAlive() const {
@@ -68,11 +69,11 @@ void Humanoid::setAction(const Field &field) {
     Humanoid* target = getTarget(field);
 
     if (target == nullptr) {
-        setIdleAction(field);
+        _nextAction = getIdleAction(field);
     } else if (Utils::isNextToTarget(this, target)) {
-        setAttackAction(field, target);
+        _nextAction = getAttackAction(field, target);
     } else {
-        setChaseAction(field, target);
+        _nextAction = getChaseAction(field, target);
     }
 }
 
@@ -81,17 +82,23 @@ Humanoid *Humanoid::getTarget(const Field &field) {
     return nullptr;
 }
 
-void Humanoid::setAttackAction(const Field &field, Humanoid *target) {
-    // No attack by default
+Action *Humanoid::getIdleAction(const Field &field) {
+    // no idle action by default
+    return nullptr;
 }
 
-void Humanoid::setChaseAction(const Field &field, Humanoid *target) {
+Action* Humanoid::getAttackAction(const Field &field, Humanoid *target) {
+    // No attack by default
+    return nullptr;
+}
+
+Action* Humanoid::getChaseAction(const Field &field, Humanoid *target) {
     // Chase target by default
     Direction moveDir = Direction::getDirection(getX(), getY(),
             target->getX(), target->getY());
 
     _move->setNextPosition(moveDir, field);
-    setNextAction(_move);
+    return _move;
 }
 
 int Humanoid::getDistance(const Buffy *b) const {

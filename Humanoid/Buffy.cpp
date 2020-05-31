@@ -15,8 +15,7 @@ Date        : 14.05.2020
 #include "../Utils.h"
 
 Buffy::Buffy(unsigned int _x, unsigned int _y) :
-    Humanoid(new Move(2), _x, _y) {
-    getMove()->setHumanoid(this);
+    Humanoid(new Move(2, this), _x, _y) {
 }
 
 char Buffy::getSymbol() const {
@@ -27,11 +26,11 @@ Humanoid *Buffy::getTarget(const Field &field) {
     return (Vampire*) field.getClosest(this);
 }
 
-void Buffy::setIdleAction(const Field &field) {
+Action* Buffy::getIdleAction(const Field &field) {
     getMove()->setRandomMove(field);
-    setNextAction(getMove());
+    return getMove();
 }
 
-void Buffy::setAttackAction(const Field &field, Humanoid *target) {
-    setNextAction(new Kill(target, true));
+Action* Buffy::getAttackAction(const Field &field, Humanoid *target) {
+    return new Kill(target, true);
 }

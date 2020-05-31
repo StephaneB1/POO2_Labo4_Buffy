@@ -23,5 +23,5 @@ char Human::getSymbol() const {
 }
 
 int Human::getDistance(const Vampire* v) const {
-    return hypot(abs(getX() - v->getX()), abs(getY() - v->getY()));
+    return Humanoid::getDistance((Humanoid*) v);
 }

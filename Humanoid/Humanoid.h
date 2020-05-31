@@ -78,6 +78,8 @@ public:
      * @return if this is a Human return the distance otherwise -1
      */
     virtual int getDistance(const Vampire* v) const;
+
+    int getDistance(const Humanoid* humanoid) const;
 };
 
 

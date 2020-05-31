@@ -89,6 +89,10 @@ Action* Humanoid::getChaseAction(const Field &field, Humanoid *target) {
     return _move;
 }
 
+int Humanoid::getDistance(const Humanoid *humanoid) const {
+    return (int) hypot(abs(getX() - humanoid->getX()), abs(getY() - humanoid->getY()));
+}
+
 int Humanoid::getDistance(const Buffy *b) const {
     return -1;
 }

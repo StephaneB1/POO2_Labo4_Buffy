@@ -62,7 +62,6 @@ public:
     Humanoid* getClosest(const Vampire* v) const;
 
     /**
-     * -> Refactor into getClosest(Humanoid*) ?
      * Find the closest Vampire to the Buffy
      * @param b
      * @return

@@ -20,16 +20,17 @@ class Vampire : public Humanoid{
 
 public:
     Vampire(unsigned int _x, unsigned int _y);
-
-    virtual void setAction(const Field& field) ;
-
-    virtual char getSymbol()const;
-
-    virtual int getDistance(const Buffy* h) const;
-
-    virtual int getDistance(const Vampire* v)  const;
-
+   
     Vampire(Human* h);
+
+    void setAction(const Field& field) override;
+
+    char getSymbol()const override;
+
+    int getDistance(const Buffy* h) const override;
+
+    int getDistance(const Vampire* v) const override;
+
 };
 
 

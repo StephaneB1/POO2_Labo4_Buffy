@@ -11,6 +11,7 @@ Date        : 14.05.2020
 #define POO2_LABO4_BUFFY_HUMANOID_H
 
 #include <list>
+#include <memory>
 
 class Action;
 
@@ -24,7 +25,7 @@ class Vampire;
 
 class Buffy;
 
-class Humanoid {
+class Humanoid : public std::enable_shared_from_this<Humanoid>{
 
 private:
     bool _isAlive;
@@ -80,6 +81,8 @@ public:
     virtual int getDistance(const Vampire* v) const;
 
     int getDistance(const Humanoid* humanoid) const;
+
+    std::shared_ptr<Humanoid> getHumanoid();
 };
 
 

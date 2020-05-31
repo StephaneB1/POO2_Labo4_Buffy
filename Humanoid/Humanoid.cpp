@@ -105,3 +105,7 @@ void Humanoid::setPosition(unsigned x, unsigned y) {
     _x = x;
     _y = y;
 }
+
+std::shared_ptr<Humanoid> Humanoid::getHumanoid() {
+    return std::shared_ptr<Humanoid>();
+}

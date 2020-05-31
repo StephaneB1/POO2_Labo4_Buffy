@@ -35,6 +35,9 @@ private:
     Move* _move;
     Action* _nextAction;
 
+    unsigned _id;
+    static unsigned _counter;
+
 public:
 
     Humanoid(Move* _move, int _x, int _y);
@@ -83,6 +86,10 @@ public:
      * @return if this is a Human return the distance otherwise -1
      */
     virtual int getDistanceTo(std::weak_ptr<Vampire> v) const;
+
+    unsigned int get_id() const;
+
+
 
 };
 

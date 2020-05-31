@@ -27,18 +27,18 @@ Field::Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
 unsigned Field::nextTurn() {
 
     // Déterminer les prochaines actions
-    for (std::list<Humanoid*>::iterator it = _humanoids.begin();
+    for (std::list<std::shared_ptr<Humanoid>>::iterator it = _humanoids.begin();
          it != _humanoids.end(); it++)
         (*it)->setAction(*this);
     // Executer les actions
-    for (std::list<Humanoid*>::iterator it = _humanoids.begin();
+    for (std::list<std::shared_ptr<Humanoid>>::iterator it = _humanoids.begin();
          it != _humanoids.end(); it++)
         (*it)->executeAction(this);
     // Enlever les humanoides tués
-    for (std::list<Humanoid*>::iterator it = _humanoids.begin();
+    for (std::list<std::shared_ptr<Humanoid>>::iterator it = _humanoids.begin();
          it != _humanoids.end();) {
         if (!(*it)->isAlive()) {
-            delete *it; // destruction de l’humanoide référencé
+            //delete *it; // destruction de l’humanoide référencé
             it = _humanoids.erase(it); // suppression de l’élément dans la liste
         } else
             ++it;
@@ -56,12 +56,13 @@ unsigned int Field::getHeight() const {
 }
 
 template<typename F>
-Humanoid* Field::getClosest(const Humanoid* source, F distFunc) const {
-    Humanoid* res = nullptr;
+std::weak_ptr<Humanoid>
+Field::getClosest(std::weak_ptr<Humanoid> source, F distFunc) const {
+    std::weak_ptr<Humanoid> res;
     int min = INT_MAX;
     int d;
 
-    for (Humanoid* h :_humanoids) {
+    for (std::weak_ptr<Humanoid> h :_humanoids) {
         d = distFunc(h);
 
         if (d >= 0 && min > d) {
@@ -73,36 +74,18 @@ Humanoid* Field::getClosest(const Humanoid* source, F distFunc) const {
     return res;
 }
 
-Humanoid* Field::getClosest(const Vampire* v) const {
-    return getClosest(v, [&](const Humanoid* h1) {
-        return h1->getDistance(v);
+std::weak_ptr<Humanoid> Field::getClosest(std::weak_ptr<Vampire> v) const {
+    return getClosest(v, [&](std::weak_ptr<Humanoid> h1) {
+        return h1.lock()->getDistance(v);
     });
 }
 
-Humanoid* Field::getClosest(const Buffy* b) const {
-    return getClosest(b, [&](const Humanoid* h1) {
-        return h1->getDistance(b);
+std::weak_ptr<Humanoid> Field::getClosest(std::weak_ptr<Buffy> b) const {
+    return getClosest(b, [&](std::weak_ptr<Humanoid> h1) {
+        return h1.lock()->getDistance(b);
     });
 }
 
-const std::list<Humanoid*>& Field::getHumanoids() const {
-    return _humanoids;
-}
-
-void Field::replace(Humanoid* target, Vampire* replacement, bool targetIsVampire) {
-    // Killing the humanoid (human or vampire)
-    if(target != nullptr) {
-        target->kill();
-        if(targetIsVampire) _vCounter--;
-        else                _hCounter--;
-    }
-
-    // replacing the dead human by a vampire
-    if(!targetIsVampire && replacement != nullptr) {
-        _humanoids.push_back(replacement);
-        _vCounter++;
-    }
-}
 
 void Field::reset() {
     _turn = 0;
@@ -119,13 +102,13 @@ void Field::init() {
     addToHumanoids<Vampire>(_totalVampire);
 }
 
-template <typename T>
+template<typename T>
 void Field::addToHumanoids(unsigned total) {
     unsigned x, y;
     for (int i = 0; i < total; i++) {
         x = Utils::generateRandom(0, _width);
         y = Utils::generateRandom(0, _height);
-        _humanoids.push_back(new T(x, y));
+        _humanoids.push_back(std::make_shared<T>(x, y));
     }
 }
 
@@ -139,5 +122,19 @@ bool Field::hasHumans() const {
 
 unsigned int Field::getTurn() const {
     return _turn;
+}
+
+const std::list<std::shared_ptr<Humanoid>>& Field::getHumanoids() const {
+    return _humanoids;
+}
+
+void
+Field::replace(std::weak_ptr<Humanoid> target) {
+    _vCounter++;
+    _hCounter--;
+
+    _humanoids.push_back(std::make_shared<Vampire>(target.lock()->getX(), target
+            .lock()->getY()));
+    target.lock()->kill();
 }
 

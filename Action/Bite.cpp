@@ -11,12 +11,17 @@ Date        : 14.05.2020
 
 #include "../Field.h"
 
-Bite::Bite(Human* target) : _target(target) {
-}
-
 void Bite::execute(Field* field) {
-    field->replace(_target, new Vampire(_target), false);
+    field->replace(_target);
 }
 
 Bite::~Bite() {
+}
+
+Bite::Bite() {}
+
+Bite::Bite(const std::weak_ptr<Human>& _target) : _target(_target) {}
+
+void Bite::setTarget(std::weak_ptr<Humanoid> target) {
+    _target = target;
 }

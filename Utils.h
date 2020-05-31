@@ -31,7 +31,7 @@ public:
      */
     static unsigned generateRandom(unsigned min, unsigned max);
 
-    static bool isNextToTarget(Humanoid* source, Humanoid* target);
+    static bool isNextToTarget(Humanoid* source,  std::weak_ptr<Humanoid> target);
 
 };
 

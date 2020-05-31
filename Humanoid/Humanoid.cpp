@@ -19,8 +19,7 @@ Humanoid::Humanoid(Move* _move, unsigned int _x, unsigned int _y) :
         _move(_move), _x(_x), _y(_y), _isAlive(true), _nextAction(nullptr) {}
 
 Humanoid::~Humanoid() {
-    delete _move;
-    delete _nextAction;
+
 }
 
 bool Humanoid::isAlive() const {
@@ -50,9 +49,9 @@ bool Humanoid::standsHere(unsigned int x, unsigned int y) {
 }
 
 void Humanoid::setAction(const Field &field) {
-    Humanoid* target = getTarget(field);
+    std::weak_ptr<Humanoid> target = getTarget(field);
 
-    if (target == nullptr) {
+    if (target.expired()) {
         // No target to chase or to kill
         _nextAction = getIdleAction(field);
     } else if (Utils::isNextToTarget(this, target)) {
@@ -64,9 +63,9 @@ void Humanoid::setAction(const Field &field) {
     }
 }
 
-Humanoid *Humanoid::getTarget(const Field &field) {
+std::weak_ptr<Humanoid> Humanoid::getTarget(const Field &field) {
     // No target by default
-    return nullptr;
+    return std::weak_ptr<Humanoid>();
 }
 
 Action *Humanoid::getIdleAction(const Field &field) {
@@ -75,15 +74,16 @@ Action *Humanoid::getIdleAction(const Field &field) {
     return _move;
 }
 
-Action* Humanoid::getAttackAction(const Field &field, Humanoid *target) {
+Action* Humanoid::getAttackAction(const Field &field,  std::weak_ptr<Humanoid>target) {
     // No attack by default
     return nullptr;
 }
 
-Action* Humanoid::getChaseAction(const Field &field, Humanoid *target) {
+Action* Humanoid::getChaseAction(const Field &field,  std::weak_ptr<Humanoid>
+        target) {
     // Chase target by default
     Direction moveDir = Direction::getDirection(getX(), getY(),
-            target->getX(), target->getY());
+            target.lock()->getX(), target.lock()->getY());
 
     _move->setNextPosition(moveDir, field);
     return _move;
@@ -93,11 +93,11 @@ int Humanoid::getDistance(const Humanoid *humanoid) const {
     return (int) hypot(abs(getX() - humanoid->getX()), abs(getY() - humanoid->getY()));
 }
 
-int Humanoid::getDistance(const Buffy *b) const {
+int Humanoid::getDistance(std::weak_ptr<Buffy> b) const {
     return -1;
 }
 
-int Humanoid::getDistance(const Vampire *v) const {
+int Humanoid::getDistance(std::weak_ptr<Vampire>v) const {
     return -1;
 }
 
@@ -106,6 +106,3 @@ void Humanoid::setPosition(unsigned x, unsigned y) {
     _y = y;
 }
 
-std::shared_ptr<Humanoid> Humanoid::getHumanoid() {
-    return std::shared_ptr<Humanoid>();
-}

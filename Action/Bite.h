@@ -10,18 +10,24 @@ Date        : 14.05.2020
 #ifndef POO2_LABO4_BUFFY_BITE_H
 #define POO2_LABO4_BUFFY_BITE_H
 
+
+
 #include "../Humanoid/Human.h"
 #include "Action.h"
 
 class Bite : public Action{
-
-    Human* _target;
-
+    std::weak_ptr<Humanoid> _target;
 public:
 
-    Bite(Human* target);
+    Bite();
+
+
+    Bite(const std::weak_ptr<Human>& _target);
 
     virtual void execute(Field* field);
+
+    void setTarget(std::weak_ptr<Humanoid> target);
+
 
     virtual ~Bite();
 };

@@ -15,7 +15,7 @@ Date        : 14.05.2020
 class Kill : public Action {
 
 private:
-    Humanoid* _target;
+    std::weak_ptr<Humanoid> _target;
 
     const bool _targetIsVampire;
 
@@ -25,7 +25,7 @@ public:
 
     Kill(bool targetIsVampire);
 
-    void setTarget(Humanoid* target);
+    void setTarget(std::weak_ptr<Humanoid> target);
 
     virtual void execute(Field* field);
 

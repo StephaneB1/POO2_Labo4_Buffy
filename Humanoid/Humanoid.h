@@ -25,7 +25,7 @@ class Vampire;
 
 class Buffy;
 
-class Humanoid : public std::enable_shared_from_this<Humanoid>{
+class Humanoid {
 
 private:
     bool _isAlive;
@@ -45,12 +45,16 @@ public:
 
     void executeAction(Field* field);
 
-    virtual Humanoid* getTarget(const Field& field);
+    virtual std::weak_ptr<Humanoid> getTarget(const Field& field) ;
 
     // Humanoid actions
     virtual Action* getIdleAction(const Field& field);
-    virtual Action* getAttackAction(const Field& field, Humanoid* target);
-    virtual Action* getChaseAction(const Field& field, Humanoid* target);
+
+    virtual Action*
+    getAttackAction(const Field& field, std::weak_ptr<Humanoid> target);
+
+    virtual Action*
+    getChaseAction(const Field& field, std::weak_ptr<Humanoid> target);
 
     bool isAlive() const;
 
@@ -71,18 +75,17 @@ public:
      * @param b
      * @return if this is a Vampire return the distance otherwise -1
      */
-    virtual int getDistance(const Buffy* b) const;
+    virtual int getDistance(std::weak_ptr<Buffy> b) const;
 
     /**
      * Get the distance between a vampire and this
      * @param v
      * @return if this is a Human return the distance otherwise -1
      */
-    virtual int getDistance(const Vampire* v) const;
+    virtual int getDistance(std::weak_ptr<Vampire> v) const;
 
     int getDistance(const Humanoid* humanoid) const;
 
-    std::shared_ptr<Humanoid> getHumanoid();
 };
 
 

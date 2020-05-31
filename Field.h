@@ -34,7 +34,7 @@ private:
     int _vCounter;
     int _hCounter;
 
-    std::list<Humanoid*> _humanoids;
+    std::list<std::shared_ptr<Humanoid>> _humanoids;
 
 public:
     Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
@@ -52,32 +52,32 @@ public:
 
     unsigned int getTurn() const;
 
-    void replace(Humanoid* target, Vampire* replacement, bool targetIsVampire);
-
+    void replace(std::weak_ptr<Humanoid> target);
     /**
     * Find the closest Humain to the vampire v
     * @param v
     * @return
     */
-    Humanoid* getClosest(const Vampire* v) const;
+    std::weak_ptr<Humanoid> getClosest(std::weak_ptr<Vampire> v) const;
 
     /**
      * Find the closest Vampire to the Buffy
      * @param b
      * @return
      */
-    Humanoid* getClosest(const Buffy* b) const;
+    std::weak_ptr<Humanoid> getClosest(std::weak_ptr<Buffy> b) const;
 
     template<typename F>
-    Humanoid* getClosest(const Humanoid* source, F lambda) const;
+    std::weak_ptr<Humanoid>
+    getClosest(std::weak_ptr<Humanoid> source, F lambda) const;
 
-    const std::list<Humanoid*>& getHumanoids() const;
+    const std::list<std::shared_ptr<Humanoid>>& getHumanoids() const;
 
     void reset();
 
     void init();
 
-    template <typename T>
+    template<typename T>
     void addToHumanoids(unsigned total);
 
     bool isFreeOfVampires() const;

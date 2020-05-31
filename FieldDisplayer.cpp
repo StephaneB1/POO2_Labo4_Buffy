@@ -29,9 +29,9 @@ void FieldDisplayer::display(const Field& field) const {
                 } else {
                     // Display Humanoids here
                     bool printed = false;
-                    for (Humanoid* h : field.getHumanoids()) {
-                        if (h->standsHere(x, y)) {
-                            std::cout << h->getSymbol();
+                    for (std::weak_ptr<Humanoid> h : field.getHumanoids()) {
+                        if (h.lock()->standsHere(x, y)) {
+                            std::cout << h.lock()->getSymbol();
                             printed = true;
                             break;
                         }

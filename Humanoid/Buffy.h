@@ -14,20 +14,23 @@ Date        : 14.05.2020
 #include "Humanoid.h"
 #include "Vampire.h"
 #include "../Action/Kill.h"
-#include "../Action/Bite.h"
 
 
-class Buffy : public Humanoid{
+class Buffy : public Humanoid, public std::enable_shared_from_this<Buffy>{
+
+    Kill* _kill;
 public:
     Buffy(unsigned int _x, unsigned int _y);
 
-    Humanoid *getTarget(const Field &field) override;
+    std::weak_ptr<Humanoid> getTarget(const Field &field) override;
 
-    Action* getAttackAction(const Field &field, Humanoid *target) override;
+    Action* getAttackAction(const Field &field, std::weak_ptr<Humanoid> target)     override;
 
     char getSymbol() const override;
 
     virtual ~Buffy();
+
+    std::shared_ptr<Buffy> getBuffy();
 };
 
 

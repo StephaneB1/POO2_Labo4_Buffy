@@ -22,8 +22,8 @@ char Human::getSymbol() const {
     return 'h';
 }
 
-int Human::getDistance(const Vampire* v) const {
-    return Humanoid::getDistance((Humanoid*) v);
+int Human::getDistance(std::weak_ptr<Vampire> v) const {
+    return Humanoid::getDistance(v);
 }
 
 Human::~Human() {

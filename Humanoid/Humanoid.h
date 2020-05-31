@@ -51,10 +51,10 @@ public:
     virtual Action* getIdleAction(const Field& field);
 
     virtual Action*
-    getAttackAction(const Field& field, std::weak_ptr<Humanoid> target);
+    getAttackAction(const Field& field,const std::weak_ptr<Humanoid>& target);
 
     virtual Action*
-    getChaseAction(const Field& field, std::weak_ptr<Humanoid> target);
+    getChaseAction(const Field& field,const std::weak_ptr<Humanoid>& target);
 
     bool isAlive() const;
 

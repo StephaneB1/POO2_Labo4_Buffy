@@ -28,7 +28,8 @@ public:
 
     std::weak_ptr<Humanoid> getTarget(const Field& field) override;
 
-    Action* getAttackAction(const Field &field, std::weak_ptr<Humanoid> target) override;
+    Action* getAttackAction(const Field& field,
+                            const std::weak_ptr<Humanoid>& target) override;
 
     Action* getIdleAction(const Field& field) override;
 

@@ -42,7 +42,7 @@ std::weak_ptr<Humanoid> Vampire::getTarget(const Field& field) {
 }
 
 Action*
-Vampire::getAttackAction(const Field& field, std::weak_ptr<Humanoid> target) {
+Vampire::getAttackAction(const Field& field, const std::weak_ptr<Humanoid>& target) {
     // 50/50 between bite and kill human
 
     if (Utils::generateRandom(0, 2)) {

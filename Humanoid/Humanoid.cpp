@@ -75,13 +75,13 @@ Action* Humanoid::getIdleAction(const Field& field) {
 }
 
 Action*
-Humanoid::getAttackAction(const Field& field, std::weak_ptr<Humanoid> target) {
+Humanoid::getAttackAction(const Field& field,const std::weak_ptr<Humanoid>& target) {
     // No attack by default
     return nullptr;
 }
 
-Action* Humanoid::getChaseAction(const Field& field, std::weak_ptr<Humanoid>
-target) {
+Action*
+Humanoid::getChaseAction(const Field& field, const std::weak_ptr<Humanoid>& target){
     // Chase target by default
     Direction moveDir = Direction::getDirection(getX(), getY(),
                                                 target.lock()->getX(),

@@ -26,7 +26,8 @@ std::weak_ptr<Humanoid> Buffy::getTarget(const Field &field) {
     return field.getClosest(weak_from_this());
 }
 
-Action* Buffy::getAttackAction(const Field &field, std::weak_ptr<Humanoid>target) {
+Action* Buffy::getAttackAction(const Field& field,
+                               const std::weak_ptr<Humanoid>& target) {
     _kill->setTarget(target);
     return _kill;
 }

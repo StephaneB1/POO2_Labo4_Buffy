@@ -98,10 +98,6 @@ Humanoid* Move::getHumanoid() const {
     return _humanoid;
 }
 
-unsigned int Move::get_stepRange() const {
-    return _stepRange;
-}
-
 Move::~Move() {
 
 }

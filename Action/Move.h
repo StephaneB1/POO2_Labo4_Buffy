@@ -51,8 +51,6 @@ public:
 
     Humanoid* getHumanoid() const;
 
-    unsigned int get_stepRange() const;
-
     ~Move();
 
 };

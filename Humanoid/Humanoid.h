@@ -54,7 +54,7 @@ public:
     bool isAlive() const;
 
     unsigned int getX() const;
-    
+
     unsigned int getY() const;
 
     void setPosition(unsigned x, unsigned y);

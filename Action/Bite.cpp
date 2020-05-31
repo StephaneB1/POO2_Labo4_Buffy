@@ -15,7 +15,7 @@ Bite::Bite(Human* target) : _target(target) {
 }
 
 void Bite::execute(Field* field) {
-    field->replace(_target, _target->becomeAVampire(), false);
+    field->replace(_target, new Vampire(_target), false);
 }
 
 Bite::~Bite() {

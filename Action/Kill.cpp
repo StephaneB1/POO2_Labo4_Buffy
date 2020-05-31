@@ -12,8 +12,10 @@ Date        : 14.05.2020
 
 
 void Kill::execute(Field* field) {
-    // Replace the target by nothing (= kill)
-    field->kill(_target, _targetIsVampire);
+    // if the target is already dead, can't be kill a second time
+    if(_target.lock()->isAlive()) {
+        field->kill(_target, _targetIsVampire);
+    }
 
 }
 

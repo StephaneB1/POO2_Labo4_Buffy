@@ -55,8 +55,8 @@ void Move::setNextPosition(const Direction& nextDirection, const Field& field) {
 std::vector<Direction> Move::getPossibleDirections(const Field& field) const {
     std::vector<Direction> possibleDirection;
 
-    unsigned int humX = _humanoid->getX();
-    unsigned int humY = _humanoid->getY();
+    int humX = _humanoid->getX();
+    int humY = _humanoid->getY();
 
     if (humX >= _stepRange) {
         possibleDirection.push_back(Direction::LEFT);

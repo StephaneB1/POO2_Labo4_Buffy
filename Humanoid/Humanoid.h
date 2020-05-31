@@ -35,6 +35,7 @@ private:
     Move* _move;
     Action* _nextAction;
 
+    // For debugging
     unsigned _id;
     static unsigned _counter;
 

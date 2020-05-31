@@ -22,8 +22,8 @@ private:
     Humanoid* _humanoid;
     unsigned _stepRange;
 
-    unsigned _toX;
-    unsigned _toY;
+    int _toX;
+    int _toY;
 
 public:
 

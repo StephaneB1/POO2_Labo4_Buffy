@@ -20,7 +20,7 @@ class Vampire : public Humanoid{
 
 public:
     Vampire(unsigned int _x, unsigned int _y);
-   
+
     Vampire(Human* h);
 
     void setAction(const Field& field) override;

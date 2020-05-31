@@ -14,7 +14,7 @@ Date        : 14.05.2020
 #include "../Field.h"
 
 Buffy::Buffy(unsigned int _x, unsigned int _y) :
-        Humanoid(new Move(2), _x, _y), _kill(new Kill(true)) {
+    Humanoid(new Move(2), _x, _y) {
     getMove()->setHumanoid(this);
 }
 
@@ -27,8 +27,7 @@ void Buffy::setAction(const Field& field) {
         setNextAction(getMove());
     } else if (abs(getX() - target->getX()) <= 1 &&
                abs(getY() - target->getY()) <= 1) { // If next to a Vampire
-        _kill->setTarget(target);
-        setNextAction(_kill);
+        setNextAction(new Kill(target, true));
     } else {
 
         Direction moveDir = Direction::getDirection(getX(), getY(),

@@ -21,7 +21,7 @@ private:
 
 public:
 
-    Kill(Human* target, bool targetIsVampire);
+    Kill(Humanoid* target, bool targetIsVampire);
 
     Kill(bool targetIsVampire);
 

@@ -26,7 +26,7 @@ void Kill::execute(Field* field) {
     }
 }
 
-Kill::Kill(Human *target, bool targetIsVampire) : _target(target),
+Kill::Kill(Humanoid *target, bool targetIsVampire) : _target(target),
                                                   _targetIsVampire(targetIsVampire) {
 
 }

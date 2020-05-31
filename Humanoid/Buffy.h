@@ -18,10 +18,6 @@ Date        : 14.05.2020
 
 
 class Buffy : public Humanoid{
-
-private:
-    Kill* _kill;
-
 public:
     Buffy(unsigned int _x, unsigned int _y);
 

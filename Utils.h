@@ -37,7 +37,8 @@ public:
      * @param target
      * @return true is the source is one case distance to the source
      */
-    static bool isNextToTarget(Humanoid* source, std::weak_ptr<Humanoid> target);
+    static bool isNextToTarget(Humanoid* source,
+                               const std::weak_ptr<Humanoid>& target);
 
     /**
      * Return the euclidean distance between from and to

@@ -30,7 +30,7 @@ public:
      * Set which humanoid to execute the action
      * @param target
      */
-    void setTarget(std::weak_ptr<Humanoid> target);
+    void setTarget(const std::weak_ptr<Humanoid>& target);
 
     virtual void execute(Field* field);
 

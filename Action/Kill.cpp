@@ -28,7 +28,7 @@ Kill::Kill(bool targetIsVampire) : _targetIsVampire(targetIsVampire) {
 
 }
 
-void Kill::setTarget(std::weak_ptr<Humanoid> target) {
+void Kill::setTarget(const std::weak_ptr<Humanoid>& target) {
     _target = target;
 }
 

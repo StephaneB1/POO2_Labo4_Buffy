@@ -27,6 +27,13 @@ private:
     int _toX;
     int _toY;
 
+    /**
+     * Return a list of the possible direction for the Humanoid
+     * @param field
+     * @return
+     */
+    std::vector<Direction> getPossibleDirections(const Field& field) const;
+
 public:
 
     Move(unsigned int _stepRange, Humanoid* humanoid);
@@ -40,13 +47,6 @@ public:
      * @param field
      */
     void setRandomMove(const Field& field);
-
-    /**
-     * Return a list of the possible direction for the Humanoid
-     * @param field
-     * @return
-     */
-    std::vector<Direction> getPossibleDirections(const Field& field) const;
 
     /**
      * Set the position for the next turn

@@ -22,8 +22,8 @@ Vampire::Vampire(int _x, int _y)
           _bite(new Bite()) {
 }
 
-Vampire::Vampire(std::weak_ptr<Human> h) : Vampire(h.lock()->getX(),
-                                                   h.lock()->getY()) {
+Vampire::Vampire(const std::weak_ptr<Human>& h) : Vampire(h.lock()->getX(),
+                                                          h.lock()->getY()) {
 
 }
 

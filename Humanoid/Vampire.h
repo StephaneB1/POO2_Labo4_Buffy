@@ -31,7 +31,7 @@ public:
 
     Vampire(int _x, int _y);
 
-    Vampire(std::weak_ptr<Human> h);
+    Vampire(const std::weak_ptr<Human>& h);
 
     char getSymbol() const override;
 

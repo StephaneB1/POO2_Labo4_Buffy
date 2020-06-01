@@ -39,6 +39,15 @@ private:
     unsigned _id;
     static unsigned _counter;
 
+    // Humanoid actions
+    virtual Action* getIdleAction(const Field& field);
+
+    virtual Action*
+    getAttackAction(const Field& field,const std::weak_ptr<Humanoid>& target);
+
+    virtual Action*
+    getChaseAction(const Field& field,const std::weak_ptr<Humanoid>& target);
+
 public:
 
     Humanoid(Move* _move, int _x, int _y);
@@ -56,14 +65,6 @@ public:
      */
     virtual std::weak_ptr<Humanoid> getTarget(const Field& field);
 
-    // Humanoid actions
-    virtual Action* getIdleAction(const Field& field);
-
-    virtual Action*
-    getAttackAction(const Field& field,const std::weak_ptr<Humanoid>& target);
-
-    virtual Action*
-    getChaseAction(const Field& field,const std::weak_ptr<Humanoid>& target);
 
     bool isAlive() const;
 

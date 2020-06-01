@@ -21,17 +21,17 @@ class Vampire : public Humanoid, public std::enable_shared_from_this<Vampire> {
     Kill* _kill;
     Bite* _bite;
 
-public:
-    Vampire(int _x, int _y);
-
-    Vampire(std::weak_ptr<Human> h);
-
     std::weak_ptr<Humanoid> getTarget(const Field& field) override;
 
     Action* getAttackAction(const Field& field,
                             const std::weak_ptr<Humanoid>& target) override;
 
     Action* getIdleAction(const Field& field) override;
+public:
+
+    Vampire(int _x, int _y);
+
+    Vampire(std::weak_ptr<Human> h);
 
     char getSymbol() const override;
 

@@ -33,6 +33,7 @@ Action* Buffy::getAttackAction(const Field& field,
 }
 
 Buffy::~Buffy() {
+    delete _kill;
 }
 
 

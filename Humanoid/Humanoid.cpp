@@ -20,7 +20,7 @@ Humanoid::Humanoid(Move* _move, int _x, int _y) :
         _id(_counter++) {}
 
 Humanoid::~Humanoid() {
-
+    delete _move;
 }
 
 bool Humanoid::isAlive() const {

@@ -60,5 +60,6 @@ Action* Vampire::getIdleAction(const Field& field) {
 }
 
 Vampire::~Vampire() {
-
+    delete _kill;
+    delete _bite;
 }

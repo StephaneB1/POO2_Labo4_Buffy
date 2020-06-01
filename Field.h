@@ -46,6 +46,14 @@ private:
     template<typename F>
     std::weak_ptr<Humanoid> getClosest(F lambda) const;
 
+    /**
+     * Add a Humanoid in the list
+     * @tparam T Type for the Humanoid to add (Buddy, Vampire, Human)
+     * @param total How many to add
+     */
+    template<typename T>
+    void addToHumanoids(unsigned total);
+
 public:
     Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
           unsigned totalVampire);
@@ -93,14 +101,6 @@ public:
      * Init the board
      */
     void init();
-
-    /**
-     * Add a Humanoid in the list
-     * @tparam T Type for the Humanoid to add (Buddy, Vampire, Human)
-     * @param total How many to add
-     */
-    template<typename T>
-    void addToHumanoids(unsigned total);
 
     /**
      * Indicate if the board containing any vampires

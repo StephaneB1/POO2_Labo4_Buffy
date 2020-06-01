@@ -43,10 +43,17 @@ private:
     virtual Action* getIdleAction(const Field& field);
 
     virtual Action*
-    getAttackAction(const Field& field,const std::weak_ptr<Humanoid>& target);
+    getAttackAction(const Field& field, const std::weak_ptr<Humanoid>& target);
 
     virtual Action*
-    getChaseAction(const Field& field,const std::weak_ptr<Humanoid>& target);
+    getChaseAction(const Field& field, const std::weak_ptr<Humanoid>& target);
+
+    /**
+   * Get the closest target
+   * @param field
+   * @return A waek ptr to the closest target
+   */
+    virtual std::weak_ptr<Humanoid> getTarget(const Field& field);
 
 public:
 
@@ -57,13 +64,6 @@ public:
     void setAction(const Field& field);
 
     void executeAction(Field* field);
-
-    /**
-     * Get the closest target
-     * @param field
-     * @return A waek ptr to the closest target
-     */
-    virtual std::weak_ptr<Humanoid> getTarget(const Field& field);
 
 
     bool isAlive() const;
@@ -85,7 +85,7 @@ public:
      * @param b
      * @return if this is a Vampire return the distance otherwise -1
      */
-    virtual int getDistanceTo(std::weak_ptr<Buffy> b) const ;
+    virtual int getDistanceTo(std::weak_ptr<Buffy> b) const;
 
     /**
      * Get the distance between a vampire and this humanoid(Euclidean distance)

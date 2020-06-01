@@ -31,7 +31,7 @@ char Vampire::getSymbol() const {
     return 'v';
 }
 
-int Vampire::getDistanceTo(std::weak_ptr<Buffy> b) const {
+int Vampire::getDistanceTo(const std::weak_ptr<Buffy>& b) const {
     return Utils::getEuclideanDistance(getX(), getY(), b.lock()->getX(),
                                        b.lock()->getY());
 

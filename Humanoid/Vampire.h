@@ -35,7 +35,7 @@ public:
 
     char getSymbol() const override;
 
-    int getDistanceTo(std::weak_ptr<Buffy> b) const override;
+    int getDistanceTo(const std::weak_ptr<Buffy>& b) const override;
 
     virtual ~Vampire();
 

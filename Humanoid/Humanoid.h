@@ -85,14 +85,14 @@ public:
      * @param b
      * @return if this is a Vampire return the distance otherwise -1
      */
-    virtual int getDistanceTo(std::weak_ptr<Buffy> b) const;
+    virtual int getDistanceTo(const std::weak_ptr<Buffy>& b) const;
 
     /**
      * Get the distance between a vampire and this humanoid(Euclidean distance)
      * @param v
      * @return if this is a Human return the distance otherwise -1
      */
-    virtual int getDistanceTo(std::weak_ptr<Vampire> v) const;
+    virtual int getDistanceTo(const std::weak_ptr<Vampire>& v) const;
 
     unsigned int get_id() const;
 

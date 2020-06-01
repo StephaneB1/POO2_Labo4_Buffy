@@ -22,7 +22,7 @@ char Human::getSymbol() const {
     return 'h';
 }
 
-int Human::getDistanceTo(std::weak_ptr<Vampire> v) const {
+int Human::getDistanceTo(const std::weak_ptr<Vampire>& v) const {
     return Utils::getEuclideanDistance(getX(), getY(), v.lock()->getX(),
                                        v.lock()->getY());
 }

@@ -93,11 +93,11 @@ Humanoid::getChaseAction(const Field& field, const std::weak_ptr<Humanoid>& targ
     return _move;
 }
 
-int Humanoid::getDistanceTo(std::weak_ptr<Buffy> b) const {
+int Humanoid::getDistanceTo(const std::weak_ptr<Buffy>& b) const {
     return -1;
 }
 
-int Humanoid::getDistanceTo(std::weak_ptr<Vampire> v) const {
+int Humanoid::getDistanceTo(const std::weak_ptr<Vampire>& v) const {
     return -1;
 }
 

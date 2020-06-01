@@ -24,7 +24,7 @@ public:
 
     char getSymbol() const override;
 
-    int getDistanceTo(std::weak_ptr<Vampire> v) const override;
+    int getDistanceTo(const std::weak_ptr<Vampire>& v) const override;
 
     virtual ~Human();
 };

@@ -15,7 +15,7 @@ Date        : 14.05.2020
 
 class Utils {
 
-
+private:
     static std::minstd_rand0 generator;
 
 public:

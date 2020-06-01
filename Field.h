@@ -23,13 +23,13 @@ Date        : 14.05.2020
 class Field {
 
 private:
-    unsigned _width;
-    unsigned _height;
+    const unsigned _width;
+    const unsigned _height;
 
     unsigned _turn;
 
-    unsigned _totalHuman;
-    unsigned _totalVampire;
+    const unsigned _totalHuman;
+    const unsigned _totalVampire;
 
     // Counter for Vampires and Humans
     int _vCounter;

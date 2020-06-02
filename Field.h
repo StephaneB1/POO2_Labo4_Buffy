@@ -39,8 +39,6 @@ private:
 
     std::list<std::shared_ptr<Humanoid>> _humanoids;
 
-
-
     /**
      * Add a Humanoid in the list
      * @tparam T Type for the Humanoid to add (Buddy, Vampire, Human)

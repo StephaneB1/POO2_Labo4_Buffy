@@ -18,13 +18,12 @@ Date        : 14.05.2020
 #include "../Field.h"
 
 Vampire::Vampire(int _x, int _y)
-        : Humanoid(new Move(1, this), _x, _y), _kill(new Kill(false)),
+        : Humanoid(new Move(1, this), _x, _y),
+          _kill(new Kill(false)),
           _bite(new Bite()) {
 }
 
-Vampire::Vampire(const std::shared_ptr<Human>& h) : Vampire(h->getX(),
-                                                          h->getY()) {
-
+Vampire::Vampire(const std::shared_ptr<Human>& h) : Vampire(h->getX(), h->getY()) {
 }
 
 char Vampire::getSymbol() const {

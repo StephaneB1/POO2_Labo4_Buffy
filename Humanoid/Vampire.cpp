@@ -38,7 +38,7 @@ int Vampire::getDistanceTo(const std::shared_ptr<Buffy>& b) const {
 }
 
 std::shared_ptr<Humanoid> Vampire::getTarget(const Field& field) {
-    return field.getClosest(shared_from_this());
+    return field.getClosest<Vampire>(shared_from_this());
 }
 
 Action*

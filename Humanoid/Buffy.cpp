@@ -23,7 +23,7 @@ char Buffy::getSymbol() const {
 }
 
 std::shared_ptr<Humanoid> Buffy::getTarget(const Field &field) {
-    return field.getClosest(shared_from_this());
+    return field.getClosest<Buffy>(shared_from_this());
 }
 
 Action* Buffy::getAttackAction(const Field& field,

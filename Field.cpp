@@ -8,8 +8,6 @@ Date        : 14.05.2020
  */
 
 #include <iostream>
-#include <algorithm>
-#include <climits>
 #include "Field.h"
 #include "Utils.h"
 
@@ -54,38 +52,6 @@ unsigned int Field::getWidth() const {
 unsigned int Field::getHeight() const {
     return _height;
 }
-
-template<typename F>
-std::shared_ptr<Humanoid>
-Field::getClosest(F distFunc) const {
-    std::shared_ptr<Humanoid> res;
-    int min = INT_MAX;
-    int d;
-
-    for (std::shared_ptr<Humanoid> h :_humanoids) {
-        d = distFunc(h); // change with h->getDistance((T*) h)
-
-        if (d >= 0 && min > d) {
-            min = d;
-            res = h;
-        }
-    }
-
-    return res;
-}
-
-std::shared_ptr<Humanoid> Field::getClosest(std::shared_ptr<Vampire> v) const {
-    return getClosest([&](std::shared_ptr<Humanoid> h1) {
-        return h1->getDistanceTo(v);
-    });
-}
-
-std::shared_ptr<Humanoid> Field::getClosest(std::shared_ptr<Buffy> b) const {
-    return getClosest([&](std::shared_ptr<Humanoid> h1) {
-        return h1->getDistanceTo(b);
-    });
-}
-
 
 void Field::reset() {
     _turn = 0;

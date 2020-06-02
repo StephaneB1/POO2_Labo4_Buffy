@@ -13,6 +13,8 @@ Date        : 14.05.2020
 
 
 #include <list>
+#include <algorithm>
+#include <climits>
 #include "Humanoid/Vampire.h"
 #include "Humanoid/Human.h"
 #include "Humanoid/Buffy.h"
@@ -37,14 +39,7 @@ private:
 
     std::list<std::shared_ptr<Humanoid>> _humanoids;
 
-    /**
-     * Find the humanoid according th lambda function
-     * @tparam F
-     * @param lambda
-     * @return
-     */
-    template<typename F>
-    std::shared_ptr<Humanoid> getClosest(F lambda) const;
+
 
     /**
      * Add a Humanoid in the list
@@ -77,18 +72,29 @@ public:
     void replaceByAVampire(std::shared_ptr<Humanoid> target);
 
     /**
-    * Find the closest Human to the vampire v
-    * @param v the vampire we want to know his closest human
-    * @return a weak_ptr to the closest human
-    */
-    std::shared_ptr<Humanoid> getClosest(std::shared_ptr<Vampire> v) const;
-
-    /**
-     * Find the closest Vampire to the Buffy
-     * @param b Buffy
-     * @return a weak_ptr to the closest Vampire to Buffy
+     * Finds the closest humanoid of type T from a target
+     * @tparam T     : type of humanoid
+     * @param target : get closest from this instance
+     * @return closest humanoid of type T from target
      */
-    std::shared_ptr<Humanoid> getClosest(std::shared_ptr<Buffy> b) const;
+    template<typename T>
+    std::shared_ptr<Humanoid> getClosest(const std::shared_ptr<T>& target) const {
+        std::shared_ptr<Humanoid> res;
+        int min = INT_MAX;
+        int d;
+
+        for (std::shared_ptr<Humanoid> h :_humanoids) {
+            d = h->getDistanceTo(target);
+
+            if (d >= 0 && min > d) {
+                min = d;
+                res = h;
+            }
+        }
+
+        return res;
+    };
+
 
     const std::list<std::shared_ptr<Humanoid>>& getHumanoids() const;
 

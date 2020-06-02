@@ -20,12 +20,31 @@ class FieldDisplayer;
 class BuffyController {
 
 private:
+    /**
+     * Displays an error message
+     * @param msg : message to display in the console
+     */
     void displayErrorMsg(const std::string& msg);
 
 public:
     BuffyController();
 
+    /**
+     * Starts a simulation
+     * @param width        : width of the field
+     * @param height       : height of the field
+     * @param totalHumans  : total number of Humans
+     * @param totalVampire : total number of Vampires
+     */
     void start(size_t width, size_t height, unsigned totalHumans, unsigned totalVampire);
+
+    /**
+     * Displays the stats out of TOTAL_SIMULATION iterations
+     * @param width        : width of the field
+     * @param height       : height of the field
+     * @param totalHumans  : total number of Humans
+     * @param totalVampire : total number of Vampires
+     */
     void displayStats(size_t width, size_t height, unsigned totalHumans, unsigned totalVampire);
 
 private:

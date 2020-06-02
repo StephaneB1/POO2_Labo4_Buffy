@@ -35,14 +35,13 @@ public:
 
     /**
      * Give the direction to move given the starting point and the target position
-     * @param fromX
-     * @param fromY
-     * @param toX
-     * @param toY
-     * @return
+     * @param fromX : start x
+     * @param fromY : start y
+     * @param toX   : end x
+     * @param toY   : end y
+     * @return direction
      */
-    static Direction
-    getDirection(int fromX, int fromY, int toX, int toY);
+    static Direction getDirection(int fromX, int fromY, int toX, int toY);
 
     int getX() const;
 

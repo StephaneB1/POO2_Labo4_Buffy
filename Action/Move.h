@@ -34,6 +34,14 @@ private:
      */
     std::vector<Direction> getPossibleDirections(const Field& field) const;
 
+    /**
+     * Get the next coordinates x or y
+     * @param newCoord : new potential coordinate
+     * @param field    : field of the humanoid trying to move
+     * @return the next coordinate x or y
+     */
+    int getTargetCoordinate(int newCoord, const Field& field);
+
 public:
 
     Move(unsigned int _stepRange, Humanoid* humanoid);
@@ -54,6 +62,9 @@ public:
      */
     void setNextPosition(const Direction& nextDirection, const Field& field);
 
+    /**
+     * @return the humanoid of the move
+     */
     Humanoid* getHumanoid() const;
 
 };

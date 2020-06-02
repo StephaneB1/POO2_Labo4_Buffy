@@ -25,7 +25,6 @@ Kill::~Kill() {
 }
 
 Kill::Kill(bool targetIsVampire) : _targetIsVampire(targetIsVampire) {
-
 }
 
 void Kill::setTarget(const std::shared_ptr<Humanoid>& target) {

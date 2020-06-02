@@ -9,19 +9,27 @@ Date        : 14.05.2020
 
 #include "Direction.h"
 
-const Direction Direction::UP = Direction(0, -1);
-const Direction Direction::UP_LEFT = Direction(-1, -1);
-const Direction Direction::UP_RIGHT = Direction(1, -1);
-
-const Direction Direction::DOWN = Direction(0, 1);
-const Direction Direction::DOWN_LEFT = Direction(-1, 1);
-const Direction Direction::DOWN_RIGHT = Direction(1, 1);
-
-const Direction Direction::LEFT = Direction(-1, 0);
-const Direction Direction::RIGHT = Direction(1, 0);
-
-
-const Direction Direction::NONE = Direction(0, 0);
+/*
+    DIRECTIONS (x,y) :
+                  UP
+     (-1,1)-----(0,1)-----(1,1)
+        |         |         |
+        |         |         |
+LEFT (-1,0)-----(0,0)-----(1,0)   RIGHT
+        |         |         |
+        |         |         |
+     (-1,-1)----(0,-1)----(1,-1)
+                DOWN
+*/
+const Direction Direction::UP         = Direction( 0,-1);
+const Direction Direction::UP_LEFT    = Direction(-1,-1);
+const Direction Direction::UP_RIGHT   = Direction( 1,-1);
+const Direction Direction::DOWN       = Direction( 0, 1);
+const Direction Direction::DOWN_LEFT  = Direction(-1, 1);
+const Direction Direction::DOWN_RIGHT = Direction( 1, 1);
+const Direction Direction::LEFT       = Direction(-1, 0);
+const Direction Direction::RIGHT      = Direction( 1, 0);
+const Direction Direction::NONE       = Direction( 0, 0);
 
 
 Direction Direction::getDirection(int fromX, int fromY,

@@ -11,13 +11,9 @@ Date        : 14.05.2020
 #include "Field.h"
 #include "Utils.h"
 
-class Utils;
-
 Field::Field(unsigned int _width, unsigned int _height, unsigned totalHuman,
-             unsigned totalVampire) : _width(_width),
-                                      _height(_height),
-                                      _turn(0),
-                                      _totalHuman(totalHuman),
+             unsigned totalVampire) : _width(_width), _height(_height),
+                                      _turn(0), _totalHuman(totalHuman),
                                       _totalVampire(totalVampire) {
     init();
 }
@@ -95,8 +91,7 @@ const std::list<std::shared_ptr<Humanoid>>& Field::getHumanoids() const {
 }
 
 void
-Field::replaceByAVampire(std::shared_ptr<Humanoid> target) {
-
+Field::replaceByAVampire(const std::shared_ptr<Humanoid>& target) {
     _vCounter++;
     _humanoids.push_back(std::make_shared<Vampire>(target->getX(),
                                                    target->getY()));
@@ -106,6 +101,7 @@ Field::replaceByAVampire(std::shared_ptr<Humanoid> target) {
 void Field::kill(std::shared_ptr<Humanoid>& h, bool targetIsVampire) {
     h->kill();
 
+    // Update the right counter
     if (targetIsVampire) {
         _vCounter--;
     } else {

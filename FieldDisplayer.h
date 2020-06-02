@@ -18,6 +18,10 @@ public:
 
     FieldDisplayer() {};
 
+    /**
+     * Displays a field
+     * @param field : field to display
+     */
     void display(const Field& field) const;
 
 };

@@ -11,7 +11,6 @@ Date        : 14.05.2020
 
 BuffyController::BuffyController()
         : _simulating(false) {
-
 }
 
 void BuffyController::start(size_t width, size_t height, unsigned totalHumans,

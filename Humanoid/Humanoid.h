@@ -41,17 +41,15 @@ private:
 
     // Humanoid actions
     virtual Action* getIdleAction(const Field& field);
-
-    virtual Action*
-    getAttackAction(const Field& field, const std::shared_ptr<Humanoid>& target);
-
-    virtual Action*
-    getChaseAction(const Field& field, const std::shared_ptr<Humanoid>& target);
+    virtual Action* getAttackAction(const Field& field,
+            const std::shared_ptr<Humanoid>& target);
+    virtual Action* getChaseAction(const Field& field,
+            const std::shared_ptr<Humanoid>& target);
 
     /**
-   * Get the closest target
-   * @param field
-   * @return A shared pointer to the closest target
+     * Get the closest target
+     * @param field
+     * @return A shared pointer to the closest target
    */
     virtual std::shared_ptr<Humanoid> getTarget(const Field& field);
 
@@ -61,23 +59,38 @@ public:
 
     virtual ~Humanoid();
 
+    /**
+     * Set the next action of the humanoid
+     * @param field
+     */
     void setAction(const Field& field);
 
+    /**
+     * Execute the humanoid's action
+     * @param field
+     */
     void executeAction(Field* field);
 
+    /**
+     * @return true if the humanoid is alive
+     */
     bool isAlive() const;
 
+    // Humanoid's position
     int getX() const;
-
     int getY() const;
-
     void setPosition(int x, int y);
-
-    void kill();
-
     bool standsHere(unsigned int x, unsigned int y);
 
+    /**
+     * @return Humanoid's symbol as a character
+     */
     virtual char getSymbol() const = 0;
+
+    /**
+     * Kills the humanoid
+     */
+    void kill();
 
     /**
      * Get the distance between Buffy and this humanoid(Euclidean distance)

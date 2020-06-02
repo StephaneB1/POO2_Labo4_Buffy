@@ -32,28 +32,24 @@ void Move::setRandomMove(const Field& field) {
 
 void Move::setNextPosition(const Direction& nextDirection, const Field& field) {
 
-    int newX = getHumanoid()->getX() + nextDirection.getX() * _stepRange;
-    int newY = getHumanoid()->getY() + nextDirection.getY() * _stepRange;
-
     // without an explicit cast, the compiler cast into unsigned
     // if the new position is outside the board, we replace inside the board
-    if (newX >= (int) field.getWidth()) {
-        _toX = field.getWidth() - 1;
-    } else if (newX < 0) {
-        _toX = 0;
+    _toX = getTargetCoordinate(getHumanoid()->getX() +
+            nextDirection.getX() * _stepRange, field);
+    _toY = getTargetCoordinate(getHumanoid()->getY() +
+            nextDirection.getY() * _stepRange, field);
+}
+
+int Move::getTargetCoordinate(int newCoord, const Field& field) {
+    int toCoord;
+    if (newCoord >= (int) field.getHeight()) {
+        toCoord = field.getHeight() - 1;
+    } else if (newCoord < 0) {
+        toCoord = 0;
     } else {
-        _toX = newX;
+        toCoord = newCoord;
     }
-
-    if (newY >= (int) field.getHeight()) {
-        _toY = field.getHeight() - 1;
-    } else if (newY < 0) {
-        _toY = 0;
-    } else {
-        _toY = newY;
-    }
-
-
+    return toCoord;
 }
 
 std::vector<Direction> Move::getPossibleDirections(const Field& field) const {

@@ -32,18 +32,19 @@ void Move::setRandomMove(const Field& field) {
 
 void Move::setNextPosition(const Direction& nextDirection, const Field& field) {
 
-    // without an explicit cast, the compiler cast into unsigned
     // if the new position is outside the board, we replace inside the board
-    _toX = getTargetCoordinate(getHumanoid()->getX() +
-            nextDirection.getX() * _stepRange, field);
-    _toY = getTargetCoordinate(getHumanoid()->getY() +
-            nextDirection.getY() * _stepRange, field);
+    _toX = getTargetCoordinate(
+            getHumanoid()->getX() + nextDirection.getX() * _stepRange,
+            field.getWidth());
+    _toY = getTargetCoordinate(
+            getHumanoid()->getY() + nextDirection.getY() * _stepRange,
+            field.getHeight());
 }
 
-int Move::getTargetCoordinate(int newCoord, const Field& field) {
+int Move::getTargetCoordinate(int newCoord, int limit) {
     int toCoord;
-    if (newCoord >= (int) field.getHeight()) {
-        toCoord = field.getHeight() - 1;
+    if (newCoord >= limit) {
+        toCoord = limit - 1;
     } else if (newCoord < 0) {
         toCoord = 0;
     } else {

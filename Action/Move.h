@@ -30,17 +30,17 @@ private:
     /**
      * Return a list of the possible direction for the Humanoid
      * @param field
-     * @return
+     * @return A list of direction
      */
     std::vector<Direction> getPossibleDirections(const Field& field) const;
 
     /**
      * Get the next coordinates x or y
      * @param newCoord : new potential coordinate
-     * @param field    : field of the humanoid trying to move
+     * @param limit : the board limit (width if x, height if y)
      * @return the next coordinate x or y
      */
-    int getTargetCoordinate(int newCoord, const Field& field);
+    int getTargetCoordinate(int newCoord, int limit);
 
 public:
 

@@ -126,10 +126,6 @@ public:
      */
     void kill(std::shared_ptr<Humanoid>& h, bool targetIsVampire);
 
-    int get_vCounter() const;
-
-    int get_hCounter() const;
-
 };
 
 

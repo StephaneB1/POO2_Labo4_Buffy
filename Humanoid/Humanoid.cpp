@@ -106,8 +106,4 @@ void Humanoid::setPosition(int x, int y) {
     _y = y;
 }
 
-unsigned int Humanoid::get_id() const {
-    return _id;
-}
-
 unsigned Humanoid::_counter = 0;

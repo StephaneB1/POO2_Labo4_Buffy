@@ -113,11 +113,3 @@ void Field::kill(std::shared_ptr<Humanoid>& h, bool targetIsVampire) {
     }
 }
 
-int Field::get_vCounter() const {
-    return _vCounter;
-}
-
-int Field::get_hCounter() const {
-    return _hCounter;
-}
-

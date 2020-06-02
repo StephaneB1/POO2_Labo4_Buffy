@@ -51,7 +51,7 @@ private:
     /**
    * Get the closest target
    * @param field
-   * @return A waek ptr to the closest target
+   * @return A shared pointer to the closest target
    */
     virtual std::shared_ptr<Humanoid> getTarget(const Field& field);
 
@@ -64,7 +64,6 @@ public:
     void setAction(const Field& field);
 
     void executeAction(Field* field);
-
 
     bool isAlive() const;
 
@@ -93,9 +92,6 @@ public:
      * @return if this is a Human return the distance otherwise -1
      */
     virtual int getDistanceTo(const std::shared_ptr<Vampire>& v) const;
-
-    unsigned int get_id() const;
-
 };
 
 

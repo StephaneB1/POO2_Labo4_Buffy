@@ -18,6 +18,7 @@ Date        : 14.05.2020
 
 class Vampire : public Humanoid, public std::enable_shared_from_this<Vampire> {
 
+private:
     Kill* _kill;
     Bite* _bite;
 

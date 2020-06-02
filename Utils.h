@@ -27,7 +27,7 @@ public:
      * random number engine
      * @param min
      * @param max
-     * @return
+     * @return A random unsigned between min and max
      */
     static unsigned generateRandom(unsigned min, unsigned max);
 

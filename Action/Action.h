@@ -22,7 +22,7 @@ public:
     virtual ~Action();
 
     /**
-     * Execute the corresponding
+     * Execute the corresponding action
      * @param field
      */
     virtual void execute(Field* field) = 0;

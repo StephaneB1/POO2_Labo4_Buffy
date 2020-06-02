@@ -22,7 +22,7 @@ public:
     virtual void execute(Field* field);
 
     /**
-     * Set which humanoid to execute the action
+     * Set on which humanoid to execute the action
      * @param target
      */
     void setTarget(const std::shared_ptr<Humanoid>& target);

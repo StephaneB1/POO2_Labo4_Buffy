@@ -50,9 +50,9 @@ bool Humanoid::standsHere(unsigned int x, unsigned int y) {
 }
 
 void Humanoid::setAction(const Field& field) {
-    std::weak_ptr<Humanoid> target = getTarget(field);
+    std::shared_ptr<Humanoid> target = getTarget(field);
 
-    if (target.expired()) {
+    if (!target) {
         // No target to chase or to kill
         _nextAction = getIdleAction(field);
     } else if (Utils::isNextToTarget(this, target)) {
@@ -64,9 +64,9 @@ void Humanoid::setAction(const Field& field) {
     }
 }
 
-std::weak_ptr<Humanoid> Humanoid::getTarget(const Field& field) {
+std::shared_ptr<Humanoid> Humanoid::getTarget(const Field& field) {
     // No target by default
-    return std::weak_ptr<Humanoid>();
+    return std::shared_ptr<Humanoid>();
 }
 
 Action* Humanoid::getIdleAction(const Field& field) {
@@ -77,27 +77,27 @@ Action* Humanoid::getIdleAction(const Field& field) {
 
 Action*
 Humanoid::getAttackAction(const Field& field,
-                          const std::weak_ptr<Humanoid>& target) {
+                          const std::shared_ptr<Humanoid>& target) {
     // No attack by default
     return nullptr;
 }
 
 Action*
-Humanoid::getChaseAction(const Field& field, const std::weak_ptr<Humanoid>& target) {
+Humanoid::getChaseAction(const Field& field, const std::shared_ptr<Humanoid>& target) {
     // Chase target by default
     Direction moveDir = Direction::getDirection(getX(), getY(),
-                                                target.lock()->getX(),
-                                                target.lock()->getY());
+                                                target->getX(),
+                                                target->getY());
 
     _move->setNextPosition(moveDir, field);
     return _move;
 }
 
-int Humanoid::getDistanceTo(const std::weak_ptr<Buffy>& b) const {
+int Humanoid::getDistanceTo(const std::shared_ptr<Buffy>& b) const {
     return -1;
 }
 
-int Humanoid::getDistanceTo(const std::weak_ptr<Vampire>& v) const {
+int Humanoid::getDistanceTo(const std::shared_ptr<Vampire>& v) const {
     return -1;
 }
 

@@ -21,10 +21,10 @@ class Buffy : public Humanoid, public std::enable_shared_from_this<Buffy>{
 private:
     Kill* _kill;
 
-    std::weak_ptr<Humanoid> getTarget(const Field &field) override;
+    std::shared_ptr<Humanoid> getTarget(const Field &field) override;
 
     Action* getAttackAction(const Field& field,
-                            const std::weak_ptr<Humanoid>& target) override;
+                            const std::shared_ptr<Humanoid>& target) override;
 
 public:
 

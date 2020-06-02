@@ -15,7 +15,7 @@ Date        : 14.05.2020
 class Kill : public Action {
 
 private:
-    std::weak_ptr<Humanoid> _target;
+    std::shared_ptr<Humanoid> _target;
 
     // Indicate if the humanoid target is a Vampire
     const bool _targetIsVampire;
@@ -30,7 +30,7 @@ public:
      * Set which humanoid to execute the action
      * @param target
      */
-    void setTarget(const std::weak_ptr<Humanoid>& target);
+    void setTarget(const std::shared_ptr<Humanoid>& target);
 
     virtual void execute(Field* field);
 

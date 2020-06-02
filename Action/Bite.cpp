@@ -13,7 +13,7 @@ Date        : 14.05.2020
 
 void Bite::execute(Field* field) {
     // Execute only if the target is alive
-    if(_target.lock()->isAlive()) {
+    if(_target->isAlive()) {
         field->kill(_target, false);
         field->replaceByAVampire(_target);
     }
@@ -25,6 +25,6 @@ Bite::~Bite() {
 Bite::Bite() {}
 
 
-void Bite::setTarget(const std::weak_ptr<Humanoid>& target) {
+void Bite::setTarget(const std::shared_ptr<Humanoid>& target) {
     _target = target;
 }

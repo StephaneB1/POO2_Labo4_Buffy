@@ -16,7 +16,7 @@ Date        : 14.05.2020
 #include "Action.h"
 
 class Bite : public Action{
-    std::weak_ptr<Humanoid> _target;
+    std::shared_ptr<Humanoid> _target;
 public:
 
     Bite();
@@ -27,7 +27,7 @@ public:
      * Set which humanoid to execute the action
      * @param target
      */
-    void setTarget(const std::weak_ptr<Humanoid>& target);
+    void setTarget(const std::shared_ptr<Humanoid>& target);
 
     virtual ~Bite();
 };

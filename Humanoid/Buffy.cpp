@@ -22,12 +22,12 @@ char Buffy::getSymbol() const {
     return 'b';
 }
 
-std::weak_ptr<Humanoid> Buffy::getTarget(const Field &field) {
-    return field.getClosest(weak_from_this());
+std::shared_ptr<Humanoid> Buffy::getTarget(const Field &field) {
+    return field.getClosest(shared_from_this());
 }
 
 Action* Buffy::getAttackAction(const Field& field,
-                               const std::weak_ptr<Humanoid>& target) {
+                               const std::shared_ptr<Humanoid>& target) {
     _kill->setTarget(target);
     return _kill;
 }

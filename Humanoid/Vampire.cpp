@@ -22,8 +22,8 @@ Vampire::Vampire(int _x, int _y)
           _bite(new Bite()) {
 }
 
-Vampire::Vampire(const std::weak_ptr<Human>& h) : Vampire(h.lock()->getX(),
-                                                          h.lock()->getY()) {
+Vampire::Vampire(const std::shared_ptr<Human>& h) : Vampire(h->getX(),
+                                                          h->getY()) {
 
 }
 
@@ -31,18 +31,18 @@ char Vampire::getSymbol() const {
     return 'v';
 }
 
-int Vampire::getDistanceTo(const std::weak_ptr<Buffy>& b) const {
-    return Utils::getEuclideanDistance(getX(), getY(), b.lock()->getX(),
-                                       b.lock()->getY());
+int Vampire::getDistanceTo(const std::shared_ptr<Buffy>& b) const {
+    return Utils::getEuclideanDistance(getX(), getY(), b->getX(),
+                                       b->getY());
 
 }
 
-std::weak_ptr<Humanoid> Vampire::getTarget(const Field& field) {
-    return field.getClosest(weak_from_this());
+std::shared_ptr<Humanoid> Vampire::getTarget(const Field& field) {
+    return field.getClosest(shared_from_this());
 }
 
 Action*
-Vampire::getAttackAction(const Field& field, const std::weak_ptr<Humanoid>& target) {
+Vampire::getAttackAction(const Field& field, const std::shared_ptr<Humanoid>& target) {
     // 50/50 between bite and kill human
 
     if (Utils::generateRandom(0, 2)) {

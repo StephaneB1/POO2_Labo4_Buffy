@@ -56,14 +56,14 @@ unsigned int Field::getHeight() const {
 }
 
 template<typename F>
-std::weak_ptr<Humanoid>
+std::shared_ptr<Humanoid>
 Field::getClosest(F distFunc) const {
-    std::weak_ptr<Humanoid> res;
+    std::shared_ptr<Humanoid> res;
     int min = INT_MAX;
     int d;
 
     for (std::shared_ptr<Humanoid> h :_humanoids) {
-        d = distFunc(h);
+        d = distFunc(h); // change with h->getDistance((T*) h)
 
         if (d >= 0 && min > d) {
             min = d;
@@ -74,15 +74,15 @@ Field::getClosest(F distFunc) const {
     return res;
 }
 
-std::weak_ptr<Humanoid> Field::getClosest(std::weak_ptr<Vampire> v) const {
-    return getClosest([&](std::weak_ptr<Humanoid> h1) {
-        return h1.lock()->getDistanceTo(v);
+std::shared_ptr<Humanoid> Field::getClosest(std::shared_ptr<Vampire> v) const {
+    return getClosest([&](std::shared_ptr<Humanoid> h1) {
+        return h1->getDistanceTo(v);
     });
 }
 
-std::weak_ptr<Humanoid> Field::getClosest(std::weak_ptr<Buffy> b) const {
-    return getClosest([&](std::weak_ptr<Humanoid> h1) {
-        return h1.lock()->getDistanceTo(b);
+std::shared_ptr<Humanoid> Field::getClosest(std::shared_ptr<Buffy> b) const {
+    return getClosest([&](std::shared_ptr<Humanoid> h1) {
+        return h1->getDistanceTo(b);
     });
 }
 
@@ -129,16 +129,16 @@ const std::list<std::shared_ptr<Humanoid>>& Field::getHumanoids() const {
 }
 
 void
-Field::replaceByAVampire(std::weak_ptr<Humanoid> target) {
+Field::replaceByAVampire(std::shared_ptr<Humanoid> target) {
 
     _vCounter++;
-    _humanoids.push_back(std::make_shared<Vampire>(target.lock()->getX(),
-                                                   target.lock()->getY()));
+    _humanoids.push_back(std::make_shared<Vampire>(target->getX(),
+                                                   target->getY()));
 }
 
 
-void Field::kill(std::weak_ptr<Humanoid>& h, bool targetIsVampire) {
-    h.lock()->kill();
+void Field::kill(std::shared_ptr<Humanoid>& h, bool targetIsVampire) {
+    h->kill();
 
     if (targetIsVampire) {
         _vCounter--;

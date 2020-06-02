@@ -44,7 +44,7 @@ private:
      * @return
      */
     template<typename F>
-    std::weak_ptr<Humanoid> getClosest(F lambda) const;
+    std::shared_ptr<Humanoid> getClosest(F lambda) const;
 
     /**
      * Add a Humanoid in the list
@@ -74,21 +74,21 @@ public:
      * Replace a the target by a Vampire, the new Vampire has the same position
      * @param target
      */
-    void replaceByAVampire(std::weak_ptr<Humanoid> target);
+    void replaceByAVampire(std::shared_ptr<Humanoid> target);
 
     /**
     * Find the closest Human to the vampire v
     * @param v the vampire we want to know his closest human
     * @return a weak_ptr to the closest human
     */
-    std::weak_ptr<Humanoid> getClosest(std::weak_ptr<Vampire> v) const;
+    std::shared_ptr<Humanoid> getClosest(std::shared_ptr<Vampire> v) const;
 
     /**
      * Find the closest Vampire to the Buffy
      * @param b Buffy
      * @return a weak_ptr to the closest Vampire to Buffy
      */
-    std::weak_ptr<Humanoid> getClosest(std::weak_ptr<Buffy> b) const;
+    std::shared_ptr<Humanoid> getClosest(std::shared_ptr<Buffy> b) const;
 
     const std::list<std::shared_ptr<Humanoid>>& getHumanoids() const;
 
@@ -120,7 +120,7 @@ public:
      * @param h the humanoid killed
      * @param targetIsVampire indicate which counter to decrement
      */
-    void kill(std::weak_ptr<Humanoid>& h, bool targetIsVampire);
+    void kill(std::shared_ptr<Humanoid>& h, bool targetIsVampire);
 
     int get_vCounter() const;
 
